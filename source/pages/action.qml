@@ -308,9 +308,9 @@ Item {
 
     Button {
         id: button
-        x: 406
+        x: 580
         y: 432
-        width: 186
+        width: 57
         height: 40
         text: qsTr("run")
         onClicked: {
@@ -322,14 +322,223 @@ Item {
 
     Button {
         id: button1
-        x: 605
+        x: 643
         y: 432
-        width: 187
+        width: 149
         height: 40
         text: qsTr("back")
         onClicked: {
             stackView.push(Qt.resolvedUrl("index.qml"))
         }
+    }
+
+    Label {
+        id: label10
+        x: 8
+        y: 305
+        width: 210
+        height: 29
+        text: "Контрольные параметры"
+        verticalAlignment: Text.AlignVCenter
+        font.pointSize: 13
+        font.bold: true
+    }
+
+    Label {
+        id: label11
+        x: 9
+        y: 340
+        width: 67
+        height: 27
+        text: qsTr("100.12")
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+        font.bold: true
+    }
+
+    Label {
+        id: label12
+        x: 9
+        y: 392
+        width: 67
+        height: 27
+        text: qsTr("1200.4")
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+        font.bold: true
+    }
+
+    Label {
+        id: label13
+        x: 9
+        y: 445
+        width: 67
+        height: 27
+        text: qsTr("10")
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+        font.bold: true
+    }
+
+    Label {
+        id: label14
+        x: 213
+        y: 340
+        width: 94
+        height: 27
+        text: qsTr("1000")
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+        font.bold: true
+    }
+
+    Label {
+        id: label15
+        x: 213
+        y: 392
+        width: 94
+        height: 27
+        text: qsTr("123.0")
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+        font.bold: true
+    }
+
+    Label {
+        id: label16
+        x: 213
+        y: 445
+        width: 94
+        height: 27
+        text: qsTr("100.4")
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+        font.bold: true
+    }
+
+    Label {
+        id: label17
+        x: 450
+        y: 340
+        width: 94
+        height: 27
+        text: qsTr("230.4")
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+        font.bold: true
+    }
+
+    Label {
+        id: label18
+        x: 450
+        y: 392
+        width: 94
+        height: 27
+        text: qsTr("300.4")
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+        font.bold: true
+    }
+
+    Label {
+        id: label19
+        x: 82
+        y: 340
+        width: 121
+        height: 27
+        text: qsTr("Sпл, мм")
+        horizontalAlignment: Text.AlignLeft
+        verticalAlignment: Text.AlignVCenter
+        font.bold: true
+    }
+
+    Label {
+        id: label20
+        x: 82
+        y: 392
+        width: 121
+        height: 27
+        text: "I св, А"
+        verticalAlignment: Text.AlignVCenter
+        font.bold: true
+    }
+
+    Label {
+        id: label21
+        x: 82
+        y: 445
+        width: 121
+        height: 27
+        text: qsTr("Участок")
+        verticalAlignment: Text.AlignVCenter
+        font.bold: true
+    }
+
+    Label {
+        id: label22
+        x: 315
+        y: 340
+        width: 129
+        height: 27
+        text: qsTr("Программа")
+        verticalAlignment: Text.AlignVCenter
+        font.bold: true
+    }
+
+    Label {
+        id: label23
+        x: 315
+        y: 392
+        width: 129
+        height: 27
+        text: qsTr("Время сварки")
+        verticalAlignment: Text.AlignVCenter
+        font.bold: true
+    }
+
+    Label {
+        id: label24
+        x: 315
+        y: 445
+        width: 129
+        height: 27
+        text: qsTr("Т масла")
+        verticalAlignment: Text.AlignVCenter
+        font.bold: true
+    }
+
+    Label {
+        id: label25
+        x: 550
+        y: 340
+        width: 242
+        height: 27
+        text: qsTr("Скорость осадки (мм/с)")
+        verticalAlignment: Text.AlignVCenter
+        font.bold: true
+    }
+
+    Label {
+        id: label26
+        x: 550
+        y: 392
+        width: 242
+        height: 27
+        text: qsTr("Величина осадки (мм)")
+        verticalAlignment: Text.AlignVCenter
+        font.bold: true
+    }
+
+    Label {
+        id: label27
+        x: 368
+        y: 295
+        width: 76
+        height: 38
+        text: qsTr("Label")
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+        font.bold: true
     }
 
     //    IntDialog {
