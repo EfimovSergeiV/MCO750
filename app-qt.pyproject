@@ -1,0 +1,3 @@
+{
+    "files": ["source/main.qml","source/controls/SilverBtn.qml","main.py","source/pages/settings.qml","source/pages/action.qml","source/sensors/clampControl/ClampControl.qml","source/pages/index.qml","source/sensors/btnIndicator/BtnIndicator.qml"]
+}

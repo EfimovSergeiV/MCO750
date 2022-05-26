@@ -1,0 +1,227 @@
+[
+    {
+        "programId": 0,
+        "programName": "Program 1",
+        "programDescription": "Program 1 Description",
+        "programParams": [
+            {
+                "paramId": 0,
+                "paramName": "Param 0",
+                "paramDescription": "Настройка параметров оплавления",
+                "selType": 1,
+                "paramType": "int",
+                "paramValue": [
+                    {
+                        "valueId": "0",
+                        "valueName": "sec0",
+                        "valueDescription": "Участок оплавления 1",
+                        "value": 0
+                    },
+                    {
+                        "valueId": "1",
+                        "valueName": "sec1",
+                        "valueDescription": "Участок оплавления 2",
+                        "value": 0
+                    },
+                    {
+                        "valueId": "2",
+                        "valueName": "sec2",
+                        "valueDescription": "Участок оплавления 3",
+                        "value": 0
+                    },
+                    {
+                        "valueId": "3",
+                        "valueName": "sec3",
+                        "valueDescription": "Участок оплавления 4",
+                        "value": 0
+                    },
+                    {
+                        "valueId": "4",
+                        "valueName": "sec4",
+                        "valueDescription": "Участок оплавления 5",
+                        "value": 0
+                    },
+                    {
+                        "valueId": "5",
+                        "valueName": "sec5",
+                        "valueDescription": "Участок оплавления 6",
+                        "value": 0
+                    }
+                ]
+            },
+            {
+                "paramId": 1,
+                "paramName": "Param 1",
+                "paramDescription": "Настройка параметров корректора",
+                "selType": 1,
+                "paramType": "int",
+                "paramValue": [
+                    {
+                        "valueId": "0",
+                        "valueName": "sec0",
+                        "valueDescription": "Участок корректора 1",
+                        "value": 0
+                    },
+                    {
+                        "valueId": "1",
+                        "valueName": "sec1",
+                        "valueDescription": "Участок корректора 2",
+                        "value": 0
+                    },
+                    {
+                        "valueId": "2",
+                        "valueName": "sec2",
+                        "valueDescription": "Участок корректора 3",
+                        "value": 0
+                    },
+                    {
+                        "valueId": "3",
+                        "valueName": "sec3",
+                        "valueDescription": "Участок корректора 4",
+                        "value": 0
+                    },
+                    {
+                        "valueId": "4",
+                        "valueName": "sec4",
+                        "valueDescription": "Участок корректора 5",
+                        "value": 0
+                    },
+                    {
+                        "valueId": "5",
+                        "valueName": "sec5",
+                        "valueDescription": "Участок корректора 6",
+                        "value": 0
+                    }
+                ]
+            },
+            {
+                "paramId": 2,
+                "paramName": "Param 2",
+                "paramDescription": "Настройка параметров подогрева и выжигания",
+                "heating": [
+                    {
+                        "valueId": 0,
+                        "valueName": "forwardSpeed",
+                        "valueDescription": "Скорость подогрева вперед, мм/с",
+                        "value": 0
+                    },
+                    {
+                        "valueId": 1,
+                        "valueName": "backwardSpeed",
+                        "valueDescription": "Скорость подогрева назад, мм/с",
+                        "value": 0
+                    },
+                    {
+                        "valueId": 2,
+                        "valueName": "compactionSpeed",
+                        "valueDescription": "Скорость уплотнения, мм/с",
+                        "value": 0
+                    },
+                    {
+                        "valueId": 3,
+                        "valueName": "lastSplitSpeed",
+                        "valueDescription": "Скорость последнего разведения, мм/с",
+                        "value": 0
+                    },
+                    {
+                        "valueId": 4,
+                        "valueName": "compactionTime",
+                        "valueDescription": "Время уплотнения, мс",
+                        "value": 0
+                    },
+                    {
+                        "valueId": 5,
+                        "valueName": "preheatingTime",
+                        "valueDescription": "Время подогрева, мс",
+                        "value": 0
+                    },
+                    {
+                        "valueId": 6,
+                        "valueName": "preheatingTemperature",
+                        "valueDescription": "Время паузы, мс",
+                        "value": 0
+                    },
+                    {
+                        "valueId": 7,
+                        "valueName": "preheatingTemperatureDelta",
+                        "valueDescription": "Число импульсов",
+                        "value": 0
+                    },
+                    {
+                        "valueId": 8,
+                        "valueName": "preheatingTemperatureDeltaTime",
+                        "valueDescription": "Ток КЗ, А",
+                        "value": 0
+                    },
+                    {
+                        "valueId": 9,
+                        "valueName": "preheatingTemperatureDeltaTime",
+                        "valueDescription": "Ток ХХ, А",
+                        "value": 0
+                    },
+                    {
+                        "valueId": 10,
+                        "valueName": "preheatingTemperatureDeltaTime",
+                        "valueDescription": "Напряжение подогрева",
+                        "value": 0
+                    }
+                ],
+                "burning": [
+                    {
+                        "valueId": 0,
+                        "valueName": "forwardSpeed",
+                        "valueDescription": "Величина выжигания, м",
+                        "value": 0
+                    },
+                    {
+                        "valueId": 1,
+                        "valueName": "backwardSpeed",
+                        "valueDescription": "Скорость вперёд, мм/с",
+                        "value": 0
+                    },
+                    {
+                        "valueId": 2,
+                        "valueName": "compactionSpeed",
+                        "valueDescription": "Скорость назад, мм/с",
+                        "value": 0
+                    },
+                    {
+                        "valueId": 3,
+                        "valueName": "lastSplitSpeed",
+                        "valueDescription": "Напряжение выжигинания",
+                        "value": 0
+                    },
+                    {
+                        "valueId": 4,
+                        "valueName": "compactionTime",
+                        "valueDescription": "Ток коррекции, А",
+                        "value": 0
+                    },
+                    {
+                        "valueId": 5,
+                        "valueName": "preheatingTime",
+                        "valueDescription": "Ток останова, А",
+                        "value": 0
+                    },
+                    {
+                        "valueId": 6,
+                        "valueName": "preheatingTemperature",
+                        "valueDescription": "Ток реверса, А",
+                        "value": 0
+                    },
+                    {
+                        "valueId": 7,
+                        "valueName": "preheatingTemperatureDelta",
+                        "valueDescription": "Ток КЗ, А",
+                        "value": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "TASK": "Остановился на переводе valueName списка burnig (Диаграммы 4 и 5)",
+        "TASK_CUCCESS": "Сделал структуры Диаграммы 2 и 3 ( перепроверить названия параметров и значений )"
+    }
+]
+
