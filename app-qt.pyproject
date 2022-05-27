@@ -1,3 +1,3 @@
 {
-    "files": ["source/main.qml","source/controls/SilverBtn.qml","main.py","source/pages/settings.qml","source/pages/action.qml","source/sensors/clampControl/ClampControl.qml","source/pages/index.qml","source/sensors/btnIndicator/BtnIndicator.qml"]
+    "files": ["source/controls/intBtn/KeyboardBtn.qml","source/sensors/btnIndicator/BtnIndicator.qml","source/controls/SilverBtn.qml","source/main.qml","source/pages/index.qml","main.py","source/pages/action.qml","source/sensors/clampControl/ClampControl.qml","source/pages/settings.qml"]
 }
