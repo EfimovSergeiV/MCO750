@@ -1,14 +1,16 @@
-import QtQuick 2.0
+import QtQuick 2.15
+import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
+
 import "./content"
 import "../controls"
 import "../controls/intBtn"
 
 Item {
     id: root
-    signal send
-    onSend: console.log("Send clicked")
 
+    //    signal send
+    //    onSend: console.log("Send clicked")
     width: 800
     height: 480
 
@@ -21,10 +23,10 @@ Item {
         anchors.leftMargin: 0
         anchors.topMargin: 0
 
-        //        IntDialog {
-        //            id: integerDialog
-        //            anchors.centerIn: parent
-        //        }
+        //        //        IntDialog {
+        //        //            id: integerDialog
+        //        //            anchors.centerIn: parent
+        //        //        }
         Rectangle {
             id: rectangle1
             height: 28
@@ -79,7 +81,7 @@ Item {
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.top: rectangle1.bottom
-            anchors.bottom: rectangle3.top
+            //            anchors.bottom: bottomRect.top
             anchors.rightMargin: 0
             anchors.leftMargin: 0
             anchors.bottomMargin: 0
@@ -242,17 +244,17 @@ Item {
                     font.family: "Proxima Nova"
                     placeholderText: qsTr("0")
                     inputMethodHints: Qt.ImhDigitsOnly
-                    //                    onActiveFocusChanged: keyboardPanel.active = true
-                    //                    enterKeyAction: EnterKeyAction.Next
-                    //                    onAccepted: textArea.focus = true
-                    //                    onActiveFocusChanged: {
-                    //                        console.log("textField")
-                    //                        integerDialog.open()
-                    //                    }
-                    //                    onEditingFinished: {
-                    //                        console.log("textField")
-                    //                        integerDialog.close()
-                    //                    }
+
+                    onActiveFocusChanged: intKeyboard.visible = true
+                    //                                        enterKeyAction: EnterKeyAction.Next
+                    onAccepted: textArea.focus = true
+                    //                                        onActiveFocusChanged: {
+                    //                                            console.log("textField")
+                    //                                            integerDialog.open()
+                    //                                        }
+                    onEditingFinished: {
+                        intKeyboard.visible = true
+                    }
                 }
 
                 TextField {
@@ -717,169 +719,257 @@ Item {
         }
 
         Rectangle {
-            id: rectangle3
+            property bool running: false
+
+            id: bottomRect
             y: 264
-            height: 216
+            height: 220
             color: "#aebfcd"
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.bottom: parent.bottom
+            //        anchors.left: parent.left
+            //        anchors.right: parent.right
+            //        anchors.bottom: parent.bottom
             anchors.rightMargin: 0
             anchors.leftMargin: 0
             anchors.bottomMargin: 0
 
-            Rectangle {
-                id: intKeyboard
-                x: 210
-                y: -164
-                width: 315
-                height: 312
-                color: "#143656"
+            NumberAnimation on y {
+                to: 600
+                duration: 400
+                running: bottomRect.running
+            }
+            NumberAnimation on y {
+                from: 600
+                to: 264
+                duration: 400
+                running: !bottomRect.running
+            }
 
-                KeyboardBtn {
-                    id: rectangle4
-                    x: 8
-                    y: 236
-                    width: 146
-                    height: 70
-                    keyname: "0"
+            Image {
+                id: image
+                x: 0
+                y: 0
+                width: 800
+                height: 220
+                source: "content/220-footer.png"
+                fillMode: Image.PreserveAspectFit
+
+                //                SilverBtn {
+                //                    id: btnHome1
+                //                    x: 643
+                //                    y: 432
+                //                    width: 149
+                //                    height: 40
+                //                    text: qsTr("Выход")
+                //                    anchors.bottom: btnHome1.top
+                //                    font.capitalization: Font.AllUppercase
+                //                    font.family: "Proxima Nova"
+                //                    font.bold: true
+                //                    font.styleName: "Regular"
+                //                    anchors.bottomMargin: 21
+                //                    font.pointSize: 12
+                //                    onClicked: {
+                //                        bottomRect.running = !bottomRect.running
+                //                        stackView.push(Qt.resolvedUrl("index.qml"))
+                //                    }
+                //                }
+                Button {
+                    id: button
+                    x: 536
+                    y: 180
+                    width: 100
+                    height: 32
+                    text: qsTr("Клавиатура")
+                    onClicked: {
+                        intKeyboard.x = 210
+                        intKeyboard.y = 100
+                        intKeyboard.running = !intKeyboard.running
+                        intKeyboard.visible = !intKeyboard.visible
+                    }
                 }
 
-                KeyboardBtn {
-                    id: rectangle5
-                    x: 8
-                    y: 160
-                    width: 70
-                    height: 70
-                    keyname: "1"
-                }
-
-                KeyboardBtn {
-                    id: rectangle6
-                    x: 161
-                    y: 236
-                    width: 70
-                    height: 70
-                    keyname: "."
-                }
-
-                KeyboardBtn {
-                    id: rectangle7
-                    x: 237
-                    y: 160
-                    width: 70
-                    height: 146
-                    keyname: "Enter"
-                }
-
-                KeyboardBtn {
-                    id: rectangle8
-                    x: 8
-                    y: 84
-                    width: 70
-                    height: 70
-                    keyname: "4"
-                }
-
-                KeyboardBtn {
-                    id: rectangle9
-                    x: 8
-                    y: 8
-                    width: 70
-                    height: 70
-                    keyname: "7"
-                }
-
-                KeyboardBtn {
-                    id: rectangle10
-                    x: 84
-                    y: 160
-                    width: 70
-                    height: 70
-                    keyname: "2"
-                }
-
-                KeyboardBtn {
-                    id: rectangle11
-                    x: 84
-                    y: 84
-                    width: 70
-                    height: 70
-                    keyname: "5"
-                }
-
-                KeyboardBtn {
-                    id: rectangle12
-                    x: 161
-                    y: 160
-                    width: 70
-                    height: 70
-                    keyname: "3"
-                }
-
-                KeyboardBtn {
-                    id: rectangle13
-                    x: 161
-                    y: 84
-                    width: 70
-                    height: 70
-                    keyname: "6"
-                }
-
-                KeyboardBtn {
-                    id: rectangle14
-                    x: 84
-                    y: 8
-                    width: 70
-                    height: 70
-                    keyname: "8"
-                }
-
-                KeyboardBtn {
-                    id: rectangle15
-                    x: 161
-                    y: 8
-                    width: 70
-                    height: 70
-                    keyname: "9"
-                }
-
-                KeyboardBtn {
-                    id: rectangle16
-                    x: 237
-                    y: 84
-                    width: 70
-                    height: 70
-                    keyname: "Exit"
-                }
-
-                KeyboardBtn {
-                    id: rectangle17
-                    x: 237
-                    y: 8
-                    width: 70
-                    height: 70
-                    keyname: "<"
+                SilverBtn {
+                    id: silverBtn
+                    x: 642
+                    y: 172
+                    width: 150
+                    height: 40
+                    text: qsTr("Выход")
+                    font.capitalization: Font.AllUppercase
+                    font.family: "Proxima Nova"
+                    font.bold: true
+                    font.styleName: "Regular"
+                    onClicked: {
+                        bottomRect.running = !bottomRect.running
+                        stackView.push(Qt.resolvedUrl("index.qml"))
+                    }
                 }
             }
         }
 
-        SilverBtn {
-            id: btnHome1
-            x: 643
-            y: 432
-            width: 149
-            height: 40
-            text: qsTr("Выход")
-            anchors.bottom: btnHome1.top
-            font.capitalization: Font.AllUppercase
-            font.family: "Proxima Nova"
-            font.bold: true
-            font.styleName: "Regular"
-            anchors.bottomMargin: 21
-            font.pointSize: 12
-            onClicked: {
-                stackView.push(Qt.resolvedUrl("index.qml"))
+        Rectangle {
+            property bool running: false
+
+            id: intKeyboard
+            x: 210
+            y: 100
+            width: 315
+            height: 312
+            color: "#143656"
+            visible: false
+
+            DragHandler {
+                onActiveChanged: if (active) {
+                                     intKeyboard.startSystemMove()
+                                 }
+            }
+
+            //            PropertyAnimation {
+            //                property: "opacity"
+            //                from: 0
+            //                to: 1
+            //                duration: 200
+            //                running: intKeyboard.running
+            //            }
+            Transition {
+                PropertyAnimation {
+                    property: "opacity"
+                    from: 1
+                    to: 0
+                    duration: 400
+                    running: intKeyboard.running
+                }
+            }
+
+            //            PropertyAnimation on y {
+            //                property: "opacity"
+            //                to: 1.0
+            //                duration: 800
+            //                running: intKeyboard.running
+            //            }
+            KeyboardBtn {
+                id: rectangle4
+                x: 8
+                y: 236
+                width: 146
+                height: 70
+                keyname: "0"
+            }
+
+            KeyboardBtn {
+                id: rectangle5
+                x: 8
+                y: 160
+                width: 70
+                height: 70
+                keyname: "1"
+            }
+
+            KeyboardBtn {
+                id: rectangle6
+                x: 161
+                y: 236
+                width: 70
+                height: 70
+                keyname: "."
+            }
+
+            KeyboardBtn {
+                id: rectangle7
+                x: 237
+                y: 160
+                width: 70
+                height: 146
+                keyname: "Enter"
+            }
+
+            KeyboardBtn {
+                id: rectangle8
+                x: 8
+                y: 84
+                width: 70
+                height: 70
+                keyname: "4"
+            }
+
+            KeyboardBtn {
+                id: rectangle9
+                x: 8
+                y: 8
+                width: 70
+                height: 70
+                keyname: "7"
+            }
+
+            KeyboardBtn {
+                id: rectangle10
+                x: 84
+                y: 160
+                width: 70
+                height: 70
+                keyname: "2"
+            }
+
+            KeyboardBtn {
+                id: rectangle11
+                x: 84
+                y: 84
+                width: 70
+                height: 70
+                keyname: "5"
+            }
+
+            KeyboardBtn {
+                id: rectangle12
+                x: 161
+                y: 160
+                width: 70
+                height: 70
+                keyname: "3"
+            }
+
+            KeyboardBtn {
+                id: rectangle13
+                x: 161
+                y: 84
+                width: 70
+                height: 70
+                keyname: "6"
+            }
+
+            KeyboardBtn {
+                id: rectangle14
+                x: 84
+                y: 8
+                width: 70
+                height: 70
+                keyname: "8"
+            }
+
+            KeyboardBtn {
+                id: rectangle15
+                x: 161
+                y: 8
+                width: 70
+                height: 70
+                keyname: "9"
+            }
+
+            KeyboardBtn {
+                id: rectangle16
+                x: 237
+                y: 84
+                width: 70
+                height: 70
+                keyname: "Exit"
+            }
+
+            KeyboardBtn {
+                id: rectangle17
+                x: 237
+                y: 8
+                width: 70
+                height: 70
+                keyname: "<"
             }
         }
     }

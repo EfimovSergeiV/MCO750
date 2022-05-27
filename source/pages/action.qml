@@ -395,7 +395,7 @@ Item {
             y: 0
             width: 800
             height: 175
-            source: "content/control-params.png"
+            source: "content/175-footer.png"
             fillMode: Image.PreserveAspectFit
         }
 
@@ -643,6 +643,7 @@ Item {
             anchors.bottomMargin: 21
             font.pointSize: 12
             onClicked: {
+                controlParamRectangle.running = !controlParamRectangle.running
                 stackView.push(Qt.resolvedUrl("index.qml"))
             }
         }
