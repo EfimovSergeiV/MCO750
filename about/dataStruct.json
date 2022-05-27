@@ -15,37 +15,55 @@
                         "valueId": "0",
                         "valueName": "sec0",
                         "valueDescription": "Участок оплавления 1",
-                        "value": 0
+                        "forwardSpeed": 0,
+                        "backwardSpeed": 0,
+                        "S": 0,
+                        "U": 0
                     },
                     {
                         "valueId": "1",
                         "valueName": "sec1",
                         "valueDescription": "Участок оплавления 2",
-                        "value": 0
+                        "forwardSpeed": 0,
+                        "backwardSpeed": 0,
+                        "S": 0,
+                        "U": 0
                     },
                     {
                         "valueId": "2",
                         "valueName": "sec2",
                         "valueDescription": "Участок оплавления 3",
-                        "value": 0
+                        "forwardSpeed": 0,
+                        "backwardSpeed": 0,
+                        "S": 0,
+                        "U": 0
                     },
                     {
                         "valueId": "3",
                         "valueName": "sec3",
                         "valueDescription": "Участок оплавления 4",
-                        "value": 0
+                        "forwardSpeed": 0,
+                        "backwardSpeed": 0,
+                        "S": 0,
+                        "U": 0
                     },
                     {
                         "valueId": "4",
                         "valueName": "sec4",
                         "valueDescription": "Участок оплавления 5",
-                        "value": 0
+                        "forwardSpeed": 0,
+                        "backwardSpeed": 0,
+                        "S": 0,
+                        "U": 0
                     },
                     {
                         "valueId": "5",
                         "valueName": "sec5",
                         "valueDescription": "Участок оплавления 6",
-                        "value": 0
+                        "forwardSpeed": 0,
+                        "backwardSpeed": 0,
+                        "S": 0,
+                        "U": 0
                     }
                 ]
             },
@@ -60,37 +78,56 @@
                         "valueId": "0",
                         "valueName": "sec0",
                         "valueDescription": "Участок корректора 1",
-                        "value": 0
+                        "correctionCurrent": 0,
+                        "stopCurrent": 0,
+                        "reverseCurrent": 0,
+                        "shortCircuitCurrent": 0
+
                     },
                     {
                         "valueId": "1",
                         "valueName": "sec1",
                         "valueDescription": "Участок корректора 2",
-                        "value": 0
+                        "correctionCurrent": 0,
+                        "stopCurrent": 0,
+                        "reverseCurrent": 0,
+                        "shortCircuitCurrent": 0
                     },
                     {
                         "valueId": "2",
                         "valueName": "sec2",
                         "valueDescription": "Участок корректора 3",
-                        "value": 0
+                        "correctionCurrent": 0,
+                        "stopCurrent": 0,
+                        "reverseCurrent": 0,
+                        "shortCircuitCurrent": 0
                     },
                     {
                         "valueId": "3",
                         "valueName": "sec3",
                         "valueDescription": "Участок корректора 4",
-                        "value": 0
+                        "correctionCurrent": 0,
+                        "stopCurrent": 0,
+                        "reverseCurrent": 0,
+                        "shortCircuitCurrent": 0
                     },
                     {
                         "valueId": "4",
                         "valueName": "sec4",
                         "valueDescription": "Участок корректора 5",
-                        "value": 0
+                        "correctionCurrent": 0,
+                        "stopCurrent": 0,
+                        "reverseCurrent": 0,
+                        "shortCircuitCurrent": 0
                     },
                     {
                         "valueId": "5",
                         "valueName": "sec5",
                         "valueDescription": "Участок корректора 6",
-                        "value": 0
+                        "correctionCurrent": 0,
+                        "stopCurrent": 0,
+                        "reverseCurrent": 0,
+                        "shortCircuitCurrent": 0
                     }
                 ]
             },
