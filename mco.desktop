@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=MCO750
+GenericName=MCO750
+Comment=MCO750 interface for Linux
+Keywords=mso;mco;
+Icon=/home/anon/dev/MCO750/mco.png
+TryExec=/home/anon/dev/MCO750/mco.sh
+Exec=/home/anon/dev/MCO750/mco.sh
+Categories=System;
+X-GNOME-Autostart-Delay=30
+StartupNotify=true
+
