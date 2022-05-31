@@ -8,9 +8,6 @@ import "../controls/intBtn"
 
 Item {
     id: root
-
-    //    signal send
-    //    onSend: console.log("Send clicked")
     width: 800
     height: 480
 
@@ -23,16 +20,11 @@ Item {
         anchors.leftMargin: 0
         anchors.topMargin: 0
 
-        //        //        IntDialog {
-        //        //            id: integerDialog
-        //        //            anchors.centerIn: parent
-        //        //        }
         Rectangle {
             id: rectangle2
             color: "#aebfcd"
             anchors.left: parent.left
             anchors.right: parent.right
-            //            anchors.bottom: bottomRect.top
             anchors.rightMargin: 0
             anchors.leftMargin: 0
             anchors.bottomMargin: 0
@@ -42,15 +34,15 @@ Item {
                 x: 0
                 y: 62
                 width: 800
-                height: 274
+                height: 316
                 ScrollBar.horizontal.interactive: false
                 ScrollBar.vertical.interactive: true
 
                 ListView {
                     x: 0
-                    y: 26
+                    y: 0
                     width: 800
-                    height: 313
+                    height: 480
                     focus: true
                     model: ListModel {
                         ListElement {
@@ -174,11 +166,11 @@ Item {
                     width: 271
                     height: 27
                     color: "#ffffff"
-                    text: qsTr("xxx")
+                    text: qsTr("ААА")
                     anchors.right: parent.right
                     horizontalAlignment: Text.AlignRight
                     verticalAlignment: Text.AlignVCenter
-                    font.pointSize: 8
+                    font.pointSize: 11
                     font.styleName: "Regular"
                     font.family: "Proxima Nova"
                     anchors.rightMargin: 8
@@ -191,8 +183,8 @@ Item {
             x: 0
 
             id: bottomRect
-            y: 305
-            height: 175
+            y: 380
+            height: 100
             width: 800
             color: "#00ffffff"
             anchors.rightMargin: 0
@@ -206,7 +198,7 @@ Item {
             }
             NumberAnimation on y {
                 from: 600
-                to: 305
+                to: 380
                 duration: 400
                 running: !bottomRect.running
             }
@@ -216,14 +208,14 @@ Item {
                 x: 0
                 y: 0
                 width: 800
-                height: 175
-                source: "content/175-footer.png"
+                height: 100
+                source: "content/100-footer.png"
                 fillMode: Image.PreserveAspectFit
 
                 Button {
                     id: button
-                    x: 523
-                    y: 127
+                    x: 515
+                    y: 52
                     width: 113
                     height: 40
                     text: qsTr("Клавиатура")
@@ -238,7 +230,7 @@ Item {
                 SilverBtn {
                     id: silverBtn
                     x: 642
-                    y: 127
+                    y: 52
                     width: 150
                     height: 40
                     text: qsTr("Выход")

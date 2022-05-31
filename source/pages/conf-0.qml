@@ -809,6 +809,9 @@ Item {
                     font.capitalization: Font.AllUppercase
                     font.styleName: "Regular"
                     font.family: "Proxima Nova"
+                    onClicked: {
+                        stackView.push(Qt.resolvedUrl("conf-1.qml"))
+                    }
                 }
 
                 SilverBtn {
@@ -822,6 +825,9 @@ Item {
                     font.capitalization: Font.AllUppercase
                     font.styleName: "Regular"
                     font.family: "Proxima Nova"
+                    onClicked: {
+                        stackView.push(Qt.resolvedUrl("conf-3.qml"))
+                    }
                 }
 
                 SilverBtn {
