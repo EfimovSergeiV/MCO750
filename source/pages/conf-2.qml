@@ -43,17 +43,96 @@ Item {
                 y: 62
                 width: 800
                 height: 274
-                ScrollBar.horizontal.interactive: true
+                ScrollBar.horizontal.interactive: false
                 ScrollBar.vertical.interactive: true
 
-                Image {
-                    id: image2
+                ListView {
                     x: 0
-                    y: -34
+                    y: 26
                     width: 800
-                    height: 4000
-                    source: "content/long-img.jpg"
-                    fillMode: Image.PreserveAspectFit
+                    height: 313
+                    focus: true
+                    model: ListModel {
+                        ListElement {
+                            name: "Name 1"
+                        }
+                        ListElement {
+                            name: "Name 2"
+                        }
+                        ListElement {
+                            name: "Name 3"
+                        }
+                        ListElement {
+                            name: "Name 4"
+                        }
+                        ListElement {
+                            name: "Name 5"
+                        }
+                        ListElement {
+                            name: "Name 5"
+                        }
+                        ListElement {
+                            name: "Name 5"
+                        }
+                        ListElement {
+                            name: "Name 5"
+                        }
+                        ListElement {
+                            name: "Name 5"
+                        }
+                        ListElement {
+                            name: "Name 5"
+                        }
+                        ListElement {
+                            name: "Name 5"
+                        }
+                        ListElement {
+                            name: "Name 5"
+                        }
+                        ListElement {
+                            name: "Name 5"
+                        }
+                    }
+                    delegate: Row {
+                        id: row
+                        x: 0
+                        y: 0
+                        width: 800
+                        height: 60
+                        padding: 10
+
+                        TextField {
+                            id: textField
+                            width: 120
+                            height: 40
+                            padding: 10
+                            placeholderText: qsTr("Text Field")
+                        }
+
+                        Label {
+                            id: label2
+                            width: 280
+                            height: 40
+                            padding: 10
+                            text: qsTr("Label")
+                        }
+
+                        TextField {
+                            id: textField1
+                            width: 120
+                            height: 40
+                            padding: 10
+                            placeholderText: qsTr("Text Field")
+                        }
+
+                        Label {
+                            id: label3
+                            width: 280
+                            height: 40
+                            padding: 10
+                            text: qsTr("Label")
+                        }
+                    }
                 }
             }
         }
