@@ -105,7 +105,7 @@ Item {
                     font.pointSize: 12
                     onClicked: {
                         rectangle1.running = true
-                        stackView.push(Qt.resolvedUrl("settings.qml"))
+                        stackView.push(Qt.resolvedUrl("conf-0.qml"))
                     }
                 }
 

@@ -64,7 +64,7 @@ Item {
                     width: 271
                     height: 27
                     color: "#ffffff"
-                    text: qsTr("xxx")
+                    text: qsTr("Программы")
                     anchors.right: parent.right
                     horizontalAlignment: Text.AlignRight
                     verticalAlignment: Text.AlignVCenter
@@ -85,23 +85,6 @@ Item {
             anchors.rightMargin: 0
             anchors.leftMargin: 0
             anchors.bottomMargin: 0
-
-            ScrollView {
-                id: scrollView
-                x: -5
-                y: 62
-                width: 805
-                height: 274
-                ScrollBar.horizontal.interactive: true
-                ScrollBar.vertical.interactive: true
-
-                ListView {
-                    model: 20
-                    delegate: ItemDelegate {
-                        text: "Item " + index
-                    }
-                }
-            }
         }
 
         Rectangle {
@@ -138,21 +121,6 @@ Item {
                 source: "content/175-footer.png"
                 fillMode: Image.PreserveAspectFit
 
-                Button {
-                    id: button
-                    x: 523
-                    y: 127
-                    width: 113
-                    height: 40
-                    text: qsTr("Клавиатура")
-                    onClicked: {
-                        intKeyboard.x = 210
-                        intKeyboard.y = 100
-                        intKeyboard.running = !intKeyboard.running
-                        intKeyboard.visible = !intKeyboard.visible
-                    }
-                }
-
                 SilverBtn {
                     id: silverBtn
                     x: 642
@@ -177,13 +145,71 @@ Item {
                     width: 260
                     height: 27
                     color: "#ffffff"
-                    text: "Параметры цикла сварки"
+                    text: qsTr("Действия")
                     anchors.left: parent.left
                     horizontalAlignment: Text.AlignLeft
                     verticalAlignment: Text.AlignVCenter
                     anchors.leftMargin: 8
                     font.styleName: "Regular"
                     font.family: "Proxima Nova"
+                }
+
+                SilverBtn {
+                    id: silverBtn1
+                    x: 8
+                    y: 47
+                    width: 261
+                    height: 40
+                    text: "Создать программу"
+                    font.bold: true
+                    font.capitalization: Font.AllUppercase
+                    font.styleName: "Regular"
+                    font.family: "Proxima Nova"
+                }
+
+                SilverBtn {
+                    id: silverBtn2
+                    x: 275
+                    y: 47
+                    width: 235
+                    height: 40
+                    text: qsTr("Удалить программу")
+                    font.bold: true
+                    font.capitalization: Font.AllUppercase
+                    font.styleName: "Regular"
+                    font.family: "Proxima Nova"
+                }
+
+                SilverBtn {
+                    id: silverBtn3
+                    x: 8
+                    y: 98
+                    width: 322
+                    height: 40
+                    text: qsTr("Редактировать программу")
+                    font.bold: true
+                    font.capitalization: Font.AllUppercase
+                    font.styleName: "Regular"
+                    font.family: "Proxima Nova"
+                }
+
+                SilverBtn {
+                    id: silverBtn6
+                    x: 486
+                    y: 127
+                    width: 150
+                    height: 40
+                    text: qsTr("Клавиатура")
+                    font.bold: true
+                    font.capitalization: Font.AllUppercase
+                    font.styleName: "Regular"
+                    font.family: "Proxima Nova"
+                    onClicked: {
+                        intKeyboard.x = 210
+                        intKeyboard.y = 100
+                        intKeyboard.running = !intKeyboard.running
+                        intKeyboard.visible = !intKeyboard.visible
+                    }
                 }
             }
         }

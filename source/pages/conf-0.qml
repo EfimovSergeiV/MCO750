@@ -232,7 +232,7 @@ Item {
                 id: label12
                 y: 42
                 height: 20
-                text: qsTr("Ток коррекции (А)")
+                text: "S, мм"
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.top: row.bottom
@@ -384,7 +384,7 @@ Item {
                 id: label13
                 y: 104
                 height: 20
-                text: qsTr("Ток останова (А)")
+                text: qsTr("Скорость вперёд, мм/с")
                 anchors.left: parent.left
                 anchors.right: parent.right
                 horizontalAlignment: Text.AlignHCenter
@@ -501,7 +501,7 @@ Item {
                 id: label14
                 y: 171
                 height: 20
-                text: qsTr("Ток реверса (А)")
+                text: qsTr("Скорость назад, мм/с")
                 anchors.left: parent.left
                 anchors.right: parent.right
                 horizontalAlignment: Text.AlignHCenter
@@ -617,7 +617,7 @@ Item {
                 id: label15
                 y: 240
                 height: 20
-                text: qsTr("Ток К.З. (А)")
+                text: qsTr("U, %")
                 anchors.left: parent.left
                 anchors.right: parent.right
                 horizontalAlignment: Text.AlignHCenter
@@ -765,21 +765,6 @@ Item {
                 source: "content/175-footer.png"
                 fillMode: Image.PreserveAspectFit
 
-                Button {
-                    id: button
-                    x: 523
-                    y: 127
-                    width: 113
-                    height: 40
-                    text: qsTr("Клавиатура")
-                    onClicked: {
-                        intKeyboard.x = 210
-                        intKeyboard.y = 100
-                        intKeyboard.running = !intKeyboard.running
-                        intKeyboard.visible = !intKeyboard.visible
-                    }
-                }
-
                 SilverBtn {
                     id: silverBtn
                     x: 642
@@ -804,13 +789,100 @@ Item {
                     width: 260
                     height: 27
                     color: "#ffffff"
-                    text: qsTr("Параметры корректора")
+                    text: qsTr("Параметры оплавления")
                     anchors.left: parent.left
                     horizontalAlignment: Text.AlignLeft
                     verticalAlignment: Text.AlignVCenter
                     anchors.leftMargin: 8
                     font.styleName: "Regular"
                     font.family: "Proxima Nova"
+                }
+
+                SilverBtn {
+                    id: silverBtn1
+                    x: 8
+                    y: 47
+                    width: 150
+                    height: 40
+                    text: "Корректор"
+                    font.bold: true
+                    font.capitalization: Font.AllUppercase
+                    font.styleName: "Regular"
+                    font.family: "Proxima Nova"
+                }
+
+                SilverBtn {
+                    id: silverBtn2
+                    x: 164
+                    y: 47
+                    width: 235
+                    height: 40
+                    text: qsTr("Подогрев/Выжигание")
+                    font.bold: true
+                    font.capitalization: Font.AllUppercase
+                    font.styleName: "Regular"
+                    font.family: "Proxima Nova"
+                }
+
+                SilverBtn {
+                    id: silverBtn3
+                    x: 405
+                    y: 47
+                    width: 268
+                    height: 40
+                    text: qsTr("Параметры цикла сварки")
+                    font.bold: true
+                    font.capitalization: Font.AllUppercase
+                    font.styleName: "Regular"
+                    font.family: "Proxima Nova"
+                    onClicked: {
+                        stackView.push(Qt.resolvedUrl("conf-2.qml"))
+                    }
+                }
+
+                SilverBtn {
+                    id: silverBtn4
+                    x: 8
+                    y: 108
+                    width: 183
+                    height: 40
+                    text: qsTr("Загрузить")
+                    font.bold: true
+                    font.capitalization: Font.AllUppercase
+                    font.styleName: "Regular"
+                    font.family: "Proxima Nova"
+                }
+
+                SilverBtn {
+                    id: silverBtn5
+                    x: 197
+                    y: 108
+                    width: 202
+                    height: 40
+                    text: qsTr("Сохранить")
+                    font.bold: true
+                    font.capitalization: Font.AllUppercase
+                    font.styleName: "Regular"
+                    font.family: "Proxima Nova"
+                }
+
+                SilverBtn {
+                    id: silverBtn6
+                    x: 486
+                    y: 127
+                    width: 150
+                    height: 40
+                    text: qsTr("Клавиатура")
+                    font.bold: true
+                    font.capitalization: Font.AllUppercase
+                    font.styleName: "Regular"
+                    font.family: "Proxima Nova"
+                    onClicked: {
+                        intKeyboard.x = 210
+                        intKeyboard.y = 100
+                        intKeyboard.running = !intKeyboard.running
+                        intKeyboard.visible = !intKeyboard.visible
+                    }
                 }
             }
         }
@@ -986,7 +1058,7 @@ Item {
 
 /*##^##
 Designer {
-    D{i:0;height:480;width:800}
+    D{i:0;height:480;width:800}D{i:70}D{i:71}D{i:72}D{i:73}D{i:74}
 }
 ##^##*/
 
