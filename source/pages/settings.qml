@@ -61,17 +61,17 @@ Item {
                     id: label1
                     x: 521
                     y: 33
-                    width: 279
+                    width: 271
                     height: 27
                     color: "#ffffff"
-                    text: qsTr("номер участка")
+                    text: qsTr("Номер участка")
                     anchors.right: parent.right
-                    horizontalAlignment: Text.AlignHCenter
+                    horizontalAlignment: Text.AlignRight
                     verticalAlignment: Text.AlignVCenter
                     font.pointSize: 8
                     font.styleName: "Regular"
                     font.family: "Proxima Nova"
-                    anchors.rightMargin: 0
+                    anchors.rightMargin: 8
                 }
 
                 Row {
@@ -746,13 +746,13 @@ Item {
 
             NumberAnimation on y {
                 to: 600
-                duration: 4400
+                duration: 400
                 running: bottomRect.running
             }
             NumberAnimation on y {
                 from: 600
                 to: 305
-                duration: 4400
+                duration: 400
                 running: !bottomRect.running
             }
 
@@ -806,7 +806,7 @@ Item {
                     color: "#ffffff"
                     text: qsTr("Параметры корректора")
                     anchors.left: parent.left
-                    horizontalAlignment: Text.AlignHCenter
+                    horizontalAlignment: Text.AlignLeft
                     verticalAlignment: Text.AlignVCenter
                     anchors.leftMargin: 8
                     font.styleName: "Regular"
