@@ -240,7 +240,7 @@ Item {
                     font.styleName: "Regular"
                     onClicked: {
                         bottomRect.running = !bottomRect.running
-                        stackView.push(Qt.resolvedUrl("index.qml"))
+                        stackView.push(Qt.resolvedUrl("conf-0.qml"))
                     }
                 }
 
