@@ -28,6 +28,37 @@ Item {
         //        //            anchors.centerIn: parent
         //        //        }
         Rectangle {
+            id: rectangle2
+            color: "#aebfcd"
+            anchors.left: parent.left
+            anchors.right: parent.right
+            //            anchors.bottom: bottomRect.top
+            anchors.rightMargin: 0
+            anchors.leftMargin: 0
+            anchors.bottomMargin: 0
+
+            ScrollView {
+                id: scrollView
+                x: 0
+                y: 62
+                width: 800
+                height: 274
+                ScrollBar.horizontal.interactive: true
+                ScrollBar.vertical.interactive: true
+
+                Image {
+                    id: image2
+                    x: 0
+                    y: -34
+                    width: 800
+                    height: 4000
+                    source: "content/long-img.jpg"
+                    fillMode: Image.PreserveAspectFit
+                }
+            }
+        }
+
+        Rectangle {
             id: rectangle1
             height: 60
             color: "#00143656"
@@ -72,34 +103,6 @@ Item {
                     font.styleName: "Regular"
                     font.family: "Proxima Nova"
                     anchors.rightMargin: 8
-                }
-            }
-        }
-
-        Rectangle {
-            id: rectangle2
-            color: "#aebfcd"
-            anchors.left: parent.left
-            anchors.right: parent.right
-            //            anchors.bottom: bottomRect.top
-            anchors.rightMargin: 0
-            anchors.leftMargin: 0
-            anchors.bottomMargin: 0
-
-            ScrollView {
-                id: scrollView
-                x: -5
-                y: 62
-                width: 805
-                height: 274
-                ScrollBar.horizontal.interactive: true
-                ScrollBar.vertical.interactive: true
-
-                ListView {
-                    model: 20
-                    delegate: ItemDelegate {
-                        text: "Item " + index
-                    }
                 }
             }
         }
