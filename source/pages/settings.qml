@@ -740,22 +740,19 @@ Item {
             height: 175
             width: 800
             color: "#00ffffff"
-            //        anchors.left: parent.left
-            //        anchors.right: parent.right
-            //        anchors.bottom: parent.bottom
             anchors.rightMargin: 0
             anchors.leftMargin: 0
             anchors.bottomMargin: 0
 
             NumberAnimation on y {
                 to: 600
-                duration: 400
+                duration: 4400
                 running: bottomRect.running
             }
             NumberAnimation on y {
                 from: 600
                 to: 305
-                duration: 400
+                duration: 4400
                 running: !bottomRect.running
             }
 
@@ -768,25 +765,6 @@ Item {
                 source: "content/175-footer.png"
                 fillMode: Image.PreserveAspectFit
 
-                //                SilverBtn {
-                //                    id: btnHome1
-                //                    x: 643
-                //                    y: 432
-                //                    width: 149
-                //                    height: 40
-                //                    text: qsTr("Выход")
-                //                    anchors.bottom: btnHome1.top
-                //                    font.capitalization: Font.AllUppercase
-                //                    font.family: "Proxima Nova"
-                //                    font.bold: true
-                //                    font.styleName: "Regular"
-                //                    anchors.bottomMargin: 21
-                //                    font.pointSize: 12
-                //                    onClicked: {
-                //                        bottomRect.running = !bottomRect.running
-                //                        stackView.push(Qt.resolvedUrl("index.qml"))
-                //                    }
-                //                }
                 Button {
                     id: button
                     x: 523
