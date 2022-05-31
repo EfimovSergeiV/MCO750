@@ -29,49 +29,192 @@ Item {
         //        //        }
         Rectangle {
             id: rectangle1
-            height: 28
-            color: "#143656"
+            height: 60
+            color: "#00143656"
             anchors.left: parent.left
             anchors.right: parent.right
-            anchors.top: parent.top
             anchors.rightMargin: 0
             anchors.leftMargin: 0
-            anchors.topMargin: 0
 
-            Label {
-                id: label
-                color: "#ffffff"
-                text: qsTr("Параметры корректора")
-                anchors.left: parent.left
-                anchors.right: label1.left
-                anchors.top: parent.top
-                anchors.bottom: parent.bottom
-                verticalAlignment: Text.AlignVCenter
-                anchors.bottomMargin: 0
-                anchors.topMargin: 0
-                anchors.rightMargin: 2
-                anchors.leftMargin: 4
-                font.styleName: "Regular"
-                font.family: "Proxima Nova"
+            NumberAnimation on y {
+                to: -200
+                duration: 400
+                running: bottomRect.running
+            }
+            NumberAnimation on y {
+                from: -200
+                to: 0
+                duration: 400
+                running: !bottomRect.running
             }
 
-            Label {
-                id: label1
-                x: 400
-                width: 400
-                color: "#ffffff"
-                text: qsTr("номер участка")
-                anchors.right: parent.right
-                anchors.top: parent.top
-                anchors.bottom: parent.bottom
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignBottom
-                font.pointSize: 8
-                font.styleName: "Regular"
-                font.family: "Proxima Nova"
-                anchors.rightMargin: 4
-                anchors.bottomMargin: 0
-                anchors.topMargin: 0
+            Image {
+                id: image1
+                x: 0
+                y: 0
+                width: 800
+                height: 60
+                source: "content/header-60.png"
+                fillMode: Image.PreserveAspectFit
+
+                Label {
+                    id: label1
+                    x: 521
+                    y: 33
+                    width: 279
+                    height: 27
+                    color: "#ffffff"
+                    text: qsTr("номер участка")
+                    anchors.right: parent.right
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    font.pointSize: 8
+                    font.styleName: "Regular"
+                    font.family: "Proxima Nova"
+                    anchors.rightMargin: 0
+                }
+
+                Row {
+                    id: row
+                    height: 27
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.top: parent.top
+                    anchors.rightMargin: 8
+                    anchors.leftMargin: 8
+                    anchors.topMargin: 0
+                    spacing: 3
+
+                    Label {
+                        id: label2
+                        width: 76
+                        height: 27
+                        color: "#ffffff"
+                        text: qsTr("1")
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        font.pointSize: 8
+                        font.styleName: "Regular"
+                        font.family: "Proxima Nova"
+                    }
+
+                    Label {
+                        id: label3
+                        width: 76
+                        height: 27
+                        color: "#ffffff"
+                        text: qsTr("2")
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        font.pointSize: 8
+                        font.styleName: "Regular"
+                        font.family: "Proxima Nova"
+                    }
+
+                    Label {
+                        id: label4
+                        width: 76
+                        height: 27
+                        color: "#ffffff"
+                        text: qsTr("3")
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        font.pointSize: 8
+                        font.styleName: "Regular"
+                        font.family: "Proxima Nova"
+                    }
+
+                    Label {
+                        id: label5
+                        width: 76
+                        height: 27
+                        color: "#ffffff"
+                        text: qsTr("4")
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        font.pointSize: 8
+                        font.styleName: "Regular"
+                        font.family: "Proxima Nova"
+                    }
+
+                    Label {
+                        id: label6
+                        width: 76
+                        height: 27
+                        color: "#ffffff"
+                        text: qsTr("5")
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        font.pointSize: 8
+                        font.styleName: "Regular"
+                        font.family: "Proxima Nova"
+                    }
+
+                    Label {
+                        id: label7
+                        width: 76
+                        height: 27
+                        color: "#ffffff"
+                        text: qsTr("6")
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        font.pointSize: 8
+                        font.styleName: "Regular"
+                        font.family: "Proxima Nova"
+                    }
+
+                    Label {
+                        id: label8
+                        width: 76
+                        height: 27
+                        color: "#ffffff"
+                        text: qsTr("7")
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        font.pointSize: 8
+                        font.styleName: "Regular"
+                        font.family: "Proxima Nova"
+                    }
+
+                    Label {
+                        id: label9
+                        width: 76
+                        height: 27
+                        color: "#ffffff"
+                        text: qsTr("8")
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        font.pointSize: 8
+                        font.styleName: "Regular"
+                        font.family: "Proxima Nova"
+                    }
+
+                    Label {
+                        id: label10
+                        width: 76
+                        height: 27
+                        color: "#ffffff"
+                        text: qsTr("9")
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        font.pointSize: 8
+                        font.styleName: "Regular"
+                        font.family: "Proxima Nova"
+                    }
+
+                    Label {
+                        id: label11
+                        width: 76
+                        height: 27
+                        color: "#ffffff"
+                        text: qsTr("10")
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        font.pointSize: 8
+                        font.styleName: "Regular"
+                        font.family: "Proxima Nova"
+                    }
+                }
             }
         }
 
@@ -80,137 +223,14 @@ Item {
             color: "#aebfcd"
             anchors.left: parent.left
             anchors.right: parent.right
-            anchors.top: rectangle1.bottom
             //            anchors.bottom: bottomRect.top
             anchors.rightMargin: 0
             anchors.leftMargin: 0
             anchors.bottomMargin: 0
-            anchors.topMargin: 0
-
-            Row {
-                id: row
-                height: 21
-                anchors.left: parent.left
-                anchors.right: parent.right
-                anchors.top: parent.top
-                spacing: 3
-                anchors.rightMargin: 8
-                anchors.leftMargin: 8
-                anchors.topMargin: 0
-
-                Label {
-                    id: label2
-                    width: 76
-                    text: qsTr("1")
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    font.pointSize: 8
-                    font.styleName: "Regular"
-                    font.family: "Proxima Nova"
-                }
-
-                Label {
-                    id: label3
-                    width: 76
-                    text: qsTr("2")
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    font.pointSize: 8
-                    font.styleName: "Regular"
-                    font.family: "Proxima Nova"
-                }
-
-                Label {
-                    id: label4
-                    width: 76
-                    text: qsTr("3")
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    font.pointSize: 8
-                    font.styleName: "Regular"
-                    font.family: "Proxima Nova"
-                }
-
-                Label {
-                    id: label5
-                    width: 76
-                    text: qsTr("4")
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    font.pointSize: 8
-                    font.styleName: "Regular"
-                    font.family: "Proxima Nova"
-                }
-
-                Label {
-                    id: label6
-                    width: 76
-                    text: qsTr("5")
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    font.pointSize: 8
-                    font.styleName: "Regular"
-                    font.family: "Proxima Nova"
-                }
-
-                Label {
-                    id: label7
-                    width: 76
-                    text: qsTr("6")
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    font.pointSize: 8
-                    font.styleName: "Regular"
-                    font.family: "Proxima Nova"
-                }
-
-                Label {
-                    id: label8
-                    width: 76
-                    text: qsTr("7")
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    font.pointSize: 8
-                    font.styleName: "Regular"
-                    font.family: "Proxima Nova"
-                }
-
-                Label {
-                    id: label9
-                    width: 76
-                    text: qsTr("8")
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    font.pointSize: 8
-                    font.styleName: "Regular"
-                    font.family: "Proxima Nova"
-                }
-
-                Label {
-                    id: label10
-                    width: 76
-                    text: qsTr("9")
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    font.pointSize: 8
-                    font.styleName: "Regular"
-                    font.family: "Proxima Nova"
-                }
-
-                Label {
-                    id: label11
-                    width: 76
-                    text: qsTr("10")
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    font.pointSize: 8
-                    font.styleName: "Regular"
-                    font.family: "Proxima Nova"
-                }
-            }
 
             Label {
                 id: label12
+                y: 42
                 height: 20
                 text: qsTr("Ток коррекции (А)")
                 anchors.left: parent.left
@@ -220,19 +240,18 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 font.pointSize: 8
                 font.family: "Proxima Nova"
-                anchors.topMargin: 0
+                anchors.topMargin: 6
                 anchors.rightMargin: 8
                 anchors.leftMargin: 8
             }
 
             Row {
                 id: row1
+                y: 68
                 height: 30
                 anchors.left: parent.left
                 anchors.right: parent.right
-                anchors.top: label12.bottom
                 spacing: 4
-                anchors.topMargin: 0
                 anchors.rightMargin: 8
                 anchors.leftMargin: 8
 
@@ -363,27 +382,26 @@ Item {
 
             Label {
                 id: label13
+                y: 104
                 height: 20
                 text: qsTr("Ток останова (А)")
                 anchors.left: parent.left
                 anchors.right: parent.right
-                anchors.top: row1.bottom
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 font.pointSize: 8
                 anchors.rightMargin: 8
                 anchors.leftMargin: 8
-                anchors.topMargin: 0
                 font.styleName: "Regular"
                 font.family: "Proxima Nova"
             }
 
             Row {
                 id: row2
+                y: 130
                 height: 30
                 anchors.left: parent.left
                 anchors.right: parent.right
-                anchors.top: label13.bottom
                 anchors.rightMargin: 8
                 spacing: 4
 
@@ -476,17 +494,16 @@ Item {
                     placeholderText: qsTr("0")
                     font.family: "Proxima Nova"
                 }
-                anchors.topMargin: 0
                 anchors.leftMargin: 8
             }
 
             Label {
                 id: label14
+                y: 171
                 height: 20
                 text: qsTr("Ток реверса (А)")
                 anchors.left: parent.left
                 anchors.right: parent.right
-                anchors.top: row2.bottom
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 font.styleName: "Regular"
@@ -494,15 +511,14 @@ Item {
                 font.pointSize: 8
                 anchors.rightMargin: 8
                 anchors.leftMargin: 8
-                anchors.topMargin: 0
             }
 
             Row {
                 id: row3
+                y: 197
                 height: 30
                 anchors.left: parent.left
                 anchors.right: parent.right
-                anchors.top: label14.bottom
                 anchors.rightMargin: 8
                 spacing: 4
                 TextField {
@@ -594,33 +610,31 @@ Item {
                     placeholderText: qsTr("0")
                     font.family: "Proxima Nova"
                 }
-                anchors.topMargin: 0
                 anchors.leftMargin: 8
             }
 
             Label {
                 id: label15
+                y: 240
                 height: 20
                 text: qsTr("Ток К.З. (А)")
                 anchors.left: parent.left
                 anchors.right: parent.right
-                anchors.top: row3.bottom
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 font.styleName: "Regular"
                 font.family: "Proxima Nova"
                 font.pointSize: 8
-                anchors.topMargin: 0
                 anchors.rightMargin: 8
                 anchors.leftMargin: 8
             }
 
             Row {
                 id: row4
+                y: 266
                 height: 30
                 anchors.left: parent.left
                 anchors.right: parent.right
-                anchors.top: label15.bottom
                 anchors.rightMargin: 8
                 spacing: 4
 
@@ -713,18 +727,19 @@ Item {
                     placeholderText: qsTr("0")
                     font.family: "Proxima Nova"
                 }
-                anchors.topMargin: 0
                 anchors.leftMargin: 8
             }
         }
 
         Rectangle {
             property bool running: false
+            x: 0
 
             id: bottomRect
-            y: 264
-            height: 220
-            color: "#aebfcd"
+            y: 305
+            height: 175
+            width: 800
+            color: "#00ffffff"
             //        anchors.left: parent.left
             //        anchors.right: parent.right
             //        anchors.bottom: parent.bottom
@@ -739,7 +754,7 @@ Item {
             }
             NumberAnimation on y {
                 from: 600
-                to: 264
+                to: 305
                 duration: 400
                 running: !bottomRect.running
             }
@@ -749,8 +764,8 @@ Item {
                 x: 0
                 y: 0
                 width: 800
-                height: 220
-                source: "content/220-footer.png"
+                height: 175
+                source: "content/175-footer.png"
                 fillMode: Image.PreserveAspectFit
 
                 //                SilverBtn {
@@ -774,10 +789,10 @@ Item {
                 //                }
                 Button {
                     id: button
-                    x: 536
-                    y: 180
-                    width: 100
-                    height: 32
+                    x: 523
+                    y: 127
+                    width: 113
+                    height: 40
                     text: qsTr("Клавиатура")
                     onClicked: {
                         intKeyboard.x = 210
@@ -790,7 +805,7 @@ Item {
                 SilverBtn {
                     id: silverBtn
                     x: 642
-                    y: 172
+                    y: 127
                     width: 150
                     height: 40
                     text: qsTr("Выход")
@@ -802,6 +817,22 @@ Item {
                         bottomRect.running = !bottomRect.running
                         stackView.push(Qt.resolvedUrl("index.qml"))
                     }
+                }
+
+                Label {
+                    id: label
+                    x: -109
+                    y: 0
+                    width: 260
+                    height: 27
+                    color: "#ffffff"
+                    text: qsTr("Параметры корректора")
+                    anchors.left: parent.left
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    anchors.leftMargin: 8
+                    font.styleName: "Regular"
+                    font.family: "Proxima Nova"
                 }
             }
         }
@@ -974,3 +1005,10 @@ Item {
         }
     }
 }
+
+/*##^##
+Designer {
+    D{i:0;height:480;width:800}
+}
+##^##*/
+
