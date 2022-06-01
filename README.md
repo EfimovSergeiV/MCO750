@@ -1,8 +1,10 @@
 # MCO750 UI
-## Пользовательский интерфейс
+# Пользовательский интерфейс
 
+
+## Настройка автозапуска
 ```bash
-# Скопировать иконку интерфейса
+# Скопировать ярлык интерфейса в Gnome
 sudo cp mco.desktop /usr/share/applications/mco.desktop
 
 # Выставить приложение в автозагрузку при помощи гном твик тулл
@@ -14,7 +16,40 @@ gnome-tweak-tool
 ```bash
 sudo apt install python3-pip
 pip3 install pyserial pyside2
+
+# Python-PostgreSQL Database Adapter
+[-] pip install psycopg2
+[+] pip install psycopg2-binary
 ```
+
+## Подготовка базы данных
+```bash
+# Установка PostgreSQL
+sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+sudo apt-get update
+sudo apt-get -y install postgresql
+
+# Создание базы данных
+sudo -u postgres psql
+
+create database mco_db;
+create user mco_user with password 'your-password';
+
+alter role mco_user set client_encoding to 'utf-8';
+alter role mco_user set default_transaction_isolation to 'read committed';
+alter role mco_user set timezone to 'UTC';
+
+grant all privileges on database mco_db to mco_user;
+\q
+
+# Восстановление структуры (данных) из дампа
+sudo -u postgres psql -d newdatabase -f db.sql
+
+# Создание дампа базы данных
+sudo -u postgres pg_dump database > db.sql
+```
+
 
 ## Назначение страниц
 
