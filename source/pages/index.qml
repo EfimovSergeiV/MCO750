@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import "../controls"
+import QtQuick.Controls 2.15
 
 Item {
     id: rootIndex
@@ -57,8 +58,8 @@ Item {
 
                 SilverBtn {
                     id: btnHome
-                    x: 8
-                    y: 146
+                    x: 37
+                    y: 135
                     width: 230
                     height: 50
                     font.pointSize: 12
@@ -75,8 +76,8 @@ Item {
 
                 SilverBtn {
                     id: btnHome1
-                    x: 8
-                    y: 202
+                    x: 37
+                    y: 215
                     width: 230
                     height: 50
                     text: qsTr("Программа сварки")
@@ -91,8 +92,8 @@ Item {
 
                 SilverBtn {
                     id: btnHome2
-                    x: 8
-                    y: 258
+                    x: 37
+                    y: 294
                     width: 230
                     height: 50
                     text: qsTr("Установки")
@@ -105,17 +106,17 @@ Item {
                     font.pointSize: 12
                     onClicked: {
                         rectangle1.running = true
-                        stackView.push(Qt.resolvedUrl("conf-0.qml"))
+                        stackView.push(Qt.resolvedUrl("conf.qml"))
                     }
                 }
 
                 SilverBtn {
                     id: btnHome3
                     x: 17
-                    y: 422
-                    width: 360
-                    height: 50
-                    text: qsTr("Загрузка программы")
+                    y: 391
+                    width: 401
+                    height: 63
+                    text: qsTr("Выбор программы")
                     anchors.left: parent.left
                     anchors.bottom: btnHome3.top
                     font.capitalization: Font.AllUppercase
@@ -124,7 +125,11 @@ Item {
                     font.styleName: "Regular"
                     anchors.bottomMargin: 21
                     font.pointSize: 12
-                    anchors.leftMargin: 8
+                    anchors.leftMargin: 37
+                    onClicked: {
+                        rectangle1.running = true
+                        stackView.push(Qt.resolvedUrl("sel-pr.qml"))
+                    }
                 }
 
                 Image {
@@ -158,11 +163,14 @@ Item {
             }
         }
     }
+    //    Component.onCompleted: handler.get_welding_programm()
+    Component.onDestruction: console.log(
+                                 "Закрытие приложения, сохранение логов")
 }
 
 /*##^##
 Designer {
-    D{i:0;height:480;width:800}D{i:6}D{i:7}D{i:8}
+    D{i:0;height:480;width:800}
 }
 ##^##*/
 

@@ -8,9 +8,6 @@ import "../controls/intBtn"
 
 Item {
     id: root
-
-    //    signal send
-    //    onSend: console.log("Send clicked")
     width: 800
     height: 480
 
@@ -23,10 +20,116 @@ Item {
         anchors.leftMargin: 0
         anchors.topMargin: 0
 
-        //        //        IntDialog {
-        //        //            id: integerDialog
-        //        //            anchors.centerIn: parent
-        //        //        }
+        Rectangle {
+            id: rectangle2
+            color: "#aebfcd"
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.rightMargin: 0
+            anchors.leftMargin: 0
+            anchors.bottomMargin: 0
+
+            ScrollView {
+                id: scrollView
+                x: 0
+                y: 62
+                width: 800
+                height: 316
+                ScrollBar.horizontal.interactive: false
+                ScrollBar.vertical.interactive: true
+
+                ListView {
+                    id: showWeldingProgramm
+                    x: 0
+                    y: 0
+                    width: 800
+                    height: 480
+                    focus: true
+                    //                    model: ListModel {
+                    //                        ListElement {
+                    //                            name: "Name 1"
+                    //                        }
+                    //                        ListElement {
+                    //                            name: "Name 2"
+                    //                        }
+                    //                        ListElement {
+                    //                            name: "Name 3"
+                    //                        }
+                    //                        ListElement {
+                    //                            name: "Name 4"
+                    //                        }
+                    //                        ListElement {
+                    //                            name: "Name 5"
+                    //                        }
+                    //                        ListElement {
+                    //                            name: "Name 5"
+                    //                        }
+                    //                        ListElement {
+                    //                            name: "Name 5"
+                    //                        }
+                    //                        ListElement {
+                    //                            name: "Name 5"
+                    //                        }
+                    //                        ListElement {
+                    //                            name: "Name 5"
+                    //                        }
+                    //                        ListElement {
+                    //                            name: "Name 5"
+                    //                        }
+                    //                        ListElement {
+                    //                            name: "Name 5"
+                    //                        }
+                    //                        ListElement {
+                    //                            name: "Name 5"
+                    //                        }
+                    //                        ListElement {
+                    //                            name: "Name 5"
+                    //                        }
+                    //                    }
+                    delegate: Row {
+                        id: row
+                        x: 0
+                        y: 0
+                        width: 800
+                        height: 60
+                        padding: 10
+
+                        TextField {
+                            id: textField
+                            width: 120
+                            height: 40
+                            padding: 10
+                            placeholderText: qsTr("Text Field")
+                        }
+
+                        Label {
+                            id: label2
+                            width: 280
+                            height: 40
+                            padding: 10
+                            text: name
+                        }
+
+                        TextField {
+                            id: textField1
+                            width: 120
+                            height: 40
+                            padding: 10
+                            placeholderText: qsTr("Text Field")
+                        }
+
+                        Label {
+                            id: label3
+                            width: 280
+                            height: 40
+                            padding: 10
+                            text: qsTr("Label")
+                        }
+                    }
+                }
+            }
+        }
+
         Rectangle {
             id: rectangle1
             height: 60
@@ -64,7 +167,7 @@ Item {
                     width: 271
                     height: 27
                     color: "#ffffff"
-                    text: qsTr("Программы")
+                    text: "Допустимый диаметр"
                     anchors.right: parent.right
                     horizontalAlignment: Text.AlignRight
                     verticalAlignment: Text.AlignVCenter
@@ -77,23 +180,12 @@ Item {
         }
 
         Rectangle {
-            id: rectangle2
-            color: "#aebfcd"
-            anchors.left: parent.left
-            anchors.right: parent.right
-            //            anchors.bottom: bottomRect.top
-            anchors.rightMargin: 0
-            anchors.leftMargin: 0
-            anchors.bottomMargin: 0
-        }
-
-        Rectangle {
             property bool running: false
             x: 0
 
             id: bottomRect
-            y: 305
-            height: 175
+            y: 380
+            height: 100
             width: 800
             color: "#00ffffff"
             anchors.rightMargin: 0
@@ -107,7 +199,7 @@ Item {
             }
             NumberAnimation on y {
                 from: 600
-                to: 305
+                to: 380
                 duration: 400
                 running: !bottomRect.running
             }
@@ -117,14 +209,29 @@ Item {
                 x: 0
                 y: 0
                 width: 800
-                height: 175
-                source: "content/175-footer.png"
+                height: 100
+                source: "content/100-footer.png"
                 fillMode: Image.PreserveAspectFit
+
+                Button {
+                    id: button
+                    x: 515
+                    y: 52
+                    width: 113
+                    height: 40
+                    text: qsTr("Клавиатура")
+                    onClicked: {
+                        intKeyboard.x = 210
+                        intKeyboard.y = 100
+                        intKeyboard.running = !intKeyboard.running
+                        intKeyboard.visible = !intKeyboard.visible
+                    }
+                }
 
                 SilverBtn {
                     id: silverBtn
                     x: 642
-                    y: 127
+                    y: 52
                     width: 150
                     height: 40
                     text: qsTr("Выход")
@@ -134,7 +241,7 @@ Item {
                     font.styleName: "Regular"
                     onClicked: {
                         bottomRect.running = !bottomRect.running
-                        stackView.push(Qt.resolvedUrl("index.qml"))
+                        stackView.push(Qt.resolvedUrl("conf-0.qml"))
                     }
                 }
 
@@ -145,71 +252,13 @@ Item {
                     width: 260
                     height: 27
                     color: "#ffffff"
-                    text: qsTr("Действия")
+                    text: "Программа сварки"
                     anchors.left: parent.left
                     horizontalAlignment: Text.AlignLeft
                     verticalAlignment: Text.AlignVCenter
                     anchors.leftMargin: 8
                     font.styleName: "Regular"
                     font.family: "Proxima Nova"
-                }
-
-                SilverBtn {
-                    id: silverBtn1
-                    x: 8
-                    y: 47
-                    width: 261
-                    height: 40
-                    text: "Создать программу"
-                    font.bold: true
-                    font.capitalization: Font.AllUppercase
-                    font.styleName: "Regular"
-                    font.family: "Proxima Nova"
-                }
-
-                SilverBtn {
-                    id: silverBtn2
-                    x: 275
-                    y: 47
-                    width: 235
-                    height: 40
-                    text: qsTr("Удалить программу")
-                    font.bold: true
-                    font.capitalization: Font.AllUppercase
-                    font.styleName: "Regular"
-                    font.family: "Proxima Nova"
-                }
-
-                SilverBtn {
-                    id: silverBtn3
-                    x: 8
-                    y: 98
-                    width: 322
-                    height: 40
-                    text: qsTr("Редактировать программу")
-                    font.bold: true
-                    font.capitalization: Font.AllUppercase
-                    font.styleName: "Regular"
-                    font.family: "Proxima Nova"
-                }
-
-                SilverBtn {
-                    id: silverBtn6
-                    x: 486
-                    y: 127
-                    width: 150
-                    height: 40
-                    text: qsTr("Клавиатура")
-                    font.bold: true
-                    font.capitalization: Font.AllUppercase
-                    font.styleName: "Regular"
-                    font.family: "Proxima Nova"
-                    onClicked: {
-                        intKeyboard.x = 210
-                        intKeyboard.y = 100
-                        intKeyboard.running = !intKeyboard.running
-                        intKeyboard.visible = !intKeyboard.visible
-                    }
                 }
             }
         }
@@ -381,8 +430,16 @@ Item {
             }
         }
     }
-    //    Component.onUrlChanged: console.log("kjhsfgjkf")
-    //    Component.onCompleted: console.log("Загрузка списка программ")
+    Component.onCompleted: handler.get_welding_programm()
+
+    Connections {
+        target: handler
+
+        function onWeldingProgramms(wb) {
+            console.log("QML", wb)
+            showWeldingProgramm.model = wb
+        }
+    }
 }
 
 /*##^##

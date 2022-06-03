@@ -5,6 +5,8 @@ class ProgrammModel(models.Model):
     """ Модель программы """
 
     name = models.CharField(verbose_name="Название", max_length=100)
+    min_diameter = models.IntegerField(verbose_name="Минимальный диаметр, мм", default=0)
+    max_diameter = models.IntegerField(verbose_name="Максимальный диаметр, мм", default=0)
     description = models.TextField(verbose_name="Описание", max_length=3000, blank=True)
     created_at = models.DateTimeField(verbose_name="Создан", auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name="Обновлён", auto_now=True)

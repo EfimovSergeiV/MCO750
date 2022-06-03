@@ -1,3 +1,9 @@
+import json
+import psycopg2
+from psycopg2.extras import RealDictCursor
+from psycopg2 import Error
+
+
 """
 Tables: 
 
@@ -34,7 +40,10 @@ Tables:
 
 """
 
-
+""" SQL запросы в БД """
+list_requests = {
+    "get_programm": "SELECT name, max_diameter, min_diameter  FROM programm_programmmodel",
+}
 
 DATABASE = {
     'default': {
@@ -49,33 +58,37 @@ DATABASE = {
 
 default_db = DATABASE['default']
 
-sql = "SELECT table_name FROM information_schema.tables WHERE table_schema='public'"
 
-from email.policy import default
-import psycopg2
-from psycopg2 import Error
+def request(sql):
+    """ Выполнение запроса в БД """
+    try:
+        connection = psycopg2.connect(
+            user=default_db['USER'],
+            password=default_db['PASSWORD'],
+            database=default_db['NAME'],
+            host="127.0.0.1",
+            port="5432",
+        )
 
-try:
-    # Подключение к существующей базе данных
-    connection = psycopg2.connect(user=default_db['USER'],
-                                  # пароль, который указали при установке PostgreSQL
-                                  password=default_db['PASSWORD'],
-                                  host="127.0.0.1",
-                                  port="5432",
-                                  database=default_db['NAME'])
+        cursor = connection.cursor(cursor_factory=RealDictCursor)
+        cursor.execute(sql)
 
-    # Курсор для выполнения операций с базой данных
-    cursor = connection.cursor()
-    cursor.execute(sql)
-    tables = cursor.fetchall()
-    print(tables)
+        data = json.dumps(cursor.fetchall(), ensure_ascii=False)
+
+        return json.loads(data)
+
+    except (Exception, Error) as error:
+        pass
+
+    finally:
+        if connection:
+            cursor.close()
+            connection.close()
+            print("Соединение с PostgreSQL закрыто")
 
 
-except (Exception, Error) as error:
-    pass
-#     print("Ошибка при работе с PostgreSQL", error)
-# finally:
-#     if connection:
-#         c.close()
-#         connection.close()
-#         print("Соединение с PostgreSQL закрыто")
+def welding_programm():
+    """ Получение программ сварки из БД """
+
+    response = request(list_requests['get_programm'])
+    return response

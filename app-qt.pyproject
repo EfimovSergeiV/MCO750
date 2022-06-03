@@ -7,6 +7,7 @@
         "main.py","source/pages/action.qml",
         "source/sensors/clampControl/ClampControl.qml",
         "source/pages/settings.qml",
+        "source/pages/sel-pr.qml",
         "source/pages/conf.qml",
         "source/pages/conf-0.qml",
         "source/pages/conf-1.qml",
