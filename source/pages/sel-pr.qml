@@ -45,6 +45,10 @@ Item {
                     width: 800
                     height: 480
                     focus: true
+                    model: ListModel {
+                        id: listProgramms
+                    }
+
                     //                    model: ListModel {
                     //                        ListElement {
                     //                            name: "Name 1"
@@ -436,8 +440,7 @@ Item {
         target: handler
 
         function onWeldingProgramms(wb) {
-            console.log("QML", wb)
-            showWeldingProgramm.model = wb
+            listProgramms.append(wb)
         }
     }
 }
