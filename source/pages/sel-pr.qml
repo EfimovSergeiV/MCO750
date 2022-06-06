@@ -91,6 +91,44 @@ Item {
                     //                        }
                     //                    }
                     delegate: Row {
+                        id: row1
+                        x: 8
+                        y: 62
+                        width: 784
+                        height: 60
+
+                        SilverBtn {
+                            id: silverBtn1
+                            width: 120
+                            height: 40
+                            text: "Выбрать"
+                        }
+
+                        Label {
+                            id: label4
+                            text: name
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignVCenter
+                            font.pointSize: 14
+                            font.bold: true
+                            width: 424
+                            height: 40
+                        }
+
+                        Label {
+                            id: label5
+                            text: max_diameter + " - " + min_diameter + ", mm"
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignVCenter
+                            font.pointSize: 14
+                            font.bold: true
+                            width: 240
+                            height: 40
+                        }
+                    }
+
+
+                    /* Row {
                         id: row
                         x: 0
                         y: 0
@@ -129,44 +167,7 @@ Item {
                             padding: 10
                             text: qsTr("Label")
                         }
-                    }
-                }
-            }
-
-            Row {
-                id: row1
-                x: 0
-                y: 62
-                width: 800
-                height: 40
-
-                SilverBtn {
-                    id: silverBtn1
-                    width: 120
-                    height: 40
-                    text: "Выбрать"
-                }
-
-                Label {
-                    id: label4
-                    text: qsTr("Label")
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    font.pointSize: 14
-                    font.bold: true
-                    width: 240
-                    height: 40
-                }
-                
-                Label {
-                    id: label5
-                    text: qsTr("Label")
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    font.pointSize: 14
-                    font.bold: true
-                    width: 240
-                    height: 40
+                    }*/
                 }
             }
         }
@@ -484,7 +485,7 @@ Item {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.75;height:480;width:800}
+    D{i:0;height:480;width:800}
 }
 ##^##*/
 
