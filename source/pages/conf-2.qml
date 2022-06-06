@@ -237,7 +237,7 @@ Item {
                     y: 52
                     width: 150
                     height: 40
-                    text: qsTr("Выход")
+                    text: qsTr("Назад")
                     font.capitalization: Font.AllUppercase
                     font.family: "Proxima Nova"
                     font.bold: true

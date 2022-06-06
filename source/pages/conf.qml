@@ -90,6 +90,8 @@ Item {
                             text: "Удалить"
                             onClicked: {
                                 console.log("Удаление программы " + id)
+                                bottomRect.running = !bottomRect.running
+                                stackView.push(Qt.resolvedUrl("conf.qml"))
                             }
                         }
 
@@ -475,6 +477,7 @@ Item {
         target: handler
 
         function onWeldingProgramms(wb) {
+            console.log(typeof wb)
             listProgramms1.append(wb)
         }
     }

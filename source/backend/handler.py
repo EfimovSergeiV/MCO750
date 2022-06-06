@@ -4,6 +4,7 @@ from source.backend import db
 
 class Handler(QObject):
     """ Обработчик """
+    list_programs = []
 
 
     # Сигналы
@@ -14,9 +15,23 @@ class Handler(QObject):
     @Slot()
     def get_welding_programm(self):
         """ Получение программ сварки """
-        fix_list = []
-        programm = db.welding_programm()
-        for i in programm:
-            print(i)
-        print(f"HANDLER { type(programm) }", programm)
+        programm = db.get_welding_programm()
+        self.list_programs = programm
         self.weldingProgramms.emit(programm)
+
+
+    @Slot()
+    def create_welding_programm(self):
+        """ Создание программы сварки """
+
+        print(f"Создание программы сварки { len(self.list_programs) }")
+
+
+    @Slot(list)
+    def input_reflow_data(self, data):
+        """ 
+        Ввод данных программы сварки 
+        [{'id': 2, 'programm_id': 1}]
+        """
+        
+        print(f"REFLOW DATA { data }")

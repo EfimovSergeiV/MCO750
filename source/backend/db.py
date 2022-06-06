@@ -42,7 +42,10 @@ Tables:
 
 """ SQL запросы в БД """
 list_requests = {
-    "get_programm": "SELECT id, name, max_diameter, min_diameter  FROM programm_programmmodel",
+    "get_programm": "SELECT id, name, max_diameter, min_diameter FROM programm_programmmodel",
+
+    "get_reflow": "SELECT * FROM programm_reflowparammodel WHERE programm_id = 1",
+    "get_reflow_section": "SELECT * FROM programm_reflowsectionmodel WHERE reflow_id = 2",
 }
 
 DATABASE = {
@@ -77,8 +80,8 @@ def request(sql):
 
         return json.loads(data)
 
-    except (Exception, Error) as error:
-        pass
+    # except (Exception, Error) as error:
+    #     pass
 
     finally:
         if connection:
@@ -87,8 +90,29 @@ def request(sql):
             print("Соединение с PostgreSQL закрыто")
 
 
-def welding_programm():
+def get_welding_programm():
     """ Получение программ сварки из БД """
 
     response = request(list_requests['get_programm'])
     return response
+
+
+def get_reflow(id):
+    """ Получение программы сварки из БД """
+
+    response = request(list_requests['get_reflow'])
+    return response
+
+
+
+def get_reflow_section(id):
+    """ Получение программы сварки из БД """
+
+    response = request(list_requests['get_reflow_section'])
+    return response
+
+
+reflow = get_reflow(1)
+sec = get_reflow_section(1)
+
+print(f"{reflow}\n{sec}")

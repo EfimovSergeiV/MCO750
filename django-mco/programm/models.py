@@ -254,6 +254,7 @@ class ReflowSectionModel(models.Model):
     """ Участки оплавления """
 
     reflow = models.ForeignKey(ReflowParamModel, verbose_name="Параметры оплавления", related_name="reflow_section", on_delete=models.CASCADE)
+    section = models.IntegerField(verbose_name="Участок", default=0)
     r_0 = models.FloatField(verbose_name="S", default=0.0)
     r_1 = models.FloatField(verbose_name="Скорость вперёд", default=0.0)
     r_2 = models.FloatField(verbose_name="Скорость назад", default=0.0)
@@ -284,6 +285,7 @@ class CorrectorSectionModel(models.Model):
     """ Участки коррекции """
 
     corrector = models.ForeignKey(CorrectorParamModel, verbose_name="Параметры корректора", related_name="corrector_section", on_delete=models.CASCADE)
+    section = models.IntegerField(verbose_name="Участок", default=0)
     c_0 = models.FloatField(verbose_name="Ток коррекции", default=0.0)
     c_1 = models.FloatField(verbose_name="Скорость вперёд", default=0.0)
     c_2 = models.FloatField(verbose_name="Скорость назад", default=0.0)
