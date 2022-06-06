@@ -212,13 +212,17 @@ Item {
                 source: "content/100-footer.png"
                 fillMode: Image.PreserveAspectFit
 
-                Button {
+                SilverBtn {
                     id: button
-                    x: 515
+                    x: 475
                     y: 52
-                    width: 113
+                    width: 153
                     height: 40
                     text: qsTr("Клавиатура")
+                    font.bold: true
+                    font.capitalization: Font.AllUppercase
+                    font.styleName: "Regular"
+                    font.family: "Proxima Nova"
                     onClicked: {
                         intKeyboard.x = 210
                         intKeyboard.y = 100

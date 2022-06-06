@@ -23,6 +23,102 @@ Item {
         anchors.leftMargin: 0
         anchors.topMargin: 0
 
+        Rectangle {
+            id: rectangle2
+            color: "#aebfcd"
+            anchors.left: parent.left
+            anchors.right: parent.right
+            //            anchors.bottom: bottomRect.top
+            anchors.rightMargin: 0
+            anchors.leftMargin: 0
+            anchors.bottomMargin: 0
+
+            ScrollView {
+                id: scrollView1
+                x: 0
+                y: 62
+                width: 800
+                height: 316
+                ScrollBar.horizontal.interactive: false
+                ScrollBar.vertical.interactive: true
+
+                ListView {
+                    id: showWeldingProgramm1
+                    x: 0
+                    y: 0
+                    width: 800
+                    height: 480
+                    focus: true
+                    model: ListModel {
+                        id: listProgramms1
+                    }
+                    delegate: Row {
+                        id: row1
+                        x: 8
+                        y: 62
+                        width: 784
+                        height: 60
+
+                        SilverBtn {
+                            id: silverBtn11
+                            width: 120
+                            height: 40
+                            padding: 5
+                            text: "Редактировать"
+                            onClicked: {
+                                console.log("Редактировние программы " + id)
+                                //                                bottomRect.running = !bottomRect.running
+                                //                                stackView.push(Qt.resolvedUrl("conf-0.qml"))
+                            }
+                        }
+
+                        Label {
+                            id: label411
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignVCenter
+                            font.pointSize: 14
+                            font.bold: true
+                            width: 4
+                            height: 40
+                        }
+
+                        SilverBtn {
+                            id: silverBtn111
+                            width: 120
+                            height: 40
+                            padding: 5
+                            text: "Удалить"
+                            onClicked: {
+                                console.log("Удаление программы " + id)
+                            }
+                        }
+
+                        Label {
+                            id: label41
+                            text: name
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignVCenter
+                            font.pointSize: 14
+                            font.bold: true
+                            width: 300
+                            height: 40
+                        }
+
+                        Label {
+                            id: label51
+                            text: max_diameter + " - " + min_diameter + ", mm"
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignVCenter
+                            font.pointSize: 14
+                            font.bold: true
+                            width: 240
+                            height: 40
+                        }
+                    }
+                }
+            }
+        }
+
         //        //        IntDialog {
         //        //            id: integerDialog
         //        //            anchors.centerIn: parent
@@ -77,17 +173,6 @@ Item {
         }
 
         Rectangle {
-            id: rectangle2
-            color: "#aebfcd"
-            anchors.left: parent.left
-            anchors.right: parent.right
-            //            anchors.bottom: bottomRect.top
-            anchors.rightMargin: 0
-            anchors.leftMargin: 0
-            anchors.bottomMargin: 0
-        }
-
-        Rectangle {
             property bool running: false
             x: 0
 
@@ -115,16 +200,16 @@ Item {
             Image {
                 id: image
                 x: 0
-                y: 0
+                y: 75
                 width: 800
-                height: 175
-                source: "content/175-footer.png"
+                height: 100
+                source: "content/100-footer.png"
                 fillMode: Image.PreserveAspectFit
 
                 SilverBtn {
                     id: silverBtn
                     x: 642
-                    y: 127
+                    y: 46
                     width: 150
                     height: 40
                     text: qsTr("Выход")
@@ -157,7 +242,7 @@ Item {
                 SilverBtn {
                     id: silverBtn1
                     x: 8
-                    y: 47
+                    y: 43
                     width: 261
                     height: 40
                     text: "Создать программу"
@@ -165,38 +250,41 @@ Item {
                     font.capitalization: Font.AllUppercase
                     font.styleName: "Regular"
                     font.family: "Proxima Nova"
+                    onClicked: {
+                        bottomRect.running = !bottomRect.running
+                        stackView.push(Qt.resolvedUrl("conf-0.qml"))
+                    }
                 }
 
-                SilverBtn {
-                    id: silverBtn2
-                    x: 275
-                    y: 47
-                    width: 235
-                    height: 40
-                    text: qsTr("Удалить программу")
-                    font.bold: true
-                    font.capitalization: Font.AllUppercase
-                    font.styleName: "Regular"
-                    font.family: "Proxima Nova"
-                }
+                //                SilverBtn {
+                //                    id: silverBtn2
+                //                    x: 283
+                //                    y: 55
+                //                    width: 235
+                //                    height: 40
+                //                    text: qsTr("Удалить программу")
+                //                    font.bold: true
+                //                    font.capitalization: Font.AllUppercase
+                //                    font.styleName: "Regular"
+                //                    font.family: "Proxima Nova"
+                //                }
 
-                SilverBtn {
-                    id: silverBtn3
-                    x: 8
-                    y: 98
-                    width: 322
-                    height: 40
-                    text: qsTr("Редактировать программу")
-                    font.bold: true
-                    font.capitalization: Font.AllUppercase
-                    font.styleName: "Regular"
-                    font.family: "Proxima Nova"
-                }
-
+                //                SilverBtn {
+                //                    id: silverBtn3
+                //                    x: 8
+                //                    y: 117
+                //                    width: 322
+                //                    height: 40
+                //                    text: qsTr("Редактировать программу")
+                //                    font.bold: true
+                //                    font.capitalization: Font.AllUppercase
+                //                    font.styleName: "Regular"
+                //                    font.family: "Proxima Nova"
+                //                }
                 SilverBtn {
                     id: silverBtn6
-                    x: 486
-                    y: 127
+                    x: 484
+                    y: 46
                     width: 150
                     height: 40
                     text: qsTr("Клавиатура")
@@ -381,8 +469,15 @@ Item {
             }
         }
     }
-    //    Component.onUrlChanged: console.log("kjhsfgjkf")
-    //    Component.onCompleted: console.log("Загрузка списка программ")
+    Component.onCompleted: handler.get_welding_programm()
+
+    Connections {
+        target: handler
+
+        function onWeldingProgramms(wb) {
+            listProgramms1.append(wb)
+        }
+    }
 }
 
 /*##^##

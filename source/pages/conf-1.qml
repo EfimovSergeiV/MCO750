@@ -264,16 +264,16 @@ Item {
                     placeholderText: qsTr("0")
                     inputMethodHints: Qt.ImhDigitsOnly
 
-                    onActiveFocusChanged: intKeyboard.visible = true
+                    //                    onActiveFocusChanged: intKeyboard.visible = true
                     //                                        enterKeyAction: EnterKeyAction.Next
                     onAccepted: textArea.focus = true
                     //                                        onActiveFocusChanged: {
                     //                                            console.log("textField")
                     //                                            integerDialog.open()
                     //                                        }
-                    onEditingFinished: {
-                        intKeyboard.visible = true
-                    }
+                    //                    onEditingFinished: {
+                    //                        intKeyboard.visible = true
+                    //                    }
                 }
 
                 TextField {
@@ -765,13 +765,17 @@ Item {
                 source: "content/175-footer.png"
                 fillMode: Image.PreserveAspectFit
 
-                Button {
+                SilverBtn {
                     id: button
-                    x: 523
+                    x: 474
                     y: 127
-                    width: 113
+                    width: 162
                     height: 40
                     text: qsTr("Клавиатура")
+                    font.bold: true
+                    font.capitalization: Font.AllUppercase
+                    font.styleName: "Regular"
+                    font.family: "Proxima Nova"
                     onClicked: {
                         intKeyboard.x = 210
                         intKeyboard.y = 100

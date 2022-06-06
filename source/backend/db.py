@@ -42,7 +42,7 @@ Tables:
 
 """ SQL запросы в БД """
 list_requests = {
-    "get_programm": "SELECT name, max_diameter, min_diameter  FROM programm_programmmodel",
+    "get_programm": "SELECT id, name, max_diameter, min_diameter  FROM programm_programmmodel",
 }
 
 DATABASE = {

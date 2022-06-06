@@ -48,48 +48,6 @@ Item {
                     model: ListModel {
                         id: listProgramms
                     }
-
-                    //                    model: ListModel {
-                    //                        ListElement {
-                    //                            name: "Name 1"
-                    //                        }
-                    //                        ListElement {
-                    //                            name: "Name 2"
-                    //                        }
-                    //                        ListElement {
-                    //                            name: "Name 3"
-                    //                        }
-                    //                        ListElement {
-                    //                            name: "Name 4"
-                    //                        }
-                    //                        ListElement {
-                    //                            name: "Name 5"
-                    //                        }
-                    //                        ListElement {
-                    //                            name: "Name 5"
-                    //                        }
-                    //                        ListElement {
-                    //                            name: "Name 5"
-                    //                        }
-                    //                        ListElement {
-                    //                            name: "Name 5"
-                    //                        }
-                    //                        ListElement {
-                    //                            name: "Name 5"
-                    //                        }
-                    //                        ListElement {
-                    //                            name: "Name 5"
-                    //                        }
-                    //                        ListElement {
-                    //                            name: "Name 5"
-                    //                        }
-                    //                        ListElement {
-                    //                            name: "Name 5"
-                    //                        }
-                    //                        ListElement {
-                    //                            name: "Name 5"
-                    //                        }
-                    //                    }
                     delegate: Row {
                         id: row1
                         x: 8
@@ -102,6 +60,10 @@ Item {
                             width: 120
                             height: 40
                             text: "Выбрать"
+                            onClicked: {
+                                bottomRect.running = !bottomRect.running
+                                stackView.push(Qt.resolvedUrl("action.qml"))
+                            }
                         }
 
                         Label {
@@ -126,48 +88,6 @@ Item {
                             height: 40
                         }
                     }
-
-
-                    /* Row {
-                        id: row
-                        x: 0
-                        y: 0
-                        width: 800
-                        height: 60
-                        padding: 10
-
-                        TextField {
-                            id: textField
-                            width: 120
-                            height: 40
-                            padding: 10
-                            placeholderText: qsTr("Text Field")
-                        }
-
-                        Label {
-                            id: label2
-                            width: 280
-                            height: 40
-                            padding: 10
-                            text: name
-                        }
-
-                        TextField {
-                            id: textField1
-                            width: 120
-                            height: 40
-                            padding: 10
-                            placeholderText: qsTr("Text Field")
-                        }
-
-                        Label {
-                            id: label3
-                            width: 280
-                            height: 40
-                            padding: 10
-                            text: qsTr("Label")
-                        }
-                    }*/
                 }
             }
         }
@@ -255,21 +175,6 @@ Item {
                 source: "content/100-footer.png"
                 fillMode: Image.PreserveAspectFit
 
-                Button {
-                    id: button
-                    x: 515
-                    y: 52
-                    width: 113
-                    height: 40
-                    text: qsTr("Клавиатура")
-                    onClicked: {
-                        intKeyboard.x = 210
-                        intKeyboard.y = 100
-                        intKeyboard.running = !intKeyboard.running
-                        intKeyboard.visible = !intKeyboard.visible
-                    }
-                }
-
                 SilverBtn {
                     id: silverBtn
                     x: 642
@@ -283,7 +188,7 @@ Item {
                     font.styleName: "Regular"
                     onClicked: {
                         bottomRect.running = !bottomRect.running
-                        stackView.push(Qt.resolvedUrl("conf-0.qml"))
+                        stackView.push(Qt.resolvedUrl("index.qml"))
                     }
                 }
 

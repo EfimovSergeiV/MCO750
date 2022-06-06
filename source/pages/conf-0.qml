@@ -264,16 +264,16 @@ Item {
                     placeholderText: qsTr("0")
                     inputMethodHints: Qt.ImhDigitsOnly
 
-                    onActiveFocusChanged: intKeyboard.visible = true
+                    //                    onActiveFocusChanged: intKeyboard.visible = true
                     //                                        enterKeyAction: EnterKeyAction.Next
                     onAccepted: textArea.focus = true
                     //                                        onActiveFocusChanged: {
                     //                                            console.log("textField")
                     //                                            integerDialog.open()
                     //                                        }
-                    onEditingFinished: {
-                        intKeyboard.visible = true
-                    }
+                    //                    onEditingFinished: {
+                    //                        intKeyboard.visible = true
+                    //                    }
                 }
 
                 TextField {
@@ -778,7 +778,7 @@ Item {
                     font.styleName: "Regular"
                     onClicked: {
                         bottomRect.running = !bottomRect.running
-                        stackView.push(Qt.resolvedUrl("index.qml"))
+                        stackView.push(Qt.resolvedUrl("conf.qml"))
                     }
                 }
 

@@ -60,8 +60,8 @@ Item {
                     id: btnHome
                     x: 37
                     y: 135
-                    width: 230
-                    height: 50
+                    width: 240
+                    height: 65
                     font.pointSize: 12
                     font.styleName: "Regular"
                     font.family: "Proxima Nova"
@@ -78,8 +78,8 @@ Item {
                     id: btnHome1
                     x: 37
                     y: 215
-                    width: 230
-                    height: 50
+                    width: 240
+                    height: 65
                     text: qsTr("Программа сварки")
                     anchors.bottom: btnHome1.top
                     font.capitalization: Font.AllUppercase
@@ -94,8 +94,8 @@ Item {
                     id: btnHome2
                     x: 37
                     y: 294
-                    width: 230
-                    height: 50
+                    width: 240
+                    height: 65
                     text: qsTr("Установки")
                     anchors.bottom: btnHome2.top
                     font.capitalization: Font.AllUppercase
@@ -114,8 +114,8 @@ Item {
                     id: btnHome3
                     x: 17
                     y: 391
-                    width: 401
-                    height: 63
+                    width: 400
+                    height: 65
                     text: qsTr("Выбор программы")
                     anchors.left: parent.left
                     anchors.bottom: btnHome3.top
