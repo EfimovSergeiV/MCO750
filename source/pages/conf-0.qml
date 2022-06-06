@@ -10,64 +10,64 @@ Item {
     property var reflow: [{
             "id": "textField.text",
             "sections": [{
-                    "r_1": sec0s.text,
-                    "r_2": sec0fs.text,
-                    "r_3": sec0bs.text,
-                    "r_0": sec0u.text,
+                    "r_0": sec0r0.text,
+                    "r_1": sec0r1.text,
+                    "r_2": sec0r2.text,
+                    "r_3": sec0r3.text,
                     "section": 0
                 }, {
-                    "r_1": sec1s.text,
-                    "r_2": sec1fs.text,
-                    "r_3": sec1bs.text,
-                    "r_0": sec1u.text,
+                    "r_0": sec1r0.text,
+                    "r_1": sec1r1.text,
+                    "r_2": sec1r2.text,
+                    "r_3": sec1r3.text,
                     "section": 1
                 }, {
-                    "r_1": sec2s.text,
-                    "r_2": sec2fs.text,
-                    "r_3": sec2bs.text,
-                    "r_0": sec2u.text,
+                    "r_0": sec2r0.text,
+                    "r_1": sec2r1.text,
+                    "r_2": sec2r2.text,
+                    "r_3": sec2r3.text,
                     "section": 2
                 }, {
-                    "r_1": sec3s.text,
-                    "r_2": sec3fs.text,
-                    "r_3": sec3bs.text,
-                    "r_0": sec3u.text,
+                    "r_1": sec3r1.text,
+                    "r_2": sec3r2.text,
+                    "r_3": sec3r3.text,
+                    "r_0": sec3r0.text,
                     "section": 3
                 }, {
-                    "r_1": sec4s.text,
-                    "r_2": sec4fs.text,
-                    "r_3": sec4bs.text,
-                    "r_0": sec4u.text,
+                    "r_0": sec4r0.text,
+                    "r_1": sec4r1.text,
+                    "r_2": sec4r2.text,
+                    "r_3": sec4r3.text,
                     "section": 4
                 }, {
-                    "r_1": sec5s.text,
-                    "r_2": sec5fs.text,
-                    "r_3": sec5bs.text,
-                    "r_0": sec5u.text,
+                    "r_0": sec5r0.text,
+                    "r_1": sec5r1.text,
+                    "r_2": sec5r2.text,
+                    "r_3": sec5r3.text,
                     "section": 5
                 }, {
-                    "r_1": sec6s.text,
-                    "r_2": sec6fs.text,
-                    "r_3": sec6bs.text,
-                    "r_0": sec6u.text,
+                    "r_0": sec6r0.text,
+                    "r_1": sec6r1.text,
+                    "r_2": sec6r2.text,
+                    "r_3": sec6r3.text,
                     "section": 6
                 }, {
-                    "r_1": sec7s.text,
-                    "r_2": sec7fs.text,
-                    "r_3": sec7bs.text,
-                    "r_0": sec7u.text,
+                    "r_0": sec7r0.text,
+                    "r_1": sec7r1.text,
+                    "r_2": sec7r2.text,
+                    "r_3": sec7r3.text,
                     "section": 7
                 }, {
-                    "r_1": sec8s.text,
-                    "r_2": sec8fs.text,
-                    "r_3": sec8bs.text,
-                    "r_0": sec8u.text,
+                    "r_0": sec8r0.text,
+                    "r_1": sec8r1.text,
+                    "r_2": sec8r2.text,
+                    "r_3": sec8r3.text,
                     "section": 8
                 }, {
-                    "r_1": sec9s.text,
-                    "r_2": sec9fs.text,
-                    "r_3": sec9bs.text,
-                    "r_0": sec9u.text,
+                    "r_0": sec9r0.text,
+                    "r_1": sec9r1.text,
+                    "r_2": sec9r2.text,
+                    "r_3": sec9r3.text,
                     "section": 9
                 }]
         }]
@@ -318,7 +318,7 @@ Item {
                 anchors.leftMargin: 8
 
                 TextField {
-                    id: sec0s
+                    id: sec0r0
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -339,7 +339,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec1s
+                    id: sec1r0
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -359,7 +359,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec2s
+                    id: sec2r0
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -379,7 +379,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec3s
+                    id: sec3r0
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -388,7 +388,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec4s
+                    id: sec4r0
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -397,7 +397,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec5s
+                    id: sec5r0
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -406,7 +406,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec6s
+                    id: sec6r0
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -415,7 +415,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec7s
+                    id: sec7r0
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -424,7 +424,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec8s
+                    id: sec8r0
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -433,7 +433,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec9s
+                    id: sec9r0
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -468,7 +468,7 @@ Item {
                 spacing: 4
 
                 TextField {
-                    id: sec0fs
+                    id: sec0r1
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -477,7 +477,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec1fs
+                    id: sec1r1
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -486,7 +486,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec2fs
+                    id: sec2r1
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -495,7 +495,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec3fs
+                    id: sec3r1
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -504,7 +504,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec4fs
+                    id: sec4r1
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -513,7 +513,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec5fs
+                    id: sec5r1
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -522,7 +522,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec6fs
+                    id: sec6r1
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -531,7 +531,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec7fs
+                    id: sec7r1
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -540,7 +540,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec8fs
+                    id: sec8r1
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -549,7 +549,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec9fs
+                    id: sec9r1
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -585,7 +585,7 @@ Item {
                 spacing: 4
 
                 TextField {
-                    id: sec0bs
+                    id: sec0r2
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -594,7 +594,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec1bs
+                    id: sec1r2
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -603,7 +603,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec2bs
+                    id: sec2r2
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -612,7 +612,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec3bs
+                    id: sec3r2
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -621,7 +621,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec4bs
+                    id: sec4r2
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -630,7 +630,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec5bs
+                    id: sec5r2
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -639,7 +639,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec6bs
+                    id: sec6r2
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -648,7 +648,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec7bs
+                    id: sec7r2
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -657,7 +657,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec8bs
+                    id: sec8r2
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -666,7 +666,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec9bs
+                    id: sec9r2
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -702,7 +702,7 @@ Item {
                 spacing: 4
 
                 TextField {
-                    id: sec0u
+                    id: sec0r3
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -711,7 +711,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec1u
+                    id: sec1r3
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -720,7 +720,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec2u
+                    id: sec2r3
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -729,7 +729,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec3u
+                    id: sec3r3
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -738,7 +738,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec4u
+                    id: sec4r3
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -747,7 +747,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec5u
+                    id: sec5r3
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -756,7 +756,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec6u
+                    id: sec6r3
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -765,7 +765,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec7u
+                    id: sec7r3
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -774,7 +774,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec8u
+                    id: sec8r3
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -783,7 +783,7 @@ Item {
                 }
 
                 TextField {
-                    id: sec9u
+                    id: sec9r3
                     width: 75
                     height: 28
                     horizontalAlignment: Text.AlignHCenter
@@ -955,8 +955,7 @@ Item {
                     font.styleName: "Regular"
                     font.family: "Proxima Nova"
                     onClicked: {
-                        console.log(root.reflow)
-                        handler.input_reflow_data(root.reflow)
+                        handler.create_reflow_data(root.reflow)
                     }
                 }
 
@@ -1148,15 +1147,16 @@ Item {
             }
         }
     }
-    Component.onCompleted: handler.create_welding_programm()
+    Component.onCompleted: handler.return_reflow_data()
 
-    //    Connections {
-    //        target: handler
+    Connections {
+        target: handler
 
-    //        function onWeldingProgramms(wb) {
-    //            listProgramms1.append(wb)
-    //        }
-    //    }
+        function onReflowData(data) {
+            console.log(data)
+            root.reflow = data
+        }
+    }
 }
 
 /*##^##

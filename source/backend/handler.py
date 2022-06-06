@@ -4,11 +4,15 @@ from source.backend import db
 
 class Handler(QObject):
     """ Обработчик """
-    list_programs = []
+    list_programs = None
+    list_corrector_data = None
+    list_reflow_data = None
 
 
     # Сигналы
     weldingProgramms = Signal(list)
+    correctorData = Signal(list)
+    reflowData = Signal(list)
 
     
     # Слоты
@@ -28,10 +32,34 @@ class Handler(QObject):
 
 
     @Slot(list)
-    def input_reflow_data(self, data):
+    def create_corrector_data(self, data):
         """ 
         Ввод данных программы сварки 
         [{'id': 2, 'programm_id': 1}]
         """
-        
+        self.list_corrector_data = data
         print(f"REFLOW DATA { data }")
+
+
+    @Slot()
+    def return_corrector_data(self):
+        if self.list_corrector_data:
+            print(f"RETURN CORRECTOR DATA { self.list_corrector_data }")
+            self.correctorData.emit(self.list_corrector_data)
+
+
+    @Slot(list)
+    def create_reflow_data(self, data):
+        """ 
+        Ввод данных программы сварки 
+        [{'id': 2, 'programm_id': 1}]
+        """
+        self.list_reflow_data = data
+        print(f"REFLOW DATA { data }")
+
+
+    @Slot()
+    def return_reflow_data(self):
+        if self.list_reflow_data:
+            print(f"RETURN REFLOW DATA { self.list_reflow_data }")
+            self.reflowData.emit(self.list_reflow_data)
