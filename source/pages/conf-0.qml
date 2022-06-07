@@ -72,6 +72,53 @@ Item {
                 }]
         }]
 
+    property var idMap: ({
+                             "sec0r0": sec0r0,
+                             "sec0r1": sec0r1,
+                             "sec0r2": sec0r2,
+                             "sec0r3": sec0r3,
+                             "sec1r0": sec1r0,
+                             "sec1r1": sec1r1,
+                             "sec1r2": sec1r2,
+                             "sec1r3": sec1r3,
+                             "sec2r0": sec2r0,
+                             "sec2r1": sec2r1,
+                             "sec2r2": sec2r2,
+                             "sec2r3": sec2r3,
+                             "sec3r0": sec3r0,
+                             "sec3r1": sec3r1,
+                             "sec3r2": sec3r2,
+                             "sec3r3": sec3r3,
+                             "sec4r0": sec4r0,
+                             "sec4r1": sec4r1,
+                             "sec4r2": sec4r2,
+                             "sec4r3": sec4r3,
+                             "sec5r0": sec5r0,
+                             "sec5r1": sec5r1,
+                             "sec5r2": sec5r2,
+                             "sec5r3": sec5r3,
+                             "sec6r0": sec6r0,
+                             "sec6r1": sec6r1,
+                             "sec6r2": sec6r2,
+                             "sec6r3": sec6r3,
+                             "sec7r0": sec7r0,
+                             "sec7r1": sec7r1,
+                             "sec7r2": sec7r2,
+                             "sec7r3": sec7r3,
+                             "sec8r0": sec8r0,
+                             "sec8r1": sec8r1,
+                             "sec8r2": sec8r2,
+                             "sec8r3": sec8r3,
+                             "sec9r0": sec9r0,
+                             "sec9r1": sec9r1,
+                             "sec9r2": sec9r2,
+                             "sec9r3": sec9r3
+                         })
+
+    function findItemById(id) {
+        return idMap[id]
+    }
+
     id: root
     width: 800
     height: 480
@@ -85,10 +132,6 @@ Item {
         anchors.leftMargin: 0
         anchors.topMargin: 0
 
-        //        //        IntDialog {
-        //        //            id: integerDialog
-        //        //            anchors.centerIn: parent
-        //        //        }
         Rectangle {
             id: rectangle1
             height: 60
@@ -895,6 +938,7 @@ Item {
                     font.styleName: "Regular"
                     font.family: "Proxima Nova"
                     onClicked: {
+                        handler.create_reflow_data(root.reflow)
                         stackView.push(Qt.resolvedUrl("conf-1.qml"))
                     }
                 }
@@ -911,6 +955,7 @@ Item {
                     font.styleName: "Regular"
                     font.family: "Proxima Nova"
                     onClicked: {
+                        handler.create_reflow_data(root.reflow)
                         stackView.push(Qt.resolvedUrl("conf-3.qml"))
                     }
                 }
@@ -927,6 +972,7 @@ Item {
                     font.styleName: "Regular"
                     font.family: "Proxima Nova"
                     onClicked: {
+                        handler.create_reflow_data(root.reflow)
                         stackView.push(Qt.resolvedUrl("conf-2.qml"))
                     }
                 }
@@ -1152,9 +1198,13 @@ Item {
     Connections {
         target: handler
 
-        function onReflowData(data) {
-            console.log(data)
-            root.reflow = data
+        function onReflowData(retData) {
+            let sec = ""
+            let count = 0
+            for (sec in root.idMap) {
+                findItemById(sec).text = retData[count]
+                count++
+            }
         }
     }
 }

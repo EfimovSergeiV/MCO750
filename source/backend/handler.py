@@ -1,3 +1,4 @@
+from cgi import test
 from PySide2.QtCore import QObject, Signal, Slot, QThread
 from source.backend import db
 
@@ -60,6 +61,25 @@ class Handler(QObject):
 
     @Slot()
     def return_reflow_data(self):
+        """ 
+        Возращает 40 значений в списке для перезаполнения ячеек 
+        по ПОРЯДКУ СЕКЦИЙ
+        """
         if self.list_reflow_data:
+            list_data = []
             print(f"RETURN REFLOW DATA { self.list_reflow_data }")
-            self.reflowData.emit(self.list_reflow_data)
+            for dict_values in self.list_reflow_data[0]['sections']:
+
+                r_0 = dict_values['r_0'] if 'r_0' in dict_values else ''
+                r_1 = dict_values['r_1'] if 'r_1' in dict_values else ''
+                r_2 = dict_values['r_2'] if 'r_2' in dict_values else ''
+                r_3 = dict_values['r_3'] if 'r_3' in dict_values else ''
+                list_data.append(r_0)
+                list_data.append(r_1)
+                list_data.append(r_2)
+                list_data.append(r_3)
+
+                print(f"СЛОВАРЬ: { dict_values }")
+            
+
+            self.reflowData.emit(list_data)
