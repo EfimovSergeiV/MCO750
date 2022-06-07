@@ -43,11 +43,12 @@ class Handler(QObject):
     def create_welding_programm(self):
         """ Создание новой программы сварки """
 
-        # Костыльное присваивание мин/макс диаметров
+        # Генерируем структуру для новой программы
         self.new_programm["min_diameter"] = self.list_reflow_data[0]['min_diameter']
         self.new_programm["max_diameter"] = self.list_reflow_data[0]['max_diameter']
+        self.new_programm["reflow_data"] = self.list_reflow_data[0]
 
-        print("Создание новой программы сварки\n", self.new_programm)
+        print("НОВАЯ ПРОГРАММА:\n", self.new_programm)
 
 
 
