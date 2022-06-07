@@ -8,7 +8,8 @@ import "../controls/intBtn"
 
 Item {
     property var reflow: [{
-            "id": "textField.text",
+            "min_diameter": minDiameter.text,
+            "max_diameter": maxDiameter.text,
             "sections": [{
                     "r_0": sec0r0.text,
                     "r_1": sec0r1.text,
@@ -838,23 +839,23 @@ Item {
 
             TextField {
                 id: minDiameter
-                x: 306
+                x: 321
                 y: 302
-                width: 240
+                width: 233
                 height: 28
                 horizontalAlignment: Text.AlignHCenter
-                placeholderText: qsTr("Минимальный диаметр, мм")
+                placeholderText: qsTr("Мин диаметр, мм")
                 font.family: "Proxima Nova"
             }
 
             TextField {
                 id: maxDiameter
-                x: 552
+                x: 560
                 y: 302
-                width: 240
+                width: 232
                 height: 28
                 horizontalAlignment: Text.AlignHCenter
-                placeholderText: qsTr("Максимальны диаметр, мм")
+                placeholderText: qsTr("Макс диаметр, мм")
                 font.family: "Proxima Nova"
             }
         }
@@ -928,8 +929,8 @@ Item {
 
                 SilverBtn {
                     id: silverBtn1
-                    x: 234
-                    y: 117
+                    x: 4
+                    y: 35
                     width: 150
                     height: 40
                     text: "Корректор"
@@ -945,8 +946,8 @@ Item {
 
                 SilverBtn {
                     id: silverBtn2
-                    x: 8
-                    y: 47
+                    x: 4
+                    y: 81
                     width: 235
                     height: 40
                     text: qsTr("Подогрев/Выжигание")
@@ -962,8 +963,8 @@ Item {
 
                 SilverBtn {
                     id: silverBtn3
-                    x: 266
-                    y: 47
+                    x: 4
+                    y: 127
                     width: 268
                     height: 40
                     text: qsTr("Параметры цикла сварки")
@@ -977,31 +978,19 @@ Item {
                     }
                 }
 
-                //                SilverBtn {
-                //                    id: silverBtn4
-                //                    x: 8
-                //                    y: 108
-                //                    width: 183
-                //                    height: 40
-                //                    text: qsTr("Загрузить")
-                //                    font.bold: true
-                //                    font.capitalization: Font.AllUppercase
-                //                    font.styleName: "Regular"
-                //                    font.family: "Proxima Nova"
-                //                }
                 SilverBtn {
                     id: silverBtn5
-                    x: 8
-                    y: 117
+                    x: 590
+                    y: 62
                     width: 202
                     height: 40
-                    text: qsTr("Сохранить")
+                    text: qsTr("Создать")
                     font.bold: true
                     font.capitalization: Font.AllUppercase
                     font.styleName: "Regular"
                     font.family: "Proxima Nova"
                     onClicked: {
-                        handler.create_reflow_data(root.reflow)
+                        handler.create_welding_programm()
                     }
                 }
 
@@ -1198,6 +1187,11 @@ Item {
     Connections {
         target: handler
 
+        function onDiametersData(diameters) {
+            minDiameter.text = diameters[0]["min_diameter"]
+            maxDiameter.text = diameters[0]["max_diameter"]
+        }
+
         function onReflowData(retData) {
             let sec = ""
             let count = 0
@@ -1211,7 +1205,7 @@ Item {
 
 /*##^##
 Designer {
-    D{i:0;height:480;width:800}D{i:65}D{i:66}
+    D{i:0;height:480;width:800}
 }
 ##^##*/
 

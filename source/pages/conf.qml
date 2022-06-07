@@ -254,35 +254,11 @@ Item {
                     font.family: "Proxima Nova"
                     onClicked: {
                         bottomRect.running = !bottomRect.running
+                        handler.assembly_welding_programm()
                         stackView.push(Qt.resolvedUrl("conf-0.qml"))
                     }
                 }
 
-                //                SilverBtn {
-                //                    id: silverBtn2
-                //                    x: 283
-                //                    y: 55
-                //                    width: 235
-                //                    height: 40
-                //                    text: qsTr("Удалить программу")
-                //                    font.bold: true
-                //                    font.capitalization: Font.AllUppercase
-                //                    font.styleName: "Regular"
-                //                    font.family: "Proxima Nova"
-                //                }
-
-                //                SilverBtn {
-                //                    id: silverBtn3
-                //                    x: 8
-                //                    y: 117
-                //                    width: 322
-                //                    height: 40
-                //                    text: qsTr("Редактировать программу")
-                //                    font.bold: true
-                //                    font.capitalization: Font.AllUppercase
-                //                    font.styleName: "Regular"
-                //                    font.family: "Proxima Nova"
-                //                }
                 SilverBtn {
                     id: silverBtn6
                     x: 484

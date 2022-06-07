@@ -4,8 +4,9 @@ from source.backend import db
 
 
 class Handler(QObject):
-    """ Обработчик """
+    """ """
     list_programs = None
+    new_program = None
     list_corrector_data = None
     list_reflow_data = None
 
@@ -14,6 +15,7 @@ class Handler(QObject):
     weldingProgramms = Signal(list)
     correctorData = Signal(list)
     reflowData = Signal(list)
+    diametersData = Signal(list)
 
     
     # Слоты
@@ -26,10 +28,27 @@ class Handler(QObject):
 
 
     @Slot()
-    def create_welding_programm(self):
-        """ Создание программы сварки """
+    def assembly_welding_programm(self):
+        """ Подготовка новой программы сварки """
+        print("Подготовка новой программы сварки")
+        self.new_programm = {
+            "name": f"Проограмма { len(self.list_programs) + 1 }",
+            "description": "Нет описания",
+            "min_diameter": 0,
+            "max_diameter": 0,
+        }
 
-        print(f"Создание программы сварки { len(self.list_programs) }")
+
+    @Slot()
+    def create_welding_programm(self):
+        """ Создание новой программы сварки """
+
+        # Костыльное присваивание мин/макс диаметров
+        self.new_programm["min_diameter"] = self.list_reflow_data[0]['min_diameter']
+        self.new_programm["max_diameter"] = self.list_reflow_data[0]['max_diameter']
+
+        print("Создание новой программы сварки\n", self.new_programm)
+
 
 
     @Slot(list)
@@ -67,19 +86,22 @@ class Handler(QObject):
         """
         if self.list_reflow_data:
             list_data = []
-            print(f"RETURN REFLOW DATA { self.list_reflow_data }")
+
             for dict_values in self.list_reflow_data[0]['sections']:
 
-                r_0 = dict_values['r_0'] if 'r_0' in dict_values else ''
-                r_1 = dict_values['r_1'] if 'r_1' in dict_values else ''
-                r_2 = dict_values['r_2'] if 'r_2' in dict_values else ''
-                r_3 = dict_values['r_3'] if 'r_3' in dict_values else ''
-                list_data.append(r_0)
-                list_data.append(r_1)
-                list_data.append(r_2)
-                list_data.append(r_3)
-
-                print(f"СЛОВАРЬ: { dict_values }")
-            
+                list_data.append(dict_values['r_0'])
+                list_data.append(dict_values['r_1'])
+                list_data.append(dict_values['r_2'])
+                list_data.append(dict_values['r_3'])
 
             self.reflowData.emit(list_data)
+            self.diametersData.emit(
+                [
+                    { 
+                        "min_diameter": self.list_reflow_data[0]['min_diameter'],
+                        "max_diameter": self.list_reflow_data[0]['max_diameter'] 
+                        },
+                ]
+            )
+
+
