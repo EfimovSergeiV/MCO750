@@ -88,6 +88,10 @@ Item {
                     font.styleName: "Regular"
                     anchors.bottomMargin: 21
                     font.pointSize: 12
+                    onClicked: {
+                        rectangle1.running = true
+                        stackView.push(Qt.resolvedUrl("chart.qml"))
+                    }
                 }
 
                 SilverBtn {

@@ -1,10 +1,21 @@
 from cgi import test
-from PySide2.QtCore import QObject, Signal, Slot, QThread
+from itertools import count
+from PySide2.QtCore import QObject, Signal, Slot, QThread, QTimer
+
+from PySide2.QtCore import *
+from PySide2.QtWidgets import *
+from PySide2.QtCharts import *
+from PySide2.QtQml import *
+
+
 from source.backend import db
+import time
+import random
 
 
 class Handler(QObject):
     """ """
+
     list_programs = None
     new_program = None
     list_corrector_data = None
@@ -16,6 +27,38 @@ class Handler(QObject):
     correctorData = Signal(list)
     reflowData = Signal(list)
     diametersData = Signal(list)
+
+    chartData = Signal(QtCharts.QPieSeries)
+
+
+
+    def __init__(self):
+        QObject.__init__(self)
+        self.timer = QTimer()
+        self.timer.timeout.connect(lambda: self.chart_worker_exx())
+        self.timer.start(5000)
+
+
+
+    count = 0
+    def chart_worker_exx(self):
+        """ Заполняет таблицу для примера """
+        self.count += 1
+        # series = QLineSeries()
+        # point = QPointF(self.count, random.randint(0, 100))
+        pie = QtCharts.QPieSeries()
+        a = QtCharts.QPieSlice("Программа 1", random.randint(0, 100))
+        b = QtCharts.QPieSlice("Программа 2", random.randint(0, 100))
+        c = QtCharts.QPieSlice("Программа 3", random.randint(0, 100))
+
+        pie.append(a)
+        pie.append(b)
+        pie.append(c)
+
+        
+        self.chartData.emit(pie)
+
+
 
     
     # Слоты

@@ -12,6 +12,7 @@
         "source/pages/conf-0.qml",
         "source/pages/conf-1.qml",
         "source/pages/conf-2.qml",
-        "source/pages/conf-3.qml"
+        "source/pages/conf-3.qml",
+        "source/pages/chart.qml"
         ]
 }

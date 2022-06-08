@@ -3,12 +3,13 @@ import os, sys
 from pathlib import Path
 from source.backend.handler import Handler
 
-from PySide2.QtGui import QGuiApplication
+from PySide2.QtWidgets import QApplication
 from PySide2.QtQml import QQmlApplicationEngine
+from PySide2.QtCharts import *
 
 
 if __name__ == "__main__":
-    app = QGuiApplication(sys.argv)
+    app = QApplication(sys.argv)
     engine = QQmlApplicationEngine()
 
     handler = Handler()
