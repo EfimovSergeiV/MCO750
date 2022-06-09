@@ -1,11 +1,16 @@
 import QtQuick 2.0
 import QtCharts 2.15
+import QtQuick.Controls 2.15
 import QtQuick.XmlListModel 2.0
 
 import "../sensors/rt-chart/"
 import "../controls"
 
 Item {
+
+    RTChart {
+        id: realTimeChart
+    }
 
     SilverBtn {
         id: silverBtn3
@@ -37,18 +42,9 @@ Item {
         onClicked: realTimeChart.running = !realTimeChart.running
     }
 
-    Rectangle {
-        id: rectangle
-        x: 0
-        y: 0
-        width: 413
-        height: 400
-        color: "#272727"
-
-        RTChart {
-            id: realTimeChart
-        }
-    }
+    //    RTChart {
+    //        id: realTimeChart
+    //    }
 
     //    Connections {
     //        target: handler

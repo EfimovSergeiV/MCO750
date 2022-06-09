@@ -30,6 +30,7 @@
 ****************************************************************************/
 import QtQuick 2.0
 import QtCharts 2.0
+import QtQuick.Controls 2.15
 import QtQuick.XmlListModel 2.0
 
 Item {
@@ -93,8 +94,8 @@ Item {
                 chartView.axisX().tickCount = chartView.axisX(
                             ).max - chartView.axisX().min + 1
             } else {
+
                 // No more data, change x-axis range to show all the data
-                //                timer.stop()
                 chartView.animationOptions = ChartView.AllAnimations
                 chartView.axisX().min = 0
                 chartView.axisX().max = speedsXml.get(

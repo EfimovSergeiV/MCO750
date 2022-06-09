@@ -36,7 +36,7 @@ class Handler(QObject):
         QObject.__init__(self)
         self.timer = QTimer()
         self.timer.timeout.connect(lambda: self.chart_worker_exx())
-        self.timer.start(500)
+        self.timer.start(1000)
 
 
 
@@ -47,7 +47,7 @@ class Handler(QObject):
 
         names = ['name1', 'name2', 'name3', 'name4', 'name5',]
         for name in names:
-            data = [name, self.count, random.randint(0, 300)]
+            data = [name, self.count, random.randint(50, 250)]
 
     
             self.chartData.emit(data)
