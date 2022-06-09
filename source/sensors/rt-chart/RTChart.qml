@@ -22,8 +22,7 @@ Item {
         target: handler
 
         function onChartData(data) {
-            console.log("NAME", data[0], ' X:', data[1], ' Y:', data[2], 'CI',
-                        currentIndex)
+            console.log(data)
 
             if (running) {
 

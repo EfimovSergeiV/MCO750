@@ -45,9 +45,11 @@ class Handler(QObject):
         """ Заполняет таблицу для примера """
         self.count += 1
 
-        # names = ['name1', 'name2', 'name3', 'name4', 'name5',]
-        # for name in names:
-        data = ["name", self.count, random.randint(50, 250)]
+        data = [
+            "Name", self.count, random.randint(50, 250),
+            "Name 1", random.randint(50, 250), 
+            "Name 2", random.randint(50, 250) 
+        ]
 
     
         self.chartData.emit(data)
