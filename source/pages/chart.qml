@@ -27,22 +27,36 @@ Item {
         }
     }
 
-    Connections {
-        target: handler
-
-        function onChartData(slices) {
-            console.log(slices)
-            pieSerId.append(slices)
-            //            for (var name in slices) {
-            //                console.log(slices[name])
-            //                pieSerId.append(slices[name])
-            //            }
-        }
+    SilverBtn {
+        id: silverBtn4
+        x: 438
+        y: 432
+        width: 171
+        height: 40
+        text: "STOP(SHOW)"
+        font.capitalization: Font.AllUppercase
+        font.family: "Proxima Nova"
+        font.bold: true
+        font.styleName: "Regular"
+        onClicked: realTimeChart.running = !realTimeChart.running
     }
+
+    //    Connections {
+    //        target: handler
+
+    //        function onChartData(slices) {
+    //            console.log(slices)
+    //            pieSerId.append(slices)
+    //            //            for (var name in slices) {
+    //            //                console.log(slices[name])
+    //            //                pieSerId.append(slices[name])
+    //            //            }
+    //        }
+    //    }
 }
 /*##^##
 Designer {
-    D{i:0;autoSize:true;height:480;width:800}
+    D{i:0;autoSize:true;height:480;width:800}D{i:3}
 }
 ##^##*/
 

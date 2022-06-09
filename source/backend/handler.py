@@ -28,7 +28,7 @@ class Handler(QObject):
     reflowData = Signal(list)
     diametersData = Signal(list)
 
-    chartData = Signal(QtCharts.QPieSeries)
+    chartData = Signal(list)
 
 
 
@@ -36,7 +36,7 @@ class Handler(QObject):
         QObject.__init__(self)
         self.timer = QTimer()
         self.timer.timeout.connect(lambda: self.chart_worker_exx())
-        self.timer.start(5000)
+        self.timer.start(500)
 
 
 
@@ -44,19 +44,9 @@ class Handler(QObject):
     def chart_worker_exx(self):
         """ Заполняет таблицу для примера """
         self.count += 1
-        # series = QLineSeries()
-        # point = QPointF(self.count, random.randint(0, 100))
-        pie = QtCharts.QPieSeries()
-        a = QtCharts.QPieSlice("Программа 1", random.randint(0, 100))
-        b = QtCharts.QPieSlice("Программа 2", random.randint(0, 100))
-        c = QtCharts.QPieSlice("Программа 3", random.randint(0, 100))
-
-        pie.append(a)
-        pie.append(b)
-        pie.append(c)
-
+        xy = [self.count, random.randint(0, 300)]
         
-        self.chartData.emit(pie)
+        self.chartData.emit(xy)
 
 
 

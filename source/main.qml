@@ -27,7 +27,7 @@ Window {
             y: 0
             width: 800
             height: 480
-            initialItem: Qt.resolvedUrl("pages/index.qml")
+            initialItem: Qt.resolvedUrl("pages/chart.qml")
             pushEnter: Transition {
                 PropertyAnimation {
                     property: "scale" /// "opacity"
