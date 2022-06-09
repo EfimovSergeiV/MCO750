@@ -7,10 +7,6 @@ import "../controls"
 
 Item {
 
-    RTChart {
-        id: realTimeChart
-    }
-
     SilverBtn {
         id: silverBtn3
         x: 621
@@ -41,6 +37,19 @@ Item {
         onClicked: realTimeChart.running = !realTimeChart.running
     }
 
+    Rectangle {
+        id: rectangle
+        x: 0
+        y: 0
+        width: 413
+        height: 400
+        color: "#272727"
+
+        RTChart {
+            id: realTimeChart
+        }
+    }
+
     //    Connections {
     //        target: handler
 
@@ -56,7 +65,7 @@ Item {
 }
 /*##^##
 Designer {
-    D{i:0;autoSize:true;height:480;width:800}D{i:3}
+    D{i:0;autoSize:true;height:480;width:800}D{i:2}
 }
 ##^##*/
 

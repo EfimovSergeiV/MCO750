@@ -35,7 +35,7 @@ import QtQuick.XmlListModel 2.0
 Item {
     width: 800
     height: 400
-    property int currentIndex: -1
+    property int currentIndex: 0
     property bool running: true
 
     //![1]
@@ -47,103 +47,49 @@ Item {
         animationOptions: ChartView.SeriesAnimations
         antialiasing: true
     }
-    //![1]
 
-    //![2]
-    // An example XmlListModel containing F1 legend drivers' speeds at speed traps
-    SpeedsXml {
-        id: speedsXml
-        onStatusChanged: {
-            if (status == XmlListModel.Ready) {
-                timer.start()
-            }
-        }
-    }
-    //![2]
-
-    //![3]
-    // A timer to mimic refreshing the data dynamically
-    Timer {
-        id: timer
-        interval: 500
-        repeat: true
-        triggeredOnStart: true
-        running: false
-        onTriggered: {
-            currentIndex++
-
-            //            if (currentIndex < speedsXml.count) {
-            //                // Check if there is a series for the data already
-            //                // (we are using driver name to identify series)
-            //                var lineSeries = chartView.series(speedsXml.get(
-            //                                                      currentIndex).driver)
-            //                if (!lineSeries) {
-            //                    lineSeries = chartView.createSeries(
-            //                                ChartView.SeriesTypeLine,
-            //                                speedsXml.get(currentIndex).driver)
-            //                    chartView.axisY().min = 0
-            //                    chartView.axisY().max = 300
-            //                    chartView.axisY().tickCount = 10
-            //                    chartView.axisY().titleText = "kA"
-            //                    chartView.axisX().titleText = "step"
-            //                    chartView.axisX().labelFormat = "%.0f"
-            //                }
-
-            //                lineSeries.append(speedsXml.get(currentIndex).speedTrap,
-            //                                  speedsXml.get(currentIndex).speed)
-
-            //                if (speedsXml.get(currentIndex).speedTrap > 20) {
-            //                    chartView.axisX().max = Number(
-            //                                speedsXml.get(currentIndex).speedTrap) + 1
-            //                    chartView.axisX().min = chartView.axisX().max - 20
-            //                } else {
-            //                    chartView.axisX().max = 20
-            //                    chartView.axisX().min = 0
-            //                }
-            //                chartView.axisX().tickCount = chartView.axisX(
-            //                            ).max - chartView.axisX().min + 1
-            //            } else {
-            //                // No more data, change x-axis range to show all the data
-            //                timer.stop()
-            //                chartView.animationOptions = ChartView.AllAnimations
-            //                chartView.axisX().min = 0
-            //                chartView.axisX().max = speedsXml.get(
-            //                            currentIndex - 1).speedTrap
-            //            }
-        }
-    }
     Connections {
         target: handler
 
         function onChartData(data) {
-            console.log(' X:', data[0], ' Y:', data[1])
+            console.log("NAME", data[0], ' X:', data[1], ' Y:', data[2], 'CI',
+                        currentIndex)
 
             if (running) {
+
                 // Check if there is a series for the data already
                 // (we are using driver name to identify series)
-                var lineSeries = chartView.series(speedsXml.get(
-                                                      currentIndex).driver)
+                //                var lineSeries = chartView.series(speedsXml.get(
+                //                                                      currentIndex).driver)
+                var lineSeries = chartView.series(data[0])
+
                 if (!lineSeries) {
+
                     lineSeries = chartView.createSeries(
-                                ChartView.SeriesTypeLine,
-                                speedsXml.get(currentIndex).driver)
+                                ChartView.SeriesTypeLine, data[0],
+                                data[1], data[2])
+
                     chartView.axisY().min = 0
                     chartView.axisY().max = 300
                     chartView.axisY().tickCount = 10
                     chartView.axisY().titleText = "kA"
                     chartView.axisX().titleText = "step"
-                    chartView.axisX().labelFormat = "%.0f"
+                    chartView.axisX().labelFormat = "T"
+                    //                    chartView.axisX().labelFormat = "%.0f"
                 }
 
-                lineSeries.append(data[0], data[1])
+                lineSeries.append(data[1], data[2])
 
-                if (data[0] > 20) {
-                    chartView.axisX().max = Number(data[0]) + 1
+                if (data[1] > 20) {
+
+                    chartView.axisX().max = Number(data[1]) + 1
                     chartView.axisX().min = chartView.axisX().max - 20
                 } else {
+
                     chartView.axisX().max = 20
                     chartView.axisX().min = 0
                 }
+
                 chartView.axisX().tickCount = chartView.axisX(
                             ).max - chartView.axisX().min + 1
             } else {

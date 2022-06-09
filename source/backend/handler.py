@@ -44,9 +44,13 @@ class Handler(QObject):
     def chart_worker_exx(self):
         """ Заполняет таблицу для примера """
         self.count += 1
-        xy = [self.count, random.randint(0, 300)]
-        
-        self.chartData.emit(xy)
+
+        names = ['name1', 'name2', 'name3', 'name4', 'name5',]
+        for name in names:
+            data = [name, self.count, random.randint(0, 300)]
+
+    
+            self.chartData.emit(data)
 
 
 
