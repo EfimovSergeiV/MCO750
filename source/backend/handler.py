@@ -42,14 +42,7 @@ class Handler(QObject):
 
     count = 0
     def chart_worker_exx(self):
-        """ Заполняет таблицу для примера """
-        self.count += 1
-
-        # data = [
-        #     "Name", self.count, random.randint(50, 250),
-        #     "Name 1", random.randint(50, 250), 
-        #     "Name 2", random.randint(50, 250) 
-        # ]
+        """ Заполняет таблицу для примера (максимально линий 5 по цветам)"""
 
         data = [
             {"name": "name 1", "x": self.count, "y": random.randint(50, 250)},
@@ -59,6 +52,7 @@ class Handler(QObject):
             {"name": "name 5", "x": self.count, "y": random.randint(50, 250)},
         ]
 
+        self.count += 1
     
         self.chartData.emit(data)
 

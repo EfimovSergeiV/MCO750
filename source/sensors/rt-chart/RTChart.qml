@@ -20,8 +20,9 @@ Item {
         anchors.fill: parent
         legend.alignment: Qt.AlignTop
         animationOptions: ChartView.SeriesAnimations
+        theme: ChartView.ChartThemeBlueCerulean ///ChartView.ChartThemeLight
         antialiasing: true
-        backgroundColor: "silver"
+        backgroundColor: "#ffffff55"
     }
 
     Connections {
