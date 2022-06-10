@@ -36,7 +36,7 @@ class Handler(QObject):
         QObject.__init__(self)
         self.timer = QTimer()
         self.timer.timeout.connect(lambda: self.chart_worker_exx())
-        self.timer.start(800)
+        self.timer.start(2000)
 
 
 
@@ -46,17 +46,17 @@ class Handler(QObject):
         if self.count % 2 == 0:
             print("1")
             data = [
-                {"name": "name 1", "x": self.count, "y": random.randint(100, 200)},
-                {"name": "name 2", "x": self.count, "y": random.randint(100, 200)},
-                {"name": "name 3", "x": self.count, "y": random.randint(100, 200)},
-                {"name": "name 4", "x": self.count, "y": random.randint(100, 200)},
-                {"name": "name 5", "x": self.count, "y": random.randint(100, 200)},
+                {"name": "name 1", "x": self.count, "y": random.randint(60, 80)},
+                {"name": "name 2", "x": self.count, "y": random.randint(40, 80)},
+                {"name": "name 3", "x": self.count, "y": random.randint(10, 50)},
+                {"name": "name 4", "x": self.count, "y": random.randint(60, 100)},
+                {"name": "name 5", "x": self.count, "y": random.randint(120, 160)},
             ]
         else:
             print("2")
             data = [
-                {"name": "name 1", "x": self.count, "y": random.randint(125, 175)},
-                {"name": "name 2", "x": self.count, "y": random.randint(100, 200)},
+                {"name": "name 1", "x": self.count, "y": random.randint(125, 145)},
+                {"name": "name 2", "x": self.count, "y": random.randint(100, 160)},
             ]
 
         self.count += 1

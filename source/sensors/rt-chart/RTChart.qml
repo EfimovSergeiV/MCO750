@@ -61,9 +61,9 @@ Item {
                     ///ChartView.SeriesTypeHorizontalStackedBar	A horizontal stacked bar series.
                     ///ChartView.SeriesTypeHorizontalPercentBar	A horizontal percent bar series.
                     ///
-                    chartView.axisY().min = 50
-                    chartView.axisY().max = 250
-                    chartView.axisY().tickCount = 5
+                    chartView.axisY().min = 0
+                    chartView.axisY().max = 200
+                    chartView.axisY().tickCount = 9
                     chartView.axisY().titleText = "kA"
                     chartView.axisX().labelFormat = "%.0f"
                 }
@@ -72,8 +72,6 @@ Item {
             }
 
             if (show) {
-                //                chartView.axisX().max = 10
-                //                chartView.axisX().min = currentIndex + 1
                 //                chartView.animationOptions = ChartView.AllAnimations
                 chartView.axisX().min = 0
                 chartView.axisX().max = speedsXml.get(
