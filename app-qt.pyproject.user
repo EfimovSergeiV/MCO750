@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 7.0.1, 2022-06-09T17:18:24. -->
+<!-- Written by QtCreator 7.0.1, 2022-06-10T07:53:42. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -109,12 +109,10 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">PythonEditor.RunConfiguration./home/anon/dev/MCO750/main.py</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/anon/dev/MCO750/main.py</value>
     <value type="QString" key="PythonEditor.RunConfiguation.Interpreter">{bab6003b-9a09-4dec-98c6-e4bda59c43b3}</value>
-    <value type="QString" key="PythonEditor.RunConfiguation.Script">/home/anon/dev/MCO750/main.py</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/anon/dev/MCO750</value>
    </valuemap>
    <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>

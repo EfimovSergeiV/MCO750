@@ -45,10 +45,17 @@ class Handler(QObject):
         """ Заполняет таблицу для примера """
         self.count += 1
 
+        # data = [
+        #     "Name", self.count, random.randint(50, 250),
+        #     "Name 1", random.randint(50, 250), 
+        #     "Name 2", random.randint(50, 250) 
+        # ]
+
         data = [
-            "Name", self.count, random.randint(50, 250),
-            "Name 1", random.randint(50, 250), 
-            "Name 2", random.randint(50, 250) 
+            {"name": "name 1", "x": self.count, "y": random.randint(50, 250)},
+            {"name": "name 2", "x": self.count, "y": random.randint(50, 250)},
+            {"name": "name 3", "x": self.count, "y": random.randint(50, 250)},
+            {"name": "name 4", "x": self.count, "y": random.randint(50, 250)},
         ]
 
     

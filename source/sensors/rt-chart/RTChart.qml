@@ -22,37 +22,48 @@ Item {
         target: handler
 
         function onChartData(data) {
-            console.log(data)
 
             if (running) {
 
-                var lineSeries = chartView.series(data[0])
-                var lineSeries1 = chartView.series(data[0] + " 1")
+                //                var lineSeries = chartView.series(data[0].name)
+                //                var lineSeries1 = chartView.series(data[1].name)
+                var lineSeries = null
+                var line = null
 
-                if (!lineSeries) {
+                for (line in data) {
+                    lineSeries = chartView.series(data[line].name)
 
-                    lineSeries = chartView.createSeries(
-                                ChartView.SeriesTypeLine, data[0],
-                                data[1], data[2])
+                    if (!lineSeries) {
 
-                    lineSeries1 = chartView.createSeries(
-                                ChartView.SeriesTypeLine, data[0] + " 1",
-                                data[1], data[2] + 10)
+                        for (line in data) {
+                            lineSeries = chartView.createSeries(
+                                        ChartView.SeriesTypeLine,
+                                        data[line].name, data[line].x,
+                                        data[line].y)
+                        }
 
-                    chartView.axisY().min = 0
-                    chartView.axisY().max = 300
-                    chartView.axisY().tickCount = 10
-                    chartView.axisY().titleText = "kA"
-                    chartView.axisX().titleText = "step"
-                    chartView.axisX().labelFormat = "x" /// = "%.0f"
+                        //                    lineSeries = chartView.createSeries(
+                        //                                ChartView.SeriesTypeLine, data[0].name,
+                        //                                data[0].x, data[0].y)
+
+                        //                    lineSeries1 = chartView.createSeries(
+                        //                                ChartView.SeriesTypeLine, data[1].name,
+                        //                                data[1].x, data[1].y)
+                        chartView.axisY().min = 0
+                        chartView.axisY().max = 300
+                        chartView.axisY().tickCount = 10
+                        chartView.axisY().titleText = "kA"
+                        chartView.axisX().titleText = "step"
+                        chartView.axisX().labelFormat = "x" /// = "%.0f"
+                    }
+
+                    lineSeries.append(data[line].x, data[line].y)
+
+                    //                lineSeries.append(data[1].x, data[1].y)
                 }
+                if (data[1].x > 20) {
 
-                lineSeries.append(data[1], data[2])
-                lineSeries1.append(data[1], data[2] + 10)
-
-                if (data[1] > 20) {
-
-                    chartView.axisX().max = Number(data[1]) + 1
+                    chartView.axisX().max = Number(data[1].x) + 1
                     chartView.axisX().min = chartView.axisX().max - 20
                 } else {
 
