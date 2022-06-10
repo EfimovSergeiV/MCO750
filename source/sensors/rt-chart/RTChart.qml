@@ -35,7 +35,8 @@ Item {
                 var lineSeries = chartView.series(data[line].name)
 
                 if (!lineSeries) {
-                    if (data[line].name === "name 2") {
+                    if (data[line].name === "name 2"
+                            || data[line].name === "name 3") {
                         lineSeries = chartView.createSeries(
                                     ChartView.SeriesTypeSpline,
                                     data[line].name, data[line].x, data[line].y)
