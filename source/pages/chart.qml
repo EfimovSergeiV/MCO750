@@ -14,7 +14,7 @@ Item {
         y: 0
         width: 807
         height: 480
-        color: "silver"
+        color: "#133656"
 
         RTChart {
             id: realTimeChart

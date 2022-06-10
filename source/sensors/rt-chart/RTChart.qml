@@ -35,9 +35,31 @@ Item {
                 var lineSeries = chartView.series(data[line].name)
 
                 if (!lineSeries) {
-                    lineSeries = chartView.createSeries(
-                                ChartView.SeriesTypeLine, data[line].name,
-                                data[line].x, data[line].y)
+                    if (data[line].name === "name 2") {
+                        lineSeries = chartView.createSeries(
+                                    ChartView.SeriesTypeSpline,
+                                    data[line].name, data[line].x, data[line].y)
+                    } else {
+                        lineSeries = chartView.createSeries(
+                                    ChartView.SeriesTypeLine, data[line].name,
+                                    data[line].x, data[line].y)
+                    }
+
+                    ///types:
+                    ///ChartView.SeriesTypeLine	A line series.
+                    ///ChartView.SeriesTypeArea	An area series.
+                    ///ChartView.SeriesTypeBar	A bar series.
+                    ///ChartView.SeriesTypeStackedBar	A stacked bar series.
+                    ///ChartView.SeriesTypePercentBar	A percent bar series.
+                    ///ChartView.SeriesTypeBoxPlot	A box plot series.
+                    ///ChartView.SeriesTypeCandlestick	A candlestick series.
+                    ///ChartView.SeriesTypePie	A pie series.
+                    ///ChartView.SeriesTypeScatter	A scatter series.
+                    ///ChartView.SeriesTypeSpline	A spline series.
+                    ///ChartView.SeriesTypeHorizontalBar	A horizontal bar series.
+                    ///ChartView.SeriesTypeHorizontalStackedBar	A horizontal stacked bar series.
+                    ///ChartView.SeriesTypeHorizontalPercentBar	A horizontal percent bar series.
+                    ///
                     chartView.axisY().min = 50
                     chartView.axisY().max = 250
                     chartView.axisY().tickCount = 5

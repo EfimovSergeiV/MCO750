@@ -45,11 +45,11 @@ class Handler(QObject):
         """ Заполняет таблицу для примера (максимально линий 5 по цветам)"""
 
         data = [
-            {"name": "name 1", "x": self.count, "y": random.randint(50, 250)},
-            {"name": "name 2", "x": self.count, "y": random.randint(50, 250)},
-            {"name": "name 3", "x": self.count, "y": random.randint(50, 250)},
-            {"name": "name 4", "x": self.count, "y": random.randint(50, 250)},
-            {"name": "name 5", "x": self.count, "y": random.randint(50, 250)},
+            {"name": "name 1", "x": self.count, "y": random.randint(100, 200)},
+            {"name": "name 2", "x": self.count, "y": random.randint(100, 200)},
+            {"name": "name 3", "x": self.count, "y": random.randint(100, 200)},
+            {"name": "name 4", "x": self.count, "y": random.randint(100, 200)},
+            {"name": "name 5", "x": self.count, "y": random.randint(100, 200)},
         ]
 
         self.count += 1
