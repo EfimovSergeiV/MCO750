@@ -36,7 +36,7 @@ class Handler(QObject):
         QObject.__init__(self)
         self.timer = QTimer()
         self.timer.timeout.connect(lambda: self.chart_worker_exx())
-        self.timer.start(2000)
+        self.timer.start(1000)
 
 
 
