@@ -36,7 +36,7 @@ class Handler(QObject):
         QObject.__init__(self)
         self.timer = QTimer()
         self.timer.timeout.connect(lambda: self.chart_worker_exx())
-        self.timer.start(1000)
+        self.timer.start(700)
 
 
 
@@ -56,6 +56,12 @@ class Handler(QObject):
             {"name": "name 2", "x": self.count, "y": random.randint(50, 250)},
             {"name": "name 3", "x": self.count, "y": random.randint(50, 250)},
             {"name": "name 4", "x": self.count, "y": random.randint(50, 250)},
+            {"name": "name 5", "x": self.count, "y": random.randint(50, 250)},
+            {"name": "name 6", "x": self.count, "y": random.randint(50, 250)},
+            {"name": "name 7", "x": self.count, "y": random.randint(50, 250)},
+            {"name": "name 8", "x": self.count, "y": random.randint(50, 250)},
+            {"name": "name 9", "x": self.count, "y": random.randint(50, 250)},
+            {"name": "name 10", "x": self.count, "y": random.randint(50, 250)},
         ]
 
     

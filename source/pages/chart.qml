@@ -8,10 +8,6 @@ import "../controls"
 
 Item {
 
-    RTChart {
-        id: realTimeChart
-    }
-
     SilverBtn {
         id: silverBtn3
         x: 621
@@ -42,6 +38,15 @@ Item {
         onClicked: realTimeChart.running = !realTimeChart.running
     }
 
+    Rectangle {
+        id: rectangle
+        x: 0
+        y: 0
+        width: 807
+        height: 480
+        color: "silver"
+    }
+
     //    RTChart {
     //        id: realTimeChart
     //    }
@@ -58,10 +63,15 @@ Item {
     //            //            }
     //        }
     //    }
+    RTChart {
+        id: realTimeChart
+        property int minshow: rangeSlider.first.value
+        property int maxshow: rangeSlider.second.value
+    }
 }
 /*##^##
 Designer {
-    D{i:0;autoSize:true;height:480;width:800}D{i:2}
+    D{i:0;autoSize:true;height:480;width:800}
 }
 ##^##*/
 

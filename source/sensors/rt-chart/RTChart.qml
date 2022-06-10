@@ -9,6 +9,9 @@ Item {
     property int currentIndex: 0
     property bool running: true
 
+    property int minshow: 0
+    property int maxshow: 0
+
     ChartView {
         id: chartView
         title: "Driver Speeds, lap 1"
@@ -16,21 +19,22 @@ Item {
         legend.alignment: Qt.AlignTop
         animationOptions: ChartView.SeriesAnimations
         antialiasing: true
+        backgroundColor: "silver"
     }
 
     Connections {
         target: handler
 
         function onChartData(data) {
+            console.log(data[data.length - 1])
 
             if (running) {
 
-                //                var lineSeries = chartView.series(data[0].name)
-                //                var lineSeries1 = chartView.series(data[1].name)
                 var lineSeries = null
                 var line = null
 
                 for (line in data) {
+                    console.log(data[line].name, data[line].x, data[line].y)
                     lineSeries = chartView.series(data[line].name)
 
                     if (!lineSeries) {
@@ -42,28 +46,20 @@ Item {
                                         data[line].y)
                         }
 
-                        //                    lineSeries = chartView.createSeries(
-                        //                                ChartView.SeriesTypeLine, data[0].name,
-                        //                                data[0].x, data[0].y)
-
-                        //                    lineSeries1 = chartView.createSeries(
-                        //                                ChartView.SeriesTypeLine, data[1].name,
-                        //                                data[1].x, data[1].y)
                         chartView.axisY().min = 0
                         chartView.axisY().max = 300
                         chartView.axisY().tickCount = 10
                         chartView.axisY().titleText = "kA"
-                        chartView.axisX().titleText = "step"
-                        chartView.axisX().labelFormat = "x" /// = "%.0f"
+                        //                        chartView.axisX().titleText = "step"
+                        chartView.axisX().labelFormat = "%.0f"
                     }
 
                     lineSeries.append(data[line].x, data[line].y)
-
-                    //                lineSeries.append(data[1].x, data[1].y)
                 }
-                if (data[1].x > 20) {
 
-                    chartView.axisX().max = Number(data[1].x) + 1
+                if (data[data.length - 1].x > 20) {
+
+                    chartView.axisX().max = Number(data[data.length - 1].x) + 1
                     chartView.axisX().min = chartView.axisX().max - 20
                 } else {
 
@@ -76,7 +72,7 @@ Item {
             } else {
 
                 chartView.animationOptions = ChartView.AllAnimations
-                chartView.axisX().min = 0
+                chartView.axisX().min = minshow
                 chartView.axisX().max = speedsXml.get(
                             currentIndex - 1).speedTrap
             }
