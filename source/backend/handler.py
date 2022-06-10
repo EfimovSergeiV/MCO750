@@ -43,14 +43,21 @@ class Handler(QObject):
     count = 0
     def chart_worker_exx(self):
         """ Заполняет таблицу для примера (максимально линий 5 по цветам)"""
-
-        data = [
-            {"name": "name 1", "x": self.count, "y": random.randint(100, 200)},
-            {"name": "name 2", "x": self.count, "y": random.randint(100, 200)},
-            {"name": "name 3", "x": self.count, "y": random.randint(100, 200)},
-            {"name": "name 4", "x": self.count, "y": random.randint(100, 200)},
-            {"name": "name 5", "x": self.count, "y": random.randint(100, 200)},
-        ]
+        if self.count % 2 == 0:
+            print("1")
+            data = [
+                {"name": "name 1", "x": self.count, "y": random.randint(100, 200)},
+                {"name": "name 2", "x": self.count, "y": random.randint(100, 200)},
+                {"name": "name 3", "x": self.count, "y": random.randint(100, 200)},
+                {"name": "name 4", "x": self.count, "y": random.randint(100, 200)},
+                {"name": "name 5", "x": self.count, "y": random.randint(100, 200)},
+            ]
+        else:
+            print("2")
+            data = [
+                {"name": "name 1", "x": self.count, "y": random.randint(125, 175)},
+                {"name": "name 2", "x": self.count, "y": random.randint(100, 200)},
+            ]
 
         self.count += 1
     
