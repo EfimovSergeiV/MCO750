@@ -39,7 +39,7 @@ def make_request_db(sql, list_data = None):
 
         cursor = sqlite_connection.cursor()
 
-        cursor.execute(sql, list_data)
+        cursor.execute(sql)
         data = cursor.fetchall()
 
         cursor.close()
@@ -105,4 +105,4 @@ def delete_programm():
 
     cursor.close()
 
-delete_programm()
+# delete_programm()

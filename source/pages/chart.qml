@@ -12,12 +12,16 @@ Item {
         id: rectangle
         x: 0
         y: 0
-        width: 807
+        width: 800
         height: 480
         color: "#133656"
 
         RTChart {
             id: realTimeChart
+            x: 0
+            y: 0
+            width: 800
+            height: 426
         }
 
         SilverBtn {
