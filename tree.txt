@@ -1,0 +1,140 @@
+./
+├── about
+│   ├── dataStruct.json
+│   ├── Презентация фирменного стиля_ТЕХНОСВАР_Итог-03.jpg
+│   └── Снимок экрана от 2022-05-26 11-13-54.png
+├── app-qt.pyproject
+├── app-qt.pyproject.user
+├── app-qt.pyproject.user.d6e4f40
+├── app-qt.pyproject.user.f931818
+├── django-mco
+│   ├── machine
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── __init__.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── __init__.py
+│   │   │   └── __pycache__
+│   │   │       ├── 0001_initial.cpython-39.pyc
+│   │   │       └── __init__.cpython-39.pyc
+│   │   ├── models.py
+│   │   ├── __pycache__
+│   │   │   ├── admin.cpython-39.pyc
+│   │   │   ├── apps.cpython-39.pyc
+│   │   │   ├── __init__.cpython-39.pyc
+│   │   │   └── models.cpython-39.pyc
+│   │   ├── tests.py
+│   │   └── views.py
+│   ├── main
+│   │   ├── asgi.py
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-39.pyc
+│   │   │   ├── settings.cpython-39.pyc
+│   │   │   ├── urls.cpython-39.pyc
+│   │   │   └── wsgi.cpython-39.pyc
+│   │   ├── settings.py
+│   │   ├── urls.py
+│   │   └── wsgi.py
+│   ├── manage.py
+│   └── programm
+│       ├── admin.py
+│       ├── apps.py
+│       ├── __init__.py
+│       ├── migrations
+│       │   ├── 0001_initial.py
+│       │   ├── 0002_alter_clampmodel_cl_1.py
+│       │   ├── 0003_alter_clampmodel_cl_1.py
+│       │   ├── 0004_remove_reflowsectionmodel_r_4_and_more.py
+│       │   ├── 0005_remove_correctorsectionmodel_c_4_and_more.py
+│       │   ├── 0006_programmmodel_max_diameter_and_more.py
+│       │   ├── 0007_correctorsectionmodel_section_and_more.py
+│       │   ├── __init__.py
+│       │   └── __pycache__
+│       │       ├── 0001_initial.cpython-39.pyc
+│       │       ├── 0002_alter_clampmodel_cl_1.cpython-39.pyc
+│       │       ├── 0003_alter_clampmodel_cl_1.cpython-39.pyc
+│       │       ├── 0004_remove_reflowsectionmodel_r_4_and_more.cpython-39.pyc
+│       │       ├── 0005_remove_correctorsectionmodel_c_4_and_more.cpython-39.pyc
+│       │       ├── 0006_programmmodel_max_diameter_and_more.cpython-39.pyc
+│       │       ├── 0007_correctorsectionmodel_section_and_more.cpython-39.pyc
+│       │       └── __init__.cpython-39.pyc
+│       ├── models.py
+│       ├── __pycache__
+│       │   ├── admin.cpython-39.pyc
+│       │   ├── apps.cpython-39.pyc
+│       │   ├── __init__.cpython-39.pyc
+│       │   └── models.cpython-39.pyc
+│       ├── tests.py
+│       └── views.py
+├── LICENSE
+├── main.py
+├── mco.desktop
+├── mco.png
+├── mco.sh
+├── README.md
+└── source
+    ├── backend
+    │   ├── db.py
+    │   ├── handler.py
+    │   └── __pycache__
+    │       ├── data.cpython-39.pyc
+    │       ├── db.cpython-39.pyc
+    │       └── handler.cpython-39.pyc
+    ├── controls
+    │   ├── intBtn
+    │   │   ├── content
+    │   │   └── KeyboardBtn.qml
+    │   └── SilverBtn.qml
+    ├── main.qml
+    ├── pages
+    │   ├── action.qml
+    │   ├── chart.qml
+    │   ├── conf-0.qml
+    │   ├── conf-1.qml
+    │   ├── conf-2.qml
+    │   ├── conf-3.qml
+    │   ├── conf.qml
+    │   ├── content
+    │   │   ├── 100-footer.png
+    │   │   ├── 175-footer.png
+    │   │   ├── 220-footer.png
+    │   │   ├── btn.png
+    │   │   ├── chart.js
+    │   │   ├── clamp-platform.png
+    │   │   ├── header-60-mirrior.png
+    │   │   ├── header-60.png
+    │   │   ├── header-80.png
+    │   │   ├── index-left-bg.png
+    │   │   ├── index-mco-bg.png
+    │   │   ├── left-platform.png
+    │   │   ├── logo.png
+    │   │   ├── long-img2.jpeg
+    │   │   ├── long-img.jpg
+    │   │   ├── main.qml
+    │   │   ├── mco-logo.png
+    │   │   └── SpeedsXml.qml
+    │   ├── index.qml
+    │   ├── sel-pr.qml
+    │   └── settings.qml
+    └── sensors
+        ├── btnIndicator
+        │   └── BtnIndicator.qml
+        ├── clampControl
+        │   ├── ClampControl.qml
+        │   └── content
+        │       ├── background.png
+        │       └── clamp.png
+        ├── dialControl
+        │   ├── content
+        │   │   ├── background.png
+        │   │   ├── background-v.png
+        │   │   ├── Dial.qml
+        │   │   ├── needle.png
+        │   │   ├── needle_shadow.png
+        │   │   ├── overlay.png
+        │   │   └── quit.png
+        │   └── DialControl.qml
+        └── rt-chart
+            └── RTChart.qml

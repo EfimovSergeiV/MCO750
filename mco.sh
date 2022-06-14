@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python3 /home/anon/dev/MCO750/main.py
+python3.10 /home/anon/dev/MCO750/main.py

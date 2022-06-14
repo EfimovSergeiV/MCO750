@@ -14,6 +14,8 @@ gnome-tweak-tool
 ## Установка зависимостей
 
 ```bash
+# Python --version >3.10
+
 sudo apt install python3-pip
 pip3 install pyserial pyside2
 
@@ -30,7 +32,7 @@ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-
 sudo apt-get update
 sudo apt-get -y install postgresql
 
-# Создание базы данных
+# Создание базы данных PostgreSQL
 sudo -u postgres psql
 
 create database mco_db;
@@ -51,7 +53,19 @@ sudo -u postgres pg_dump database > db.sql
 ```
 
 
-## Назначение страниц
+## Web сервер Django
+
+
+## Логика проекта .py
+
+```text
+./MCO750/
+
+main.py         - файл запуска программы с помощью интерпретатора Python3
+```
+
+
+## Карта страниц QML (Qt)
 
 ```text
 ./source/pages/

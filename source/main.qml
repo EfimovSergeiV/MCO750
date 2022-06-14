@@ -11,7 +11,7 @@ Window {
     maximumWidth: 800
     maximumHeight: 480
     visible: true
-    title: qsTr("MCO750 (Titlebar hidden to later)")
+    title: qsTr("MCO750 (в релизе titlebar будет отсутствовать)")
 
     Rectangle {
         id: rectangle
@@ -27,7 +27,7 @@ Window {
             y: 0
             width: 800
             height: 480
-            initialItem: Qt.resolvedUrl("pages/chart.qml")
+            initialItem: Qt.resolvedUrl("pages/index.qml")
             pushEnter: Transition {
                 PropertyAnimation {
                     property: "scale" /// "opacity"
