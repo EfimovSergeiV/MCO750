@@ -72,6 +72,53 @@ Item {
                 }]
         }]
 
+    property var idMap: ({
+                             "sec0c0": sec0c0,
+                             "sec0c1": sec0c1,
+                             "sec0c2": sec0c2,
+                             "sec0c3": sec0c3,
+                             "sec1c0": sec1c0,
+                             "sec1c1": sec1c1,
+                             "sec1c2": sec1c2,
+                             "sec1c3": sec1c3,
+                             "sec2c0": sec2c0,
+                             "sec2c1": sec2c1,
+                             "sec2c2": sec2c2,
+                             "sec2c3": sec2c3,
+                             "sec3c0": sec3c0,
+                             "sec3c1": sec3c1,
+                             "sec3c2": sec3c2,
+                             "sec3c3": sec3c3,
+                             "sec4c0": sec4c0,
+                             "sec4c1": sec4c1,
+                             "sec4c2": sec4c2,
+                             "sec4c3": sec4c3,
+                             "sec5c0": sec5c0,
+                             "sec5c1": sec5c1,
+                             "sec5c2": sec5c2,
+                             "sec5c3": sec5c3,
+                             "sec6c0": sec6c0,
+                             "sec6c1": sec6c1,
+                             "sec6c2": sec6c2,
+                             "sec6c3": sec6c3,
+                             "sec7c0": sec7c0,
+                             "sec7c1": sec7c1,
+                             "sec7c2": sec7c2,
+                             "sec7c3": sec7c3,
+                             "sec8c0": sec8c0,
+                             "sec8c1": sec8c1,
+                             "sec8c2": sec8c2,
+                             "sec8c3": sec8c3,
+                             "sec9c0": sec9c0,
+                             "sec9c1": sec9c1,
+                             "sec9c2": sec9c2,
+                             "sec9c3": sec9c3
+                         })
+
+    function findItemById(id) {
+        return idMap[id]
+    }
+
     id: root
     width: 800
     height: 480
@@ -1055,8 +1102,13 @@ Item {
     Connections {
         target: handler
 
-        function onCorrectorData(data) {
-            root.corrector = data
+        function onCorrectorData(retData) {
+            let sec = ""
+            let count = 0
+            for (sec in root.idMap) {
+                findItemById(sec).text = retData[count]
+                count++
+            }
         }
     }
 }

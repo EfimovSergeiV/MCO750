@@ -31,7 +31,7 @@ Item {
         function onChartData(data) {
             var line
             for (line in data) {
-                console.log(data[line])
+
                 var lineSeries = chartView.series(data[line].name)
 
                 if (!lineSeries) {
