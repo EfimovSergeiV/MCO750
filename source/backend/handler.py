@@ -7,8 +7,10 @@ from PySide2.QtWidgets import *
 from PySide2.QtCharts import *
 from PySide2.QtQml import *
 
+# Подключения к базам данных
+from source.backend import postgresql
+from source.backend import sqlite
 
-from source.backend import db
 import time
 import random
 
@@ -70,7 +72,8 @@ class Handler(QObject):
     @Slot()
     def get_welding_programm(self):
         """ Получение программ сварки """
-        programm = db.get_welding_programm()
+        programm = sqlite.get_welding_programm()
+        print(f"Поучили программы сварки: {programm}")
         self.list_programs = programm
         self.weldingProgramms.emit(programm)
 
