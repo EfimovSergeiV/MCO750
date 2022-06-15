@@ -117,6 +117,21 @@ Item {
                             height: 40
                         }
                     }
+
+                    Label {
+                        id: notProgrammLabel
+                        x: 8
+                        y: 153
+                        visible: false
+                        width: 784
+                        height: 143
+                        color: "#111111"
+                        text: "Программ не найдено"
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        font.pointSize: 36
+                        font.bold: true
+                    }
                 }
             }
         }
@@ -453,8 +468,12 @@ Item {
         target: handler
 
         function onWeldingProgramms(wb) {
-            console.log(typeof wb)
-            listProgramms1.append(wb)
+            console.log(lenght(wb))
+            if (wb.lengt() > 0) {
+                listProgramms1.append(wb)
+            } else {
+                notProgrammLabel.visible = true
+            }
         }
     }
 }

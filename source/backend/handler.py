@@ -1,18 +1,13 @@
-from cgi import test
-from itertools import count
-from PySide2.QtCore import QObject, Signal, Slot, QThread, QTimer
-
-from PySide2.QtCore import *
-from PySide2.QtWidgets import *
-from PySide2.QtCharts import *
-from PySide2.QtQml import *
-
-# Подключения к базам данных
-from source.backend import postgresql
-from source.backend import sqlite
-
 import time
 import random
+from PySide2.QtCore import QObject, Signal, Slot, QThread, QTimer
+
+# from PySide2.QtCore import *
+# from PySide2.QtWidgets import *
+# from PySide2.QtCharts import *
+# from PySide2.QtQml import *
+
+from source.backend import database
 
 
 class Handler(QObject):
@@ -70,7 +65,7 @@ class Handler(QObject):
     @Slot()
     def get_welding_programm(self):
         """ Получение программ сварки """
-        programm = sqlite.get_welding_programm()
+        programm = database.get_welding_programm()
         self.list_programs = programm
         self.weldingProgramms.emit(programm)
 
@@ -169,6 +164,6 @@ class Handler(QObject):
     def remove_welding_programm(self, id):
         """ Удаление программы сварки """
         print(f"Удаление программы сварки { id }")
-        sqlite.remove_programm(id)
+        database.remove_programm(id)
         # sqlite.remove_welding_programm(id)
         # self.get_welding_programm()
