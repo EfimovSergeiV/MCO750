@@ -896,9 +896,9 @@ Item {
 
                 SilverBtn {
                     id: silverBtn
-                    x: 642
+                    x: 700
                     y: 127
-                    width: 150
+                    width: 92
                     height: 40
                     text: qsTr("Назад")
                     font.capitalization: Font.AllUppercase
@@ -931,7 +931,7 @@ Item {
                     id: silverBtn1
                     x: 4
                     y: 35
-                    width: 150
+                    width: 282
                     height: 40
                     text: "Корректор"
                     font.bold: true
@@ -948,7 +948,7 @@ Item {
                     id: silverBtn2
                     x: 4
                     y: 81
-                    width: 235
+                    width: 282
                     height: 40
                     text: qsTr("Подогрев/Выжигание")
                     font.bold: true
@@ -965,7 +965,7 @@ Item {
                     id: silverBtn3
                     x: 4
                     y: 127
-                    width: 268
+                    width: 282
                     height: 40
                     text: qsTr("Параметры цикла сварки")
                     font.bold: true
@@ -980,9 +980,9 @@ Item {
 
                 SilverBtn {
                     id: silverBtn5
-                    x: 590
-                    y: 62
-                    width: 202
+                    x: 553
+                    y: 81
+                    width: 239
                     height: 40
                     text: qsTr("Создать")
                     font.bold: true
@@ -996,9 +996,9 @@ Item {
 
                 SilverBtn {
                     id: silverBtn6
-                    x: 486
+                    x: 553
                     y: 127
-                    width: 150
+                    width: 141
                     height: 40
                     text: qsTr("Клавиатура")
                     font.bold: true

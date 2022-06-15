@@ -89,7 +89,7 @@ Item {
                             padding: 5
                             text: "Удалить"
                             onClicked: {
-                                console.log("Удаление программы " + id)
+                                handler.remove_welding_programm(id)
                                 bottomRect.running = !bottomRect.running
                                 stackView.push(Qt.resolvedUrl("conf.qml"))
                             }
@@ -108,7 +108,7 @@ Item {
 
                         Label {
                             id: label51
-                            text: max_diameter + " - " + min_diameter + ", mm"
+                            text: min_diameter + " - " + max_diameter + ", mm"
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignVCenter
                             font.pointSize: 14

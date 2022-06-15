@@ -163,3 +163,12 @@ class Handler(QObject):
             )
 
 
+    # Cлоты для манипуляций с программами сварки
+
+    @Slot(int)
+    def remove_welding_programm(self, id):
+        """ Удаление программы сварки """
+        print(f"Удаление программы сварки { id }")
+        sqlite.remove_programm(id)
+        # sqlite.remove_welding_programm(id)
+        # self.get_welding_programm()

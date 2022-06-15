@@ -93,16 +93,15 @@ def update_programm(list_data=None):
 
 # update_programm()
 
-def delete_programm():
-    """ Удаление программы """
+
+def remove_programm(id):
+    """ Удаление программы сварки из SQLite БД """
+
     sqlite_connection = sqlite3.connect(f'{ BASE_DIR }/db.sqlite3')
 
     cursor = sqlite_connection.cursor()
-    sql = "DELETE FROM programm_programmmodel WHERE id = 8"
+    sql = f"DELETE FROM programm_programmmodel WHERE id = { id }"
 
     cursor.execute(sql)
     sqlite_connection.commit()
-
     cursor.close()
-
-# delete_programm()
