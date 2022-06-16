@@ -1,4 +1,6 @@
 import json, psycopg2, sqlite3, datetime
+from traceback import print_tb
+from pprint import pprint
 from psycopg2.extras import RealDictCursor
 from psycopg2 import Error
 from pathlib import Path
@@ -623,8 +625,6 @@ weldingProgrammData = {
 }
 
 
-print(weldingProgrammData)
-
 #     ('programm_programmmodel',), 
 #     ('programm_correctorparammodel',), 
 #     ('programm_reflowparammodel',), 
@@ -642,11 +642,24 @@ print(weldingProgrammData)
 #     ('programm_clampmodel',), 
 #     ('programm_reflowsectionmodel',), 
 #     ('programm_correctorsectionmodel',)
+
+def get_latest_id(model_name):
+
+    sql = f"SELECT id FROM programm_programmmodel ORDER BY id DESC LIMIT 1" #{ model_name }
+    latest_id = request_db(sql)
+    return latest_id#[0]['id'] + 1
+
 def create_programm(list_data=None):
     """ Создание программы сварки """
 
-    sql = f"INSERT INTO programm_programmmodel(name, min_diameter, max_diameter, description, created_at, updated_at) VALUES ('{weldingProgrammData['name']}', '{weldingProgrammData['min_diameter']}', '{weldingProgrammData['max_diameter']}', '{weldingProgrammData['description']}', '{weldingProgrammData['created_at']}', '{weldingProgrammData['updated_at']}')"
-    request_db([sql, sql, sql, sql])
+    programmodel = f"""
+    INSERT INTO programm_programmmodel(id, name, min_diameter, max_diameter, description, created_at, updated_at) 
+    VALUES ('{get_latest_id('programm_programmmodel')}', '{weldingProgrammData['name']}', '{weldingProgrammData['min_diameter']}', '{weldingProgrammData['max_diameter']}', '{weldingProgrammData['description']}', '{weldingProgrammData['created_at']}', '{weldingProgrammData['updated_at']}')"""
+    
+    
+    request_db([
+        programmodel,
+    ])
 
     print(f"Программа создана")
 
@@ -659,4 +672,5 @@ def update_programm(list_data):
 
     print(f"Программа обновлена")
 
-create_programm()
+#create_programm()
+print(get_latest_id('programm_programmmodel'))
