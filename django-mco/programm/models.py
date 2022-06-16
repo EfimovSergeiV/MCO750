@@ -204,7 +204,7 @@ class OilTemperatureSensorModel(SensorAbstractModel):
         return self.programm.name
 
 
-class OtherParameterSensorModel(SensorAbstractModel):
+class OtherParameterSensorModel(models.Model):
     """ Модель датчиков других параметров """
 
     programm = models.ForeignKey(ProgrammModel, verbose_name="Программа", related_name="other_parameter_sensor", on_delete=models.CASCADE)

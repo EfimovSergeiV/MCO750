@@ -397,6 +397,19 @@ Item {
             height: 175
             source: "content/175-footer.png"
             fillMode: Image.PreserveAspectFit
+
+            Button {
+                id: button1
+                x: 514
+                y: 127
+                width: 57
+                height: 40
+                text: qsTr("Chart")
+                onClicked: {
+                    //                    rectangle1.running = true
+                    stackView.push(Qt.resolvedUrl("chart.qml"))
+                }
+            }
         }
 
         Label {
@@ -620,7 +633,7 @@ Item {
             y: 127
             width: 57
             height: 40
-            text: qsTr("run")
+            text: qsTr("Run")
             onClicked: {
                 leftClampControl.running = !leftClampControl.running
                 rightClampControl1.running = !rightClampControl1.running

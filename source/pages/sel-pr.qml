@@ -90,6 +90,19 @@ Item {
                     }
                 }
             }
+
+            Label {
+                id: notProgrammLabel
+                x: 8
+                y: 165
+                width: 784
+                height: 86
+                visible: false
+                text: "Программ не найдено"
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                font.pointSize: 24
+            }
         }
 
         Rectangle {
@@ -383,7 +396,12 @@ Item {
         target: handler
 
         function onWeldingProgramms(wb) {
-            listProgramms.append(wb)
+
+            if (wb.lenght) {
+                listProgramms.append(wb)
+            } else {
+                notProgrammLabel.visible = true
+            }
         }
     }
 }

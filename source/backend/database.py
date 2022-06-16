@@ -1,7 +1,8 @@
-import json, psycopg2, sqlite3
+import json, psycopg2, sqlite3, datetime
 from psycopg2.extras import RealDictCursor
 from psycopg2 import Error
 from pathlib import Path
+from random import randint
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
@@ -315,3 +316,320 @@ def get_welding_programm():
     response = request_db(sql)
 
     return response
+
+
+
+
+def create_programm(list_data):
+    """ Создание программы сварки """
+
+    sql = "INSERT INTO programm_programmmodel VALUES (?,?,?,?,?,?,?)"
+    request_db(sql, list_data)
+
+    print(f"Программа создана")
+
+
+def update_programm(list_data):
+    """ Обновление программы сварки """
+
+    sql = "UPDATE programm_programmmodel SET name = 'Программа обновлена 3' WHERE id = 8"
+    request_db(sql, list_data)
+
+    print(f"Программа обновлена")
+
+
+dt_now = datetime.datetime.now()
+diameter = randint(0, 50)
+
+weldingProgrammData = {
+    # programm_programmmodel
+    "name": "Программа сварки",
+    "min_diameter": diameter,
+    "max_diameter": diameter + 2,
+    "description": "Описание программы сварки",
+    "created_at": dt_now,
+    "updated_at": dt_now,
+
+    # programm_preheatingmodel
+    "preheating": {
+        "ph_0": randint(0, 50),
+        "ph_1": randint(0, 50),
+        "ph_2": randint(0, 50),
+        "ph_3": randint(0, 50),
+        "ph_4": randint(0, 50),
+        "ph_5": randint(0, 50),
+        "ph_6": randint(0, 50),
+        "ph_7": randint(0, 50),
+        "ph_8": randint(0, 50),
+        "ph_9": randint(0, 50),
+        "ph_10": randint(0, 50),
+        "ph_11": randint(0, 50),
+        "ph_12": randint(0, 50),
+    },
+    # programm_otherparametersensormodel
+    "other_parameter_sensor": {
+        "oth_0": randint(0, 50),
+        "oth_1": randint(0, 50),
+        "oth_2": randint(0, 50),
+        "oth_3": randint(0, 50),
+        "oth_4": randint(0, 50),
+        "oth_5": randint(0, 50),
+        "oth_6": randint(0, 50),
+        "oth_7": randint(0, 50),
+        "oth_8": randint(0, 50),
+        "oth_9": randint(0, 50),
+        "oth_10": randint(0, 50),
+        "oth_11": randint(0, 50),
+        "oth_12": randint(0, 50),
+        "oth_13": randint(0, 50),
+        "oth_14": randint(0, 50),
+        "oth_15": randint(0, 50),
+        "oth_16": randint(0, 50),
+        "oth_17": randint(0, 50),
+    },
+    # programm_primaryvoltagesensormodel
+    "primary_voltage_sensor": {
+        "min_voltage": randint(0, 50),
+        "max_voltage": randint(0, 50),
+    },
+    # programm_oiltemperaturesensormodel
+    "oil_temperature_sensor": {
+        "min_value": randint(0, 50),
+        "max_value": randint(0, 50),
+    },
+    # programm_hydraulicpressuresensormodel
+    "hydraulic_pressure_sensor": {
+        "min_value": randint(0, 50),
+        "max_value": randint(0, 50),
+    },
+    # programm_nkpressuremetersensormodel
+    "nk_pressure_meter_sensor": {
+        "min_value": randint(0, 50),
+        "max_value": randint(0, 50),
+    },
+    # programm_pkpressuremetersensormodel
+    "pk_pressuremeter_sensor": {
+        "min_value": randint(0, 50),
+        "max_value": randint(0, 50),
+    },
+    # programm_sedimentpressuresensormodel
+    "sediment_pressure_sensor": {
+        "min_value": randint(0, 50),
+        "max_value": randint(0, 50),
+    },
+    # programm_primaryvoltagesensormodel
+    "primary_voltage_sensor": {
+        "min_value": randint(0, 50),
+        "max_value": randint(0, 50),
+    },
+    # programm_currentsensormodel
+    "current_sensor": {
+        "min_value": randint(0, 50),
+        "max_value": randint(0, 50),
+    },
+    # programm_positionsensormodel
+    "position_sensor": {
+        "min_value": randint(0, 50),
+        "max_value": randint(0, 50),
+    },
+    # programm_burningmodel
+    "burning": {
+        "b_0": randint(0, 50),
+        "b_1": randint(0, 50),
+        "b_2": randint(0, 50),
+        "b_3": randint(0, 50),
+        "b_4": randint(0, 50),
+        "b_5": randint(0, 50),
+        "b_6": randint(0, 50),
+        "b_7": randint(0, 50),
+    },
+    # programm_clampmodel
+    "clamp": {
+        "cl_0": randint(0, 50),
+        "cl_1": randint(0, 50),
+        "cl_2": randint(0, 50),
+        "cl_3": randint(0, 50),
+        "cl_4": randint(0, 50),
+        "cl_5": randint(0, 50),
+        "cl_6": randint(0, 50),
+    },
+    # programm_correctorparammodel
+    "corrector_param": {
+        "id": 1,
+        "programm_id": 1,
+    },
+    # programm_correctorsectionmodel
+    "corrector_sections": [
+        {
+            "corrector": 1,
+            "section": 0,
+            "c_0": randint(0, 50),
+            "c_1": randint(0, 50),
+            "c_2": randint(0, 50),
+            "c_3": randint(0, 50),
+        },
+        {
+            "corrector": 1,
+            "section": 1,
+            "c_0": randint(0, 50),
+            "c_1": randint(0, 50),
+            "c_2": randint(0, 50),
+            "c_3": randint(0, 50),
+        },
+                {
+            "corrector": 1,
+            "section": 2,
+            "c_0": randint(0, 50),
+            "c_1": randint(0, 50),
+            "c_2": randint(0, 50),
+            "c_3": randint(0, 50),
+        },
+        {
+            "corrector": 1,
+            "section": 3,
+            "c_0": randint(0, 50),
+            "c_1": randint(0, 50),
+            "c_2": randint(0, 50),
+            "c_3": randint(0, 50),
+        },
+                {
+            "corrector": 1,
+            "section": 4,
+            "c_0": randint(0, 50),
+            "c_1": randint(0, 50),
+            "c_2": randint(0, 50),
+            "c_3": randint(0, 50),
+        },
+        {
+            "corrector": 1,
+            "section": 5,
+            "c_0": randint(0, 50),
+            "c_1": randint(0, 50),
+            "c_2": randint(0, 50),
+            "c_3": randint(0, 50),
+        },
+                {
+            "corrector": 1,
+            "section": 6,
+            "c_0": randint(0, 50),
+            "c_1": randint(0, 50),
+            "c_2": randint(0, 50),
+            "c_3": randint(0, 50),
+        },
+        {
+            "corrector": 1,
+            "section": 7,
+            "c_0": randint(0, 50),
+            "c_1": randint(0, 50),
+            "c_2": randint(0, 50),
+            "c_3": randint(0, 50),
+        },
+                {
+            "corrector": 1,
+            "section": 8,
+            "c_0": randint(0, 50),
+            "c_1": randint(0, 50),
+            "c_2": randint(0, 50),
+            "c_3": randint(0, 50),
+        },
+        {
+            "corrector": 1,
+            "section": 9,
+            "c_0": randint(0, 50),
+            "c_1": randint(0, 50),
+            "c_2": randint(0, 50),
+            "c_3": randint(0, 50),
+        },
+    ],
+    # programm_reflowparammodel
+    "reflow_param": {
+        "id": 1,
+        "programm_id": 1,
+    },
+    # programm_reflowsectionmodel
+    "reflow_sections": [
+        {
+            "reflow": 1,
+            "section": 0,
+            "r_0": randint(0, 50),
+            "r_1": randint(0, 50),
+            "r_2": randint(0, 50),
+            "r_3": randint(0, 50),
+        },
+        {
+            "reflow": 1,
+            "section": 1,
+            "r_0": randint(0, 50),
+            "r_1": randint(0, 50),
+            "r_2": randint(0, 50),
+            "r_3": randint(0, 50),
+        },
+        {
+            "reflow": 1,
+            "section": 2,
+            "r_0": randint(0, 50),
+            "r_1": randint(0, 50),
+            "r_2": randint(0, 50),
+            "r_3": randint(0, 50),
+        },
+        {
+            "reflow": 1,
+            "section": 3,
+            "r_0": randint(0, 50),
+            "r_1": randint(0, 50),
+            "r_2": randint(0, 50),
+            "r_3": randint(0, 50),
+        },
+                {
+            "reflow": 1,
+            "section": 4,
+            "r_0": randint(0, 50),
+            "r_1": randint(0, 50),
+            "r_2": randint(0, 50),
+            "r_3": randint(0, 50),
+        },
+        {
+            "reflow": 1,
+            "section": 5,
+            "r_0": randint(0, 50),
+            "r_1": randint(0, 50),
+            "r_2": randint(0, 50),
+            "r_3": randint(0, 50),
+        },
+        {
+            "reflow": 1,
+            "section": 6,
+            "r_0": randint(0, 50),
+            "r_1": randint(0, 50),
+            "r_2": randint(0, 50),
+            "r_3": randint(0, 50),
+        },
+        {
+            "reflow": 1,
+            "section": 7,
+            "r_0": randint(0, 50),
+            "r_1": randint(0, 50),
+            "r_2": randint(0, 50),
+            "r_3": randint(0, 50),
+        },
+        {
+            "reflow": 1,
+            "section": 8,
+            "r_0": randint(0, 50),
+            "r_1": randint(0, 50),
+            "r_2": randint(0, 50),
+            "r_3": randint(0, 50),
+        },
+        {
+            "reflow": 1,
+            "section": 9,
+            "r_0": randint(0, 50),
+            "r_1": randint(0, 50),
+            "r_2": randint(0, 50),
+            "r_3": randint(0, 50),
+        },
+    ]
+}
+
+
+print(weldingProgrammData)

@@ -121,16 +121,15 @@ Item {
                     Label {
                         id: notProgrammLabel
                         x: 8
-                        y: 153
+                        y: 121
                         visible: false
                         width: 784
-                        height: 143
+                        height: 102
                         color: "#111111"
                         text: "Программ не найдено"
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
-                        font.pointSize: 36
-                        font.bold: true
+                        font.pointSize: 24
                     }
                 }
             }
@@ -468,8 +467,9 @@ Item {
         target: handler
 
         function onWeldingProgramms(wb) {
-            console.log(lenght(wb))
-            if (wb.lengt() > 0) {
+
+            console.log(wb.length)
+            if (wb.length > 0) {
                 listProgramms1.append(wb)
             } else {
                 notProgrammLabel.visible = true
