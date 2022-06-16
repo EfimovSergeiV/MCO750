@@ -273,18 +273,27 @@ def get_db():
 
 def request_db(sql):
     """ Выполнение запроса в БД """
-    conn = get_db()    
+    conn = get_db()
+
+    print(type(sql))
 
     # Работаем с SQLite
     if selected_db == 'sqlite':
         conn.row_factory = dict_factory
         cursor = conn.cursor()
-        cursor.execute(sql)
 
-        # Если нужно вернуть данные с запроса, обрабатываем и возвращаем)
-        if sql.startswith('SELECT'):
-            data = cursor.fetchall()
-            return data
+        # Что бы одним коммитом список запросов
+        # ПОПРОБЫВАТЬ ПОДОБНОЕ С SELECT, ДЛЯ ПОЛУЧЕНИЯ ВСЕЙ ИНФОРМАЦИИ О ПРОГРАММЕ
+        if type(sql) == list:
+            for s in sql:
+                cursor.execute(s)
+        else:
+            cursor.execute(sql)
+
+            # Если нужно вернуть данные с запроса, обрабатываем и возвращаем)
+            if sql.startswith('SELECT'):
+                data = cursor.fetchall()
+                return data
 
     # Работаем с PostgreSQL
     elif selected_db == 'psql':
@@ -320,33 +329,15 @@ def get_welding_programm():
 
 
 
-def create_programm(list_data):
-    """ Создание программы сварки """
-
-    sql = "INSERT INTO programm_programmmodel VALUES (?,?,?,?,?,?,?)"
-    request_db(sql, list_data)
-
-    print(f"Программа создана")
-
-
-def update_programm(list_data):
-    """ Обновление программы сварки """
-
-    sql = "UPDATE programm_programmmodel SET name = 'Программа обновлена 3' WHERE id = 8"
-    request_db(sql, list_data)
-
-    print(f"Программа обновлена")
-
-
 dt_now = datetime.datetime.now()
 diameter = randint(0, 50)
 
 weldingProgrammData = {
     # programm_programmmodel
-    "name": "Программа сварки",
+    "name": f"Программа сварки { diameter }",
     "min_diameter": diameter,
     "max_diameter": diameter + 2,
-    "description": "Описание программы сварки",
+    "description": f"Описание программы сварки { diameter }",
     "created_at": dt_now,
     "updated_at": dt_now,
 
@@ -633,3 +624,39 @@ weldingProgrammData = {
 
 
 print(weldingProgrammData)
+
+#     ('programm_programmmodel',), 
+#     ('programm_correctorparammodel',), 
+#     ('programm_reflowparammodel',), 
+#     ('programm_sedimentpressuresensormodel',), 
+#     ('programm_primaryvoltagesensormodel',), 
+#     ('programm_preheatingmodel',), 
+#     ('programm_positionsensormodel',), 
+#     ('programm_pkpressuremetersensormodel',), 
+#     ('programm_otherparametersensormodel',), 
+#     ('programm_oiltemperaturesensormodel',), 
+#     ('programm_nkpressuremetersensormodel',), 
+#     ('programm_hydraulicpressuresensormodel',), 
+#     ('programm_currentsensormodel',), 
+#     ('programm_burningmodel',), 
+#     ('programm_clampmodel',), 
+#     ('programm_reflowsectionmodel',), 
+#     ('programm_correctorsectionmodel',)
+def create_programm(list_data=None):
+    """ Создание программы сварки """
+
+    sql = f"INSERT INTO programm_programmmodel(name, min_diameter, max_diameter, description, created_at, updated_at) VALUES ('{weldingProgrammData['name']}', '{weldingProgrammData['min_diameter']}', '{weldingProgrammData['max_diameter']}', '{weldingProgrammData['description']}', '{weldingProgrammData['created_at']}', '{weldingProgrammData['updated_at']}')"
+    request_db([sql, sql, sql, sql])
+
+    print(f"Программа создана")
+
+
+def update_programm(list_data):
+    """ Обновление программы сварки """
+
+    sql = "UPDATE programm_programmmodel SET name = 'Программа обновлена 3' WHERE id = 8"
+    request_db(sql)
+
+    print(f"Программа обновлена")
+
+create_programm()
