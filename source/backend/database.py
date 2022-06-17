@@ -274,41 +274,79 @@ def get_db():
 
 
 def request_db(sql):
-    """ Выполнение запроса в БД """
-    conn = get_db()
+    """ Выполнение запроса(ов) в БД """
 
-    print(type(sql))
+    if type(sql) == list:
+        conn = get_db()
+        
+        # Настраиваем курсор в зависимости от выбраной БД
+        if selected_db == 'sqlite':
+            conn.row_factory = dict_factory
+            cursor = conn.cursor()
 
-    # Работаем с SQLite
-    if selected_db == 'sqlite':
-        conn.row_factory = dict_factory
-        cursor = conn.cursor()
+        elif selected_db == 'psql':
+            cursor = conn.cursor(cursor_factory=RealDictCursor)
+            
 
-        # Что бы одним коммитом список запросов
-        # ПОПРОБЫВАТЬ ПОДОБНОЕ С SELECT, ДЛЯ ПОЛУЧЕНИЯ ВСЕЙ ИНФОРМАЦИИ О ПРОГРАММЕ
-        if type(sql) == list:
-            for s in sql:
-                cursor.execute(s)
-        else:
-            cursor.execute(sql)
+        # Вставляем запросы
+        for sql_request in sql:
+            print(type(sql_request), sql_request)
+            cursor.execute(sql_request)
 
-            # Если нужно вернуть данные с запроса, обрабатываем и возвращаем)
-            if sql.startswith('SELECT'):
-                data = cursor.fetchall()
-                return data
 
-    # Работаем с PostgreSQL
-    elif selected_db == 'psql':
-        cursor = conn.cursor(cursor_factory=RealDictCursor)
-        cursor.execute(sql)
+            # Если нужно вернуть данные из запроса
+            if sql_request.startswith('SELECT'):
+                data = {}
 
-        if sql.startswith('SELECT'):
-            dump_data = json.dumps(cursor.fetchall(), ensure_ascii=False)
-            return json.loads(dump_data)
+                if selected_db == 'sqlite':
+                    data = cursor.fetchall()
+                    return data
 
-    conn.commit()
-    cursor.close()
-    return "Запрос выполнен"
+                elif selected_db == 'psql':
+                    dump_data = json.dumps(cursor.fetchall(), ensure_ascii=False)
+                    return json.loads(dump_data)
+
+
+        conn.commit()   # Комитим базу
+        cursor.close()  # Закрываем соединение
+        return "Запрос выполнен"
+
+
+    else:
+        print(sql)
+        raise Exception("Give me list of sql requests")
+
+
+    # # Работаем с SQLite
+    # if selected_db == 'sqlite':
+    #     conn.row_factory = dict_factory
+    #     cursor = conn.cursor()
+
+    #     # Что бы одним коммитом список запросов
+    #     # ПОПРОБЫВАТЬ ПОДОБНОЕ С SELECT, ДЛЯ ПОЛУЧЕНИЯ ВСЕЙ ИНФОРМАЦИИ О ПРОГРАММЕ
+    #     if type(sql) == list:
+    #         for s in sql:
+    #             cursor.execute(s)
+    #     else:
+    #         cursor.execute(sql)
+
+    #         # Если нужно вернуть данные с запроса, обрабатываем и возвращаем)
+    #         if sql.startswith('SELECT'):
+    #             data = cursor.fetchall()
+    #             return data
+
+    # # Работаем с PostgreSQL
+    # elif selected_db == 'psql':
+    #     cursor = conn.cursor(cursor_factory=RealDictCursor)
+    #     cursor.execute(sql)
+
+    #     if sql.startswith('SELECT'):
+    #         dump_data = json.dumps(cursor.fetchall(), ensure_ascii=False)
+    #         return json.loads(dump_data)
+
+    # conn.commit()
+    # cursor.close()
+    # return "Запрос выполнен"
 
 
 def remove_programm(id):
@@ -336,15 +374,16 @@ diameter = randint(0, 50)
 
 weldingProgrammData = {
     # programm_programmmodel
-    "name": f"Программа сварки { diameter }",
-    "min_diameter": diameter,
-    "max_diameter": diameter + 2,
-    "description": f"Описание программы сварки { diameter }",
-    "created_at": dt_now,
-    "updated_at": dt_now,
-
+    "programm_programmmodel": {
+        "name": f"Программа сварки { diameter }",
+        "min_diameter": diameter,
+        "max_diameter": diameter + 2,
+        "description": f"Описание программы сварки { diameter }",
+        "created_at": dt_now,
+        "updated_at": dt_now,
+    },
     # programm_preheatingmodel
-    "preheating": {
+    "programm_preheatingmodel": {
         "ph_0": randint(0, 50),
         "ph_1": randint(0, 50),
         "ph_2": randint(0, 50),
@@ -360,7 +399,7 @@ weldingProgrammData = {
         "ph_12": randint(0, 50),
     },
     # programm_otherparametersensormodel
-    "other_parameter_sensor": {
+    "programm_otherparametersensormodel": {
         "oth_0": randint(0, 50),
         "oth_1": randint(0, 50),
         "oth_2": randint(0, 50),
@@ -381,52 +420,52 @@ weldingProgrammData = {
         "oth_17": randint(0, 50),
     },
     # programm_primaryvoltagesensormodel
-    "primary_voltage_sensor": {
+    "programm_primaryvoltagesensormodel": {
         "min_voltage": randint(0, 50),
         "max_voltage": randint(0, 50),
     },
     # programm_oiltemperaturesensormodel
-    "oil_temperature_sensor": {
+    "programm_oiltemperaturesensormodel": {
         "min_value": randint(0, 50),
         "max_value": randint(0, 50),
     },
     # programm_hydraulicpressuresensormodel
-    "hydraulic_pressure_sensor": {
+    "programm_hydraulicpressuresensormodel": {
         "min_value": randint(0, 50),
         "max_value": randint(0, 50),
     },
     # programm_nkpressuremetersensormodel
-    "nk_pressure_meter_sensor": {
+    "programm_nkpressuremetersensormodel": {
         "min_value": randint(0, 50),
         "max_value": randint(0, 50),
     },
     # programm_pkpressuremetersensormodel
-    "pk_pressuremeter_sensor": {
+    "programm_pkpressuremetersensormodel": {
         "min_value": randint(0, 50),
         "max_value": randint(0, 50),
     },
     # programm_sedimentpressuresensormodel
-    "sediment_pressure_sensor": {
+    "programm_sedimentpressuresensormodel": {
         "min_value": randint(0, 50),
         "max_value": randint(0, 50),
     },
     # programm_primaryvoltagesensormodel
-    "primary_voltage_sensor": {
+    "programm_primaryvoltagesensormodel": {
         "min_value": randint(0, 50),
         "max_value": randint(0, 50),
     },
     # programm_currentsensormodel
-    "current_sensor": {
+    "programm_currentsensormodel": {
         "min_value": randint(0, 50),
         "max_value": randint(0, 50),
     },
     # programm_positionsensormodel
-    "position_sensor": {
+    "programm_positionsensormodel": {
         "min_value": randint(0, 50),
         "max_value": randint(0, 50),
     },
     # programm_burningmodel
-    "burning": {
+    "programm_burningmodel": {
         "b_0": randint(0, 50),
         "b_1": randint(0, 50),
         "b_2": randint(0, 50),
@@ -437,7 +476,7 @@ weldingProgrammData = {
         "b_7": randint(0, 50),
     },
     # programm_clampmodel
-    "clamp": {
+    "programm_clampmodel": {
         "cl_0": randint(0, 50),
         "cl_1": randint(0, 50),
         "cl_2": randint(0, 50),
@@ -447,12 +486,12 @@ weldingProgrammData = {
         "cl_6": randint(0, 50),
     },
     # programm_correctorparammodel
-    "corrector_param": {
+    "programm_correctorparammodel": {
         "id": 1,
         "programm_id": 1,
     },
     # programm_correctorsectionmodel
-    "corrector_sections": [
+    "programm_correctorsectionmodel": [
         {
             "corrector": 1,
             "section": 0,
@@ -535,12 +574,12 @@ weldingProgrammData = {
         },
     ],
     # programm_reflowparammodel
-    "reflow_param": {
+    "programm_reflowparammodel": {
         "id": 1,
         "programm_id": 1,
     },
     # programm_reflowsectionmodel
-    "reflow_sections": [
+    "programm_reflowsectionmodel": [
         {
             "reflow": 1,
             "section": 0,
@@ -643,25 +682,59 @@ weldingProgrammData = {
 #     ('programm_reflowsectionmodel',), 
 #     ('programm_correctorsectionmodel',)
 
-def get_latest_id(model_name):
 
-    sql = f"SELECT id FROM programm_programmmodel ORDER BY id DESC LIMIT 1" #{ model_name }
-    latest_id = request_db(sql)
-    return latest_id#[0]['id'] + 1
+def testing(list_requests):
+    for sql_request in list_requests:
+        print(sql_request)
+
+def get_latest_id(model_name):
+    """ Возвращаем последний id + 1 модели """
+
+    sql = f"SELECT id FROM { model_name } ORDER BY id DESC LIMIT 1"
+    latest_id = request_db([sql,])
+    return latest_id[0]['id'] + 1
+
 
 def create_programm(list_data=None):
     """ Создание программы сварки """
+    list_requests = []
+    fields = ()
+    data = ()
+    # Парсим параметры программы
+    for model in weldingProgrammData.keys():
+        print(model)
+        for params in weldingProgrammData[model]:
+            
+            # Парсим вложенные параметры
+            if type(params) == dict:
+                for inserted_param in params.keys():
+                    print(inserted_param)
 
-    programmodel = f"""
-    INSERT INTO programm_programmmodel(id, name, min_diameter, max_diameter, description, created_at, updated_at) 
-    VALUES ('{get_latest_id('programm_programmmodel')}', '{weldingProgrammData['name']}', '{weldingProgrammData['min_diameter']}', '{weldingProgrammData['max_diameter']}', '{weldingProgrammData['description']}', '{weldingProgrammData['created_at']}', '{weldingProgrammData['updated_at']}')"""
-    
-    
-    request_db([
-        programmodel,
-    ])
+        list_requests.append(f"""INSERT INTO {model}{fields} VALUES {data}""")
 
-    print(f"Программа создана")
+    testing(list_requests)
+
+
+    # model = 'programm_programmmodel'
+    # fields = ('id', 'name', 'min_diameter', 'max_diameter', 'description', 'created_at', 'updated_at')
+
+    # data = (
+    #     get_latest_id(model),
+    #     weldingProgrammData['name'],
+    #     weldingProgrammData['min_diameter'],
+    #     weldingProgrammData['max_diameter'],
+    #     weldingProgrammData['description'],
+    #     str(weldingProgrammData['created_at']),
+    #     str(weldingProgrammData['updated_at'])
+    # )
+
+    # programmodel = f"""INSERT INTO {model}{fields} VALUES {data}"""
+        
+    # request_db([
+    #     programmodel,
+    # ])
+
+    # print(f"Программа создана")
 
 
 def update_programm(list_data):
@@ -672,5 +745,5 @@ def update_programm(list_data):
 
     print(f"Программа обновлена")
 
-#create_programm()
-print(get_latest_id('programm_programmmodel'))
+create_programm()
+# print(get_latest_id('programm_programmmodel'))
