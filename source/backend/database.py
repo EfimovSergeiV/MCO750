@@ -374,7 +374,7 @@ diameter = randint(0, 50)
 weldingProgrammData = {
     # programm_programmmodel
     "programm_programmmodel": {
-        "name": f"Программа сварки { diameter }",
+        "name": f"Программа сварки { diameter } - { diameter + 2 }",
         "min_diameter": diameter,
         "max_diameter": diameter + 2,
         "description": f"Описание программы сварки { diameter }",
@@ -383,6 +383,7 @@ weldingProgrammData = {
     },
     # programm_preheatingmodel
     "programm_preheatingmodel": {
+        "programm": None,
         "ph_0": randint(0, 50),
         "ph_1": randint(0, 50),
         "ph_2": randint(0, 50),
@@ -399,6 +400,7 @@ weldingProgrammData = {
     },
     # programm_otherparametersensormodel
     "programm_otherparametersensormodel": {
+        "programm": None,
         "oth_0": randint(0, 50),
         "oth_1": randint(0, 50),
         "oth_2": randint(0, 50),
@@ -420,51 +422,61 @@ weldingProgrammData = {
     },
     # programm_primaryvoltagesensormodel
     "programm_primaryvoltagesensormodel": {
+        "programm": None,
         "min_voltage": randint(0, 50),
         "max_voltage": randint(0, 50),
     },
     # programm_oiltemperaturesensormodel
     "programm_oiltemperaturesensormodel": {
+        "programm": None,
         "min_value": randint(0, 50),
         "max_value": randint(0, 50),
     },
     # programm_hydraulicpressuresensormodel
     "programm_hydraulicpressuresensormodel": {
+        "programm": None,
         "min_value": randint(0, 50),
         "max_value": randint(0, 50),
     },
     # programm_nkpressuremetersensormodel
     "programm_nkpressuremetersensormodel": {
+        "programm": None,
         "min_value": randint(0, 50),
         "max_value": randint(0, 50),
     },
     # programm_pkpressuremetersensormodel
     "programm_pkpressuremetersensormodel": {
+        "programm": None,
         "min_value": randint(0, 50),
         "max_value": randint(0, 50),
     },
     # programm_sedimentpressuresensormodel
     "programm_sedimentpressuresensormodel": {
+        "programm": None,
         "min_value": randint(0, 50),
         "max_value": randint(0, 50),
     },
     # programm_primaryvoltagesensormodel
     "programm_primaryvoltagesensormodel": {
+        "programm": None,
         "min_value": randint(0, 50),
         "max_value": randint(0, 50),
     },
     # programm_currentsensormodel
     "programm_currentsensormodel": {
+        "programm": None,
         "min_value": randint(0, 50),
         "max_value": randint(0, 50),
     },
     # programm_positionsensormodel
     "programm_positionsensormodel": {
+        "programm": None,
         "min_value": randint(0, 50),
         "max_value": randint(0, 50),
     },
     # programm_burningmodel
     "programm_burningmodel": {
+        "programm": None,
         "b_0": randint(0, 50),
         "b_1": randint(0, 50),
         "b_2": randint(0, 50),
@@ -476,6 +488,7 @@ weldingProgrammData = {
     },
     # programm_clampmodel
     "programm_clampmodel": {
+        "programm": None,
         "cl_0": randint(0, 50),
         "cl_1": randint(0, 50),
         "cl_2": randint(0, 50),
@@ -486,86 +499,86 @@ weldingProgrammData = {
     },
     # programm_correctorparammodel
     "programm_correctorparammodel": {
-        "id": 1,
-        "programm_id": 1,
+        "id": None,
+        "programm": None,
     },
     # programm_correctorsectionmodel
     "programm_correctorsectionmodel": [
         {
-            "corrector": 1,
-            "section": 0,
+            "corrector": None,
+            "section": None,
             "c_0": randint(0, 50),
             "c_1": randint(0, 50),
             "c_2": randint(0, 50),
             "c_3": randint(0, 50),
         },
         {
-            "corrector": 1,
-            "section": 1,
+            "corrector": None,
+            "section": None,
             "c_0": randint(0, 50),
             "c_1": randint(0, 50),
             "c_2": randint(0, 50),
             "c_3": randint(0, 50),
         },
                 {
-            "corrector": 1,
-            "section": 2,
+            "corrector": None,
+            "section": None,
             "c_0": randint(0, 50),
             "c_1": randint(0, 50),
             "c_2": randint(0, 50),
             "c_3": randint(0, 50),
         },
         {
-            "corrector": 1,
-            "section": 3,
+            "corrector": None,
+            "section": None,
             "c_0": randint(0, 50),
             "c_1": randint(0, 50),
             "c_2": randint(0, 50),
             "c_3": randint(0, 50),
         },
                 {
-            "corrector": 1,
-            "section": 4,
+            "corrector": None,
+            "section": None,
             "c_0": randint(0, 50),
             "c_1": randint(0, 50),
             "c_2": randint(0, 50),
             "c_3": randint(0, 50),
         },
         {
-            "corrector": 1,
-            "section": 5,
+            "corrector": None,
+            "section": None,
             "c_0": randint(0, 50),
             "c_1": randint(0, 50),
             "c_2": randint(0, 50),
             "c_3": randint(0, 50),
         },
                 {
-            "corrector": 1,
-            "section": 6,
+            "corrector": None,
+            "section": None,
             "c_0": randint(0, 50),
             "c_1": randint(0, 50),
             "c_2": randint(0, 50),
             "c_3": randint(0, 50),
         },
         {
-            "corrector": 1,
-            "section": 7,
+            "corrector": None,
+            "section": None,
             "c_0": randint(0, 50),
             "c_1": randint(0, 50),
             "c_2": randint(0, 50),
             "c_3": randint(0, 50),
         },
                 {
-            "corrector": 1,
-            "section": 8,
+            "corrector": None,
+            "section": None,
             "c_0": randint(0, 50),
             "c_1": randint(0, 50),
             "c_2": randint(0, 50),
             "c_3": randint(0, 50),
         },
         {
-            "corrector": 1,
-            "section": 9,
+            "corrector": None,
+            "section": None,
             "c_0": randint(0, 50),
             "c_1": randint(0, 50),
             "c_2": randint(0, 50),
@@ -574,86 +587,86 @@ weldingProgrammData = {
     ],
     # programm_reflowparammodel
     "programm_reflowparammodel": {
-        "id": 1,
-        "programm_id": 1,
+        "id": None,
+        "programm": None,
     },
     # programm_reflowsectionmodel
     "programm_reflowsectionmodel": [
         {
-            "reflow": 1,
-            "section": 0,
+            "reflow": None,
+            "section": None,
             "r_0": randint(0, 50),
             "r_1": randint(0, 50),
             "r_2": randint(0, 50),
             "r_3": randint(0, 50),
         },
         {
-            "reflow": 1,
-            "section": 1,
+            "reflow": None,
+            "section": None,
             "r_0": randint(0, 50),
             "r_1": randint(0, 50),
             "r_2": randint(0, 50),
             "r_3": randint(0, 50),
         },
         {
-            "reflow": 1,
-            "section": 2,
+            "reflow": None,
+            "section": None,
             "r_0": randint(0, 50),
             "r_1": randint(0, 50),
             "r_2": randint(0, 50),
             "r_3": randint(0, 50),
         },
         {
-            "reflow": 1,
-            "section": 3,
+            "reflow": None,
+            "section": None,
             "r_0": randint(0, 50),
             "r_1": randint(0, 50),
             "r_2": randint(0, 50),
             "r_3": randint(0, 50),
         },
                 {
-            "reflow": 1,
-            "section": 4,
+            "reflow": None,
+            "section": None,
             "r_0": randint(0, 50),
             "r_1": randint(0, 50),
             "r_2": randint(0, 50),
             "r_3": randint(0, 50),
         },
         {
-            "reflow": 1,
-            "section": 5,
+            "reflow": None,
+            "section": None,
             "r_0": randint(0, 50),
             "r_1": randint(0, 50),
             "r_2": randint(0, 50),
             "r_3": randint(0, 50),
         },
         {
-            "reflow": 1,
-            "section": 6,
+            "reflow": None,
+            "section": None,
             "r_0": randint(0, 50),
             "r_1": randint(0, 50),
             "r_2": randint(0, 50),
             "r_3": randint(0, 50),
         },
         {
-            "reflow": 1,
-            "section": 7,
+            "reflow": None,
+            "section": None,
             "r_0": randint(0, 50),
             "r_1": randint(0, 50),
             "r_2": randint(0, 50),
             "r_3": randint(0, 50),
         },
         {
-            "reflow": 1,
-            "section": 8,
+            "reflow": None,
+            "section": None,
             "r_0": randint(0, 50),
             "r_1": randint(0, 50),
             "r_2": randint(0, 50),
             "r_3": randint(0, 50),
         },
         {
-            "reflow": 1,
-            "section": 9,
+            "reflow": None,
+            "section": None,
             "r_0": randint(0, 50),
             "r_1": randint(0, 50),
             "r_2": randint(0, 50),
