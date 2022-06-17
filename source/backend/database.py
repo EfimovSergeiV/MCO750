@@ -718,8 +718,11 @@ def create_programm(list_data=None):
     Попробовать сделать через абстрактный класс
     """
     list_requests = []
-    fields = ()
-    
+    programm = 0    #ID программы
+    corrector = 0   #ID корректора
+    reflow = 0      #ID оплавления
+    section = 0     #ID секции
+
 
     # Парсим параметры программы
     for model in weldingProgrammData.keys():
@@ -729,14 +732,18 @@ def create_programm(list_data=None):
             values = [get_latest_id(model),] + list(weldingProgrammData[model].values())
             list_requests.append(f"""INSERT INTO {model}{tuple(keys)} VALUES {tuple(values)}""")
 
-        else:
-            print(model, weldingProgrammData[model])
+        elif type(weldingProgrammData[model]) == list:
             for inserted_param in weldingProgrammData[model]:
                 print(inserted_param)
                 keys = list(inserted_param.keys())
                 values = list(inserted_param.values())
                 list_requests.append(f"""INSERT INTO {model}{tuple(keys)} VALUES {tuple(values)}""")
 
+        else:
+            print('Ошибка при парсинге данных программы')
+            raise Exception('Ошибка при парсинге данных программы')
+
+        print(f"\nPROGRAMM ID:\t{ programm }\nCORECTOR ID:\t{ corrector }\nREFLOW ID:\t{ reflow }\nSECTION ID:\t{ section }\n")
     response = testing(list_requests)
     print(response)
 
