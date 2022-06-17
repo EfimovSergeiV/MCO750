@@ -93,7 +93,24 @@ class CorrectorAdmin(admin.ModelAdmin):
     inlines = [InlineCorrectorAdmin,]
 
 
-admin.site.register(ProgrammModel)
+class ProgrammAdmin(admin.ModelAdmin):
+    list_display = ('name', 'min_diameter', 'max_diameter', 'created_at', 'updated_at')
+    list_filter = ('created_at', 'updated_at')
+    search_fields = ('name', 'description')
+    ordering = ('-created_at',)
+    readonly_fields = ('created_at', 'updated_at')
+    fieldsets = (
+        (None, {
+            'fields': ('name', ('min_diameter', 'max_diameter',) ,'description')
+        }),
+        ('Дата и время', {
+            'fields': ('created_at', 'updated_at')
+        }),
+    )
+
+
+
+admin.site.register(ProgrammModel, ProgrammAdmin)
 admin.site.register(PreheatingModel)
 admin.site.register(BurningModel)
 admin.site.register(ClampModel)
@@ -110,6 +127,7 @@ admin.site.register(ReflowParamModel, ReflowAdmin)
 admin.site.register(CorrectorParamModel, CorrectorAdmin)
 
 
+# Отображаем пользователей и группы в админке
 from django.contrib.auth.models import Group, User
 from django.contrib.auth.admin import GroupAdmin, UserAdmin
 admin.site.register(Group, GroupAdmin)

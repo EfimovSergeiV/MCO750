@@ -274,7 +274,7 @@ def get_db():
 
 
 def request_db(sql):
-    """ Выполнение запроса(ов) в БД """
+    """ Выполнение списка запросов в БД """
 
     if type(sql) == list:
         conn = get_db()
@@ -290,7 +290,6 @@ def request_db(sql):
 
         # Вставляем запросы
         for sql_request in sql:
-            print(type(sql_request), sql_request)
             cursor.execute(sql_request)
 
 
@@ -684,38 +683,51 @@ weldingProgrammData = {
 
 
 def testing(list_requests):
-    for sql_request in list_requests:
-        print(sql_request)
+    return list_requests
 
 def get_latest_id(model_name):
     """ Возвращаем последний id + 1 модели """
 
     sql = f"SELECT id FROM { model_name } ORDER BY id DESC LIMIT 1"
     latest_id = request_db([sql,])
-    return latest_id[0]['id'] + 1
+
+    #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    if len(latest_id) > 0:
+        return latest_id[0]['id'] + 1
+    else:
+        return 1
+
 
 
 def create_programm(list_data=None):
-    """ Создание программы сварки """
+    """ 
+    Создание программы сварки 
+    Попробовать сделать через абстрактный класс
+    """
     list_requests = []
     fields = ()
-    data = ()
+    
+
     # Парсим параметры программы
     for model in weldingProgrammData.keys():
-        print(model)
-        for params in weldingProgrammData[model]:
-            
-            # Парсим вложенные параметры
-            if type(params) == dict:
-                for inserted_param in params.keys():
-                    print(inserted_param)
 
-        list_requests.append(f"""INSERT INTO {model}{fields} VALUES {data}""")
+        if type(weldingProgrammData[model]) == dict:
+            keys = ['id',] + list(weldingProgrammData[model].keys())
+            values = [get_latest_id(model),] + list(weldingProgrammData[model].values())
+            list_requests.append(f"""INSERT INTO {model}{tuple(keys)} VALUES {tuple(values)}""")
 
-    testing(list_requests)
+        else:
+            print(model, weldingProgrammData[model])
+            for inserted_param in weldingProgrammData[model]:
+                print(inserted_param)
+                keys = list(inserted_param.keys())
+                values = list(inserted_param.values())
+                list_requests.append(f"""INSERT INTO {model}{tuple(keys)} VALUES {tuple(values)}""")
 
+    response = testing(list_requests)
+    print(response)
 
-    # model = 'programm_programmmodel'
+    # model = 'programm_programmmodel' get_latest_id(model),
     # fields = ('id', 'name', 'min_diameter', 'max_diameter', 'description', 'created_at', 'updated_at')
 
     # data = (
