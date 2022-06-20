@@ -1,3 +1,4 @@
+from cgi import print_arguments
 import json, psycopg2, sqlite3, datetime
 from traceback import print_tb
 from pprint import pprint
@@ -378,12 +379,12 @@ weldingProgrammData = {
         "min_diameter": diameter,
         "max_diameter": diameter + 2,
         "description": f"Описание программы сварки { diameter }",
-        "created_at": dt_now,
-        "updated_at": dt_now,
+        "created_at": str(dt_now),
+        "updated_at": str(dt_now),
     },
     # programm_preheatingmodel
     "programm_preheatingmodel": {
-        "programm": None,
+        "programm_id": None,
         "ph_0": randint(0, 50),
         "ph_1": randint(0, 50),
         "ph_2": randint(0, 50),
@@ -400,7 +401,7 @@ weldingProgrammData = {
     },
     # programm_otherparametersensormodel
     "programm_otherparametersensormodel": {
-        "programm": None,
+        "programm_id": None,
         "oth_0": randint(0, 50),
         "oth_1": randint(0, 50),
         "oth_2": randint(0, 50),
@@ -422,61 +423,61 @@ weldingProgrammData = {
     },
     # programm_primaryvoltagesensormodel
     "programm_primaryvoltagesensormodel": {
-        "programm": None,
+        "programm_id": None,
         "min_voltage": randint(0, 50),
         "max_voltage": randint(0, 50),
     },
     # programm_oiltemperaturesensormodel
     "programm_oiltemperaturesensormodel": {
-        "programm": None,
+        "programm_id": None,
         "min_value": randint(0, 50),
         "max_value": randint(0, 50),
     },
     # programm_hydraulicpressuresensormodel
     "programm_hydraulicpressuresensormodel": {
-        "programm": None,
+        "programm_id": None,
         "min_value": randint(0, 50),
         "max_value": randint(0, 50),
     },
     # programm_nkpressuremetersensormodel
     "programm_nkpressuremetersensormodel": {
-        "programm": None,
+        "programm_id": None,
         "min_value": randint(0, 50),
         "max_value": randint(0, 50),
     },
     # programm_pkpressuremetersensormodel
     "programm_pkpressuremetersensormodel": {
-        "programm": None,
+        "programm_id": None,
         "min_value": randint(0, 50),
         "max_value": randint(0, 50),
     },
     # programm_sedimentpressuresensormodel
     "programm_sedimentpressuresensormodel": {
-        "programm": None,
+        "programm_id": None,
         "min_value": randint(0, 50),
         "max_value": randint(0, 50),
     },
     # programm_primaryvoltagesensormodel
     "programm_primaryvoltagesensormodel": {
-        "programm": None,
+        "programm_id": None,
         "min_value": randint(0, 50),
         "max_value": randint(0, 50),
     },
     # programm_currentsensormodel
     "programm_currentsensormodel": {
-        "programm": None,
+        "programm_id": None,
         "min_value": randint(0, 50),
         "max_value": randint(0, 50),
     },
     # programm_positionsensormodel
     "programm_positionsensormodel": {
-        "programm": None,
+        "programm_id": None,
         "min_value": randint(0, 50),
         "max_value": randint(0, 50),
     },
     # programm_burningmodel
     "programm_burningmodel": {
-        "programm": None,
+        "programm_id": None,
         "b_0": randint(0, 50),
         "b_1": randint(0, 50),
         "b_2": randint(0, 50),
@@ -488,7 +489,7 @@ weldingProgrammData = {
     },
     # programm_clampmodel
     "programm_clampmodel": {
-        "programm": None,
+        "programm_id": None,
         "cl_0": randint(0, 50),
         "cl_1": randint(0, 50),
         "cl_2": randint(0, 50),
@@ -499,86 +500,85 @@ weldingProgrammData = {
     },
     # programm_correctorparammodel
     "programm_correctorparammodel": {
-        "id": None,
-        "programm": None,
+        "programm_id": None,
     },
     # programm_correctorsectionmodel
     "programm_correctorsectionmodel": [
         {
-            "corrector": None,
-            "section": None,
+            "corrector_id": None,
+            "section": 0,
             "c_0": randint(0, 50),
             "c_1": randint(0, 50),
             "c_2": randint(0, 50),
             "c_3": randint(0, 50),
         },
         {
-            "corrector": None,
-            "section": None,
+            "corrector_id": None,
+            "section": 1,
             "c_0": randint(0, 50),
             "c_1": randint(0, 50),
             "c_2": randint(0, 50),
             "c_3": randint(0, 50),
         },
                 {
-            "corrector": None,
-            "section": None,
+            "corrector_id": None,
+            "section": 2,
             "c_0": randint(0, 50),
             "c_1": randint(0, 50),
             "c_2": randint(0, 50),
             "c_3": randint(0, 50),
         },
         {
-            "corrector": None,
-            "section": None,
+            "corrector_id": None,
+            "section": 3,
             "c_0": randint(0, 50),
             "c_1": randint(0, 50),
             "c_2": randint(0, 50),
             "c_3": randint(0, 50),
         },
                 {
-            "corrector": None,
-            "section": None,
+            "corrector_id": None,
+            "section": 4,
             "c_0": randint(0, 50),
             "c_1": randint(0, 50),
             "c_2": randint(0, 50),
             "c_3": randint(0, 50),
         },
         {
-            "corrector": None,
-            "section": None,
+            "corrector_id": None,
+            "section": 5,
             "c_0": randint(0, 50),
             "c_1": randint(0, 50),
             "c_2": randint(0, 50),
             "c_3": randint(0, 50),
         },
                 {
-            "corrector": None,
-            "section": None,
+            "corrector_id": None,
+            "section": 6,
             "c_0": randint(0, 50),
             "c_1": randint(0, 50),
             "c_2": randint(0, 50),
             "c_3": randint(0, 50),
         },
         {
-            "corrector": None,
-            "section": None,
+            "corrector_id": None,
+            "section": 7,
             "c_0": randint(0, 50),
             "c_1": randint(0, 50),
             "c_2": randint(0, 50),
             "c_3": randint(0, 50),
         },
                 {
-            "corrector": None,
-            "section": None,
+            "corrector_id": None,
+            "section": 8,
             "c_0": randint(0, 50),
             "c_1": randint(0, 50),
             "c_2": randint(0, 50),
             "c_3": randint(0, 50),
         },
         {
-            "corrector": None,
-            "section": None,
+            "corrector_id": None,
+            "section": 9,
             "c_0": randint(0, 50),
             "c_1": randint(0, 50),
             "c_2": randint(0, 50),
@@ -587,86 +587,85 @@ weldingProgrammData = {
     ],
     # programm_reflowparammodel
     "programm_reflowparammodel": {
-        "id": None,
-        "programm": None,
+        "programm_id": None,
     },
     # programm_reflowsectionmodel
     "programm_reflowsectionmodel": [
         {
-            "reflow": None,
-            "section": None,
+            "reflow_id": None,
+            "section": 0,
             "r_0": randint(0, 50),
             "r_1": randint(0, 50),
             "r_2": randint(0, 50),
             "r_3": randint(0, 50),
         },
         {
-            "reflow": None,
-            "section": None,
+            "reflow_id": None,
+            "section": 1,
             "r_0": randint(0, 50),
             "r_1": randint(0, 50),
             "r_2": randint(0, 50),
             "r_3": randint(0, 50),
         },
         {
-            "reflow": None,
-            "section": None,
+            "reflow_id": None,
+            "section": 2,
             "r_0": randint(0, 50),
             "r_1": randint(0, 50),
             "r_2": randint(0, 50),
             "r_3": randint(0, 50),
         },
         {
-            "reflow": None,
-            "section": None,
+            "reflow_id": None,
+            "section": 3,
             "r_0": randint(0, 50),
             "r_1": randint(0, 50),
             "r_2": randint(0, 50),
             "r_3": randint(0, 50),
         },
                 {
-            "reflow": None,
-            "section": None,
+            "reflow_id": None,
+            "section": 4,
             "r_0": randint(0, 50),
             "r_1": randint(0, 50),
             "r_2": randint(0, 50),
             "r_3": randint(0, 50),
         },
         {
-            "reflow": None,
-            "section": None,
+            "reflow_id": None,
+            "section": 5,
             "r_0": randint(0, 50),
             "r_1": randint(0, 50),
             "r_2": randint(0, 50),
             "r_3": randint(0, 50),
         },
         {
-            "reflow": None,
-            "section": None,
+            "reflow_id": None,
+            "section": 6,
             "r_0": randint(0, 50),
             "r_1": randint(0, 50),
             "r_2": randint(0, 50),
             "r_3": randint(0, 50),
         },
         {
-            "reflow": None,
-            "section": None,
+            "reflow_id": None,
+            "section": 7,
             "r_0": randint(0, 50),
             "r_1": randint(0, 50),
             "r_2": randint(0, 50),
             "r_3": randint(0, 50),
         },
         {
-            "reflow": None,
-            "section": None,
+            "reflow_id": None,
+            "section": 8,
             "r_0": randint(0, 50),
             "r_1": randint(0, 50),
             "r_2": randint(0, 50),
             "r_3": randint(0, 50),
         },
         {
-            "reflow": None,
-            "section": None,
+            "reflow_id": None,
+            "section": 9,
             "r_0": randint(0, 50),
             "r_1": randint(0, 50),
             "r_2": randint(0, 50),
@@ -712,61 +711,176 @@ def get_latest_id(model_name):
 
 
 
+class RequestsDB():
+
+    conn = get_db()
+    cursor = conn.cursor()
+
+    def request(self):
+        """ Абстрактный запрос """
+        pass
+
+    def create_programm(self):
+        pass
+
+    def create_cursor(self, sql_request):
+        """ Создаём курсор для запросов к БД """
+        cursor_object = self.cursor.execute(sql_request)
+        return cursor_object
+
+    def commit_cursor(self):
+        """ Коммитим изменения в БД """
+        self.conn.commit()
+        self.conn.close()
+
+
 def create_programm(list_data=None):
     """ 
     Создание программы сварки 
     Попробовать сделать через абстрактный класс
     """
-    list_requests = []
-    programm = 0    #ID программы
-    corrector = 0   #ID корректора
-    reflow = 0      #ID оплавления
-    section = 0     #ID секции
+    db = RequestsDB()
+
+    programm = weldingProgrammData.pop("programm_programmmodel")
+    request = f"""INSERT INTO programm_programmmodel{tuple(programm.keys())} VALUES {tuple(programm.values())}"""
+    programm = db.create_cursor(request)
+    print("PROHGRAMM", programm.lastrowid)
+
+    corrector = weldingProgrammData.pop("programm_correctorparammodel")
+    request = f"""INSERT INTO programm_correctorparammodel('programm_id') VALUES ({programm.lastrowid})"""
+    corrector = db.create_cursor(request)
+    print("CORRECTOR", corrector.lastrowid)
+
+    reflow = weldingProgrammData.pop("programm_reflowparammodel")
+    request = f"""INSERT INTO programm_reflowparammodel('programm_id') VALUES ({programm.lastrowid})"""
+    reflow = db.create_cursor(request)
+    print("REFLOW", reflow.lastrowid)
 
 
-    # Парсим параметры программы
-    for model in weldingProgrammData.keys():
+    db.commit_cursor()
 
-        if type(weldingProgrammData[model]) == dict:
-            keys = ['id',] + list(weldingProgrammData[model].keys())
-            values = [get_latest_id(model),] + list(weldingProgrammData[model].values())
-            list_requests.append(f"""INSERT INTO {model}{tuple(keys)} VALUES {tuple(values)}""")
 
-        elif type(weldingProgrammData[model]) == list:
-            for inserted_param in weldingProgrammData[model]:
-                print(inserted_param)
-                keys = list(inserted_param.keys())
-                values = list(inserted_param.values())
-                list_requests.append(f"""INSERT INTO {model}{tuple(keys)} VALUES {tuple(values)}""")
 
-        else:
-            print('Ошибка при парсинге данных программы')
-            raise Exception('Ошибка при парсинге данных программы')
 
-        print(f"\nPROGRAMM ID:\t{ programm }\nCORECTOR ID:\t{ corrector }\nREFLOW ID:\t{ reflow }\nSECTION ID:\t{ section }\n")
-    response = testing(list_requests)
-    print(response)
+    # for model in ["programm_programmmodel", "programm_correctorparammodel", "programm_reflowparammodel"]:
+    #     data = weldingProgrammData.pop(model)
+    #     keys = list(weldingProgrammData[data].keys())
+    #     values = list(weldingProgrammData[data].values())
 
-    # model = 'programm_programmmodel' get_latest_id(model),
-    # fields = ('id', 'name', 'min_diameter', 'max_diameter', 'description', 'created_at', 'updated_at')
-
-    # data = (
-    #     get_latest_id(model),
-    #     weldingProgrammData['name'],
-    #     weldingProgrammData['min_diameter'],
-    #     weldingProgrammData['max_diameter'],
-    #     weldingProgrammData['description'],
-    #     str(weldingProgrammData['created_at']),
-    #     str(weldingProgrammData['updated_at'])
-    # )
-
-    # programmodel = f"""INSERT INTO {model}{fields} VALUES {data}"""
+    #     request = f"""INSERT INTO {model}{tuple(keys)} VALUES {tuple(values)}"""
         
-    # request_db([
-    #     programmodel,
-    # ])
+    #     cursor = db.create_cursor(request)
+    #     print(cursor, cursor.lastrowid)
+    #     cursors.append(cursor)
+        
 
-    # print(f"Программа создана")
+    # for model in weldingProgrammData.keys():
+
+
+
+        # Создаём курсоры программы, корректора оплавления
+
+
+
+
+        # if type(weldingProgrammData[model]) == list:
+        #     pass
+
+
+
+
+
+        # # Проверяем есть ли вложенные параметры у модели
+        # if "params" in weldingProgrammData[model].keys():
+        #     params = weldingProgrammData[model].pop("params")   #Удаляем параметры из общего словаря
+        #     keys = list(weldingProgrammData[model].keys())
+        #     values = list(weldingProgrammData[model].values())
+        #     request = f"""INSERT INTO {model}{tuple(keys)} VALUES {tuple(values)}"""
+        #     db = RequestsDB()
+        #     programm = db.create_cursor(request)
+        #     print(programm, programm.lastrowid)
+
+        #     # Создаём курсоры вложенных параметров
+        #     for model_params in params.keys():
+
+        #         # keys = list(params[model_params].keys())
+        #         # values = list(params[model_params].values())
+
+        #         for inserted_params in params[model_params]:
+
+        #             if type(params[model_params][inserted_params]) == list:
+        #                 print(f'====>>>>{inserted_params}')
+
+        #             else:
+        #                 print(type(params[model_params][inserted_params]))
+                
+
+
+        #         # print(keys, values)
+        #         # request = f"""INSERT INTO {model_params}{tuple(keys)} VALUES {tuple(values)}"""
+        #         # print(request)
+
+        #     # db.commit_cursor([programm,])
+
+        # else:
+        #     print("Не найдены параметры программы")
+
+
+# def create_programm(list_data=None):
+#     """ 
+#     Создание программы сварки 
+#     Попробовать сделать через абстрактный класс
+#     """
+#     list_requests = []
+#     programm = 0    #ID программы
+#     corrector = 0   #ID корректора
+#     reflow = 0      #ID оплавления
+#     section = 0     #ID секции
+
+
+#     # Парсим параметры программы
+#     for model in weldingProgrammData.keys():
+
+#         if type(weldingProgrammData[model]) == dict:
+#             keys = ['id',] + list(weldingProgrammData[model].keys())
+#             values = [get_latest_id(model),] + list(weldingProgrammData[model].values())
+#             list_requests.append(f"""INSERT INTO {model}{tuple(keys)} VALUES {tuple(values)}""")
+
+#         elif type(weldingProgrammData[model]) == list:
+#             for inserted_param in weldingProgrammData[model]:
+#                 print(inserted_param)
+#                 keys = list(inserted_param.keys())
+#                 values = list(inserted_param.values())
+#                 list_requests.append(f"""INSERT INTO {model}{tuple(keys)} VALUES {tuple(values)}""")
+
+#         else:
+#             print('Ошибка при парсинге данных программы')
+#             raise Exception('Ошибка при парсинге данных программы')
+
+#         print(f"\nPROGRAMM ID:\t{ programm }\nCORECTOR ID:\t{ corrector }\nREFLOW ID:\t{ reflow }\nSECTION ID:\t{ section }\n")
+#     response = testing(list_requests)
+#     print(response)
+
+#     # model = 'programm_programmmodel' get_latest_id(model),
+#     # fields = ('id', 'name', 'min_diameter', 'max_diameter', 'description', 'created_at', 'updated_at')
+
+#     # data = (
+#     #     get_latest_id(model),
+#     #     weldingProgrammData['name'],
+#     #     weldingProgrammData['min_diameter'],
+#     #     weldingProgrammData['max_diameter'],
+#     #     weldingProgrammData['description'],
+#     #     str(weldingProgrammData['created_at']),
+#     #     str(weldingProgrammData['updated_at'])
+#     # )
+
+#     # programmodel = f"""INSERT INTO {model}{fields} VALUES {data}"""
+        
+#     # request_db([
+#     #     programmodel,
+#     # ])
+
+#     # print(f"Программа создана")
 
 
 def update_programm(list_data):
