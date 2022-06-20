@@ -349,23 +349,6 @@ def request_db(sql):
     # return "Запрос выполнен"
 
 
-def remove_programm(id):
-    """ Удаление программы сварки """
-
-    sql = f"DELETE FROM programm_programmmodel WHERE id = { id }"
-    request_db(sql)
-
-    print(f"Программа { id } удалена")
-
-
-def get_welding_programm():
-    """ Получение всех программ сварки """
-    
-    sql = "SELECT id, name, max_diameter, min_diameter FROM programm_programmmodel"
-    response = request_db(sql)
-
-    return response
-
 
 
 
@@ -424,56 +407,56 @@ weldingProgrammData = {
     # programm_primaryvoltagesensormodel
     "programm_primaryvoltagesensormodel": {
         "programm_id": None,
-        "min_voltage": randint(0, 50),
-        "max_voltage": randint(0, 50),
+        "min_voltage": randint(0, 25),
+        "max_voltage": randint(25, 50),
     },
     # programm_oiltemperaturesensormodel
     "programm_oiltemperaturesensormodel": {
         "programm_id": None,
-        "min_value": randint(0, 50),
-        "max_value": randint(0, 50),
+        "min_value": randint(0, 25),
+        "max_value": randint(25, 50),
     },
     # programm_hydraulicpressuresensormodel
     "programm_hydraulicpressuresensormodel": {
         "programm_id": None,
-        "min_value": randint(0, 50),
-        "max_value": randint(0, 50),
+        "min_value": randint(0, 25),
+        "max_value": randint(25, 50),
     },
     # programm_nkpressuremetersensormodel
     "programm_nkpressuremetersensormodel": {
         "programm_id": None,
-        "min_value": randint(0, 50),
-        "max_value": randint(0, 50),
+        "min_value": randint(0, 25),
+        "max_value": randint(25, 50),
     },
     # programm_pkpressuremetersensormodel
     "programm_pkpressuremetersensormodel": {
         "programm_id": None,
-        "min_value": randint(0, 50),
-        "max_value": randint(0, 50),
+        "min_value": randint(0, 25),
+        "max_value": randint(25, 50),
     },
     # programm_sedimentpressuresensormodel
     "programm_sedimentpressuresensormodel": {
         "programm_id": None,
-        "min_value": randint(0, 50),
-        "max_value": randint(0, 50),
+        "min_value": randint(0, 25),
+        "max_value": randint(25, 50),
     },
     # programm_primaryvoltagesensormodel
     "programm_primaryvoltagesensormodel": {
         "programm_id": None,
-        "min_value": randint(0, 50),
-        "max_value": randint(0, 50),
+        "min_value": randint(0, 25),
+        "max_value": randint(25, 50),
     },
     # programm_currentsensormodel
     "programm_currentsensormodel": {
         "programm_id": None,
-        "min_value": randint(0, 50),
-        "max_value": randint(0, 50),
+        "min_value": randint(0, 25),
+        "max_value": randint(25, 50),
     },
     # programm_positionsensormodel
     "programm_positionsensormodel": {
         "programm_id": None,
-        "min_value": randint(0, 50),
-        "max_value": randint(0, 50),
+        "min_value": randint(0, 25),
+        "max_value": randint(25, 50),
     },
     # programm_burningmodel
     "programm_burningmodel": {
@@ -694,23 +677,6 @@ weldingProgrammData = {
 #     ('programm_correctorsectionmodel',)
 
 
-def testing(list_requests):
-    return list_requests
-
-def get_latest_id(model_name):
-    """ Возвращаем последний id + 1 модели """
-
-    sql = f"SELECT id FROM { model_name } ORDER BY id DESC LIMIT 1"
-    latest_id = request_db([sql,])
-
-    #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    if len(latest_id) > 0:
-        return latest_id[0]['id'] + 1
-    else:
-        return 1
-
-
-
 class RequestsDB():
 
     conn = get_db()
@@ -734,12 +700,12 @@ class RequestsDB():
         self.conn.close()
 
 
-def create_programm(list_data=None):
-    """ 
-    Создание программы сварки 
-    Попробовать сделать через абстрактный класс
-    """
+def create_programm(list_data=None):    # переделать в create_or_update_programm()
+    """ Создание программы сварки 
     
+    sql = "UPDATE programm_programmmodel SET name = 'Программа обновлена 3' WHERE id = 8"
+    """
+
     db = RequestsDB()
     foreign_keys = {}
 
@@ -758,7 +724,6 @@ def create_programm(list_data=None):
     reflow = db.create_cursor(request)
     foreign_keys['reflow_id'] = reflow.lastrowid
 
-
     for model in weldingProgrammData:
         if type(weldingProgrammData[model]) == list:
             for inserted in weldingProgrammData[model]:
@@ -766,148 +731,31 @@ def create_programm(list_data=None):
                 values = list(inserted.values())
                 values[0] = foreign_keys[keys[0]]
                 request = f"""INSERT INTO {model}{tuple(keys)} VALUES {tuple(values)}"""
-                print(request)
         else:
             keys = list(weldingProgrammData[model].keys())
             values = list(weldingProgrammData[model].values())
             values[0] = foreign_keys[keys[0]]
             request = f"""INSERT INTO {model}{tuple(keys)} VALUES {tuple(values)}"""
-            print(request)
 
+        db.create_cursor(request)
 
-    # db.commit_cursor()
-
-
-
-
-    # for model in ["programm_programmmodel", "programm_correctorparammodel", "programm_reflowparammodel"]:
-    #     data = weldingProgrammData.pop(model)
-    #     keys = list(weldingProgrammData[data].keys())
-    #     values = list(weldingProgrammData[data].values())
-
-    #     request = f"""INSERT INTO {model}{tuple(keys)} VALUES {tuple(values)}"""
-        
-    #     cursor = db.create_cursor(request)
-    #     print(cursor, cursor.lastrowid)
-    #     cursors.append(cursor)
-        
-
-    # for model in weldingProgrammData.keys():
+    db.commit_cursor()
 
 
 
-        # Создаём курсоры программы, корректора оплавления
+def remove_programm(id):
+    """ Удаление программы сварки """
 
-
-
-
-        # if type(weldingProgrammData[model]) == list:
-        #     pass
-
-
-
-
-
-        # # Проверяем есть ли вложенные параметры у модели
-        # if "params" in weldingProgrammData[model].keys():
-        #     params = weldingProgrammData[model].pop("params")   #Удаляем параметры из общего словаря
-        #     keys = list(weldingProgrammData[model].keys())
-        #     values = list(weldingProgrammData[model].values())
-        #     request = f"""INSERT INTO {model}{tuple(keys)} VALUES {tuple(values)}"""
-        #     db = RequestsDB()
-        #     programm = db.create_cursor(request)
-        #     print(programm, programm.lastrowid)
-
-        #     # Создаём курсоры вложенных параметров
-        #     for model_params in params.keys():
-
-        #         # keys = list(params[model_params].keys())
-        #         # values = list(params[model_params].values())
-
-        #         for inserted_params in params[model_params]:
-
-        #             if type(params[model_params][inserted_params]) == list:
-        #                 print(f'====>>>>{inserted_params}')
-
-        #             else:
-        #                 print(type(params[model_params][inserted_params]))
-                
-
-
-        #         # print(keys, values)
-        #         # request = f"""INSERT INTO {model_params}{tuple(keys)} VALUES {tuple(values)}"""
-        #         # print(request)
-
-        #     # db.commit_cursor([programm,])
-
-        # else:
-        #     print("Не найдены параметры программы")
-
-
-# def create_programm(list_data=None):
-#     """ 
-#     Создание программы сварки 
-#     Попробовать сделать через абстрактный класс
-#     """
-#     list_requests = []
-#     programm = 0    #ID программы
-#     corrector = 0   #ID корректора
-#     reflow = 0      #ID оплавления
-#     section = 0     #ID секции
-
-
-#     # Парсим параметры программы
-#     for model in weldingProgrammData.keys():
-
-#         if type(weldingProgrammData[model]) == dict:
-#             keys = ['id',] + list(weldingProgrammData[model].keys())
-#             values = [get_latest_id(model),] + list(weldingProgrammData[model].values())
-#             list_requests.append(f"""INSERT INTO {model}{tuple(keys)} VALUES {tuple(values)}""")
-
-#         elif type(weldingProgrammData[model]) == list:
-#             for inserted_param in weldingProgrammData[model]:
-#                 print(inserted_param)
-#                 keys = list(inserted_param.keys())
-#                 values = list(inserted_param.values())
-#                 list_requests.append(f"""INSERT INTO {model}{tuple(keys)} VALUES {tuple(values)}""")
-
-#         else:
-#             print('Ошибка при парсинге данных программы')
-#             raise Exception('Ошибка при парсинге данных программы')
-
-#         print(f"\nPROGRAMM ID:\t{ programm }\nCORECTOR ID:\t{ corrector }\nREFLOW ID:\t{ reflow }\nSECTION ID:\t{ section }\n")
-#     response = testing(list_requests)
-#     print(response)
-
-#     # model = 'programm_programmmodel' get_latest_id(model),
-#     # fields = ('id', 'name', 'min_diameter', 'max_diameter', 'description', 'created_at', 'updated_at')
-
-#     # data = (
-#     #     get_latest_id(model),
-#     #     weldingProgrammData['name'],
-#     #     weldingProgrammData['min_diameter'],
-#     #     weldingProgrammData['max_diameter'],
-#     #     weldingProgrammData['description'],
-#     #     str(weldingProgrammData['created_at']),
-#     #     str(weldingProgrammData['updated_at'])
-#     # )
-
-#     # programmodel = f"""INSERT INTO {model}{fields} VALUES {data}"""
-        
-#     # request_db([
-#     #     programmodel,
-#     # ])
-
-#     # print(f"Программа создана")
-
-
-def update_programm(list_data):
-    """ Обновление программы сварки """
-
-    sql = "UPDATE programm_programmmodel SET name = 'Программа обновлена 3' WHERE id = 8"
+    sql = f"DELETE FROM programm_programmmodel WHERE id = { id }"
     request_db(sql)
 
-    print(f"Программа обновлена")
+    print(f"Программа { id } удалена")
 
-create_programm()
-# print(get_latest_id('programm_programmmodel'))
+
+def get_welding_programm():
+    """ Получение всех программ сварки """
+    
+    sql = "SELECT id, name, max_diameter, min_diameter FROM programm_programmmodel"
+    response = request_db(sql)
+
+    return response
