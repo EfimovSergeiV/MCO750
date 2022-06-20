@@ -739,25 +739,43 @@ def create_programm(list_data=None):
     Создание программы сварки 
     Попробовать сделать через абстрактный класс
     """
+    
     db = RequestsDB()
+    foreign_keys = {}
 
     programm = weldingProgrammData.pop("programm_programmmodel")
     request = f"""INSERT INTO programm_programmmodel{tuple(programm.keys())} VALUES {tuple(programm.values())}"""
     programm = db.create_cursor(request)
-    print("PROHGRAMM", programm.lastrowid)
+    foreign_keys['programm_id'] = programm.lastrowid
 
     corrector = weldingProgrammData.pop("programm_correctorparammodel")
     request = f"""INSERT INTO programm_correctorparammodel('programm_id') VALUES ({programm.lastrowid})"""
     corrector = db.create_cursor(request)
-    print("CORRECTOR", corrector.lastrowid)
+    foreign_keys['corrector_id'] = corrector.lastrowid
 
     reflow = weldingProgrammData.pop("programm_reflowparammodel")
     request = f"""INSERT INTO programm_reflowparammodel('programm_id') VALUES ({programm.lastrowid})"""
     reflow = db.create_cursor(request)
-    print("REFLOW", reflow.lastrowid)
+    foreign_keys['reflow_id'] = reflow.lastrowid
 
 
-    db.commit_cursor()
+    for model in weldingProgrammData:
+        if type(weldingProgrammData[model]) == list:
+            for inserted in weldingProgrammData[model]:
+                keys = list(inserted.keys())
+                values = list(inserted.values())
+                values[0] = foreign_keys[keys[0]]
+                request = f"""INSERT INTO {model}{tuple(keys)} VALUES {tuple(values)}"""
+                print(request)
+        else:
+            keys = list(weldingProgrammData[model].keys())
+            values = list(weldingProgrammData[model].values())
+            values[0] = foreign_keys[keys[0]]
+            request = f"""INSERT INTO {model}{tuple(keys)} VALUES {tuple(values)}"""
+            print(request)
+
+
+    # db.commit_cursor()
 
 
 
