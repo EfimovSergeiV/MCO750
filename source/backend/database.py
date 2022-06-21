@@ -1,7 +1,4 @@
-from cgi import print_arguments
 import json, psycopg2, sqlite3, datetime
-from traceback import print_tb
-from pprint import pprint
 from psycopg2.extras import RealDictCursor
 from psycopg2 import Error
 from pathlib import Path
@@ -239,82 +236,7 @@ default_db = DATABASE['psql']
 #####################################################################################################################
 #####################################################################################################################
 
-selected_db = 'sqlite' # psql
-# selected_db = 'psql' # sqlite
 
-
-def dict_factory(cursor, row):
-    """ Преабразуем ответ курсора в словарь """
-    d = {}
-    for idx, col in enumerate(cursor.description):
-        d[col[0]] = row[idx]
-    return d
-
-
-def get_db():
-    """ Соединяемся с базой данных и возвращаем соединение  """
-
-    if selected_db == 'sqlite':
-        connection = sqlite3.connect(f'{ BASE_DIR }/db.sqlite3')
-
-    elif selected_db == 'psql':
-        connection = psycopg2.connect(
-            user=default_db['USER'],
-            password=default_db['PASSWORD'],
-            database=default_db['NAME'],
-            host="127.0.0.1",
-            port="5432",
-        )
-        # cursor = connection.cursor(cursor_factory=RealDictCursor)
-
-    else:
-        print('Не выбрана база данных')
-        raise Exception('Неизвестная база данных')
-
-    return connection
-
-
-def request_db(sql):
-    """ Выполнение списка запросов в БД """
-
-    if type(sql) == list:
-        conn = get_db()
-        
-        # Настраиваем курсор в зависимости от выбраной БД
-        if selected_db == 'sqlite':
-            conn.row_factory = dict_factory
-            cursor = conn.cursor()
-
-        elif selected_db == 'psql':
-            cursor = conn.cursor(cursor_factory=RealDictCursor)
-            
-
-        # Вставляем запросы
-        for sql_request in sql:
-            cursor.execute(sql_request)
-
-
-            # Если нужно вернуть данные из запроса
-            if sql_request.startswith('SELECT'):
-                data = {}
-
-                if selected_db == 'sqlite':
-                    data = cursor.fetchall()
-                    return data
-
-                elif selected_db == 'psql':
-                    dump_data = json.dumps(cursor.fetchall(), ensure_ascii=False)
-                    return json.loads(dump_data)
-
-
-        conn.commit()   # Комитим базу
-        cursor.close()  # Закрываем соединение
-        return "Запрос выполнен"
-
-
-    else:
-        print(sql)
-        raise Exception("Give me list of sql requests")
 
 
     # # Работаем с SQLite
@@ -677,13 +599,90 @@ weldingProgrammData = {
 #     ('programm_correctorsectionmodel',)
 
 
+
+selected_db = 'sqlite' # psql
+# selected_db = 'psql' # sqlite
+
+
+def dict_factory(cursor, row):
+    """ Преабразуем ответ курсора в словарь """
+    d = {}
+    for idx, col in enumerate(cursor.description):
+        d[col[0]] = row[idx]
+    return d
+
+
+def get_db():
+    """ Соединяемся с базой данных и возвращаем соединение  """
+
+    if selected_db == 'sqlite':
+        connection = sqlite3.connect(f'{ BASE_DIR }/db.sqlite3')
+
+    elif selected_db == 'psql':
+        connection = psycopg2.connect(
+            user=default_db['USER'],
+            password=default_db['PASSWORD'],
+            database=default_db['NAME'],
+            host="127.0.0.1",
+            port="5432",
+        )
+        # cursor = connection.cursor(cursor_factory=RealDictCursor)
+
+    else:
+        print('Не выбрана база данных')
+        raise Exception('Неизвестная база данных')
+
+    return connection
+
+
+def request_db(sql):
+    """ Выполнение списка запросов в БД """
+
+    if type(sql) == list:
+        conn = get_db()
+        
+        # Настраиваем курсор в зависимости от выбраной БД
+        if selected_db == 'sqlite':
+            conn.row_factory = dict_factory
+            cursor = conn.cursor()
+
+        elif selected_db == 'psql':
+            cursor = conn.cursor(cursor_factory=RealDictCursor)
+            
+
+        # Вставляем запросы
+        for sql_request in sql:
+            cursor.execute(sql_request)
+
+
+            # Если нужно вернуть данные из запроса
+            if sql_request.startswith('SELECT'):
+                data = {}
+
+                if selected_db == 'sqlite':
+                    data = cursor.fetchall()
+                    return data
+
+                elif selected_db == 'psql':
+                    dump_data = json.dumps(cursor.fetchall(), ensure_ascii=False)
+                    return json.loads(dump_data)
+
+
+        conn.commit()   # Комитим базу
+        cursor.close()  # Закрываем соединение
+        return "Запрос выполнен"
+
+
+    else:
+        print(sql)
+        raise Exception("Give me list of sql requests")
+
 class RequestsDB():
 
     conn = get_db()
     cursor = conn.cursor()
 
     def request(self):
-        """ Абстрактный запрос """
         pass
 
     def create_programm(self):
@@ -700,7 +699,7 @@ class RequestsDB():
         self.conn.close()
 
 
-def create_programm(list_data=None):    # переделать в create_or_update_programm()
+def create_programm(list_data=None):    # create_or_update_programm()
     """ Создание программы сварки 
     
     sql = "UPDATE programm_programmmodel SET name = 'Программа обновлена 3' WHERE id = 8"
@@ -743,6 +742,37 @@ def create_programm(list_data=None):    # переделать в create_or_upda
 
 
 
+
+def update_programm(programm_id=None, list_data=None):
+    """ Update programm """
+    print(f'Обновляем программу {programm_id}')
+    # db = RequestsDB()
+
+    conn = get_db()
+    cursor = conn.cursor()
+    
+    model = weldingProgrammData['programm_programmmodel']
+
+
+    keys = str([key + ' = ?' for key in model.keys()])[1:-1].replace("'", "")
+    values = tuple([val for val in model.values()])
+
+
+    request = f"""UPDATE programm_programmmodel SET {keys} WHERE id = {programm_id}"""  # Обновляем программу
+
+    print(request, values)
+
+    cursor.execute(request, values)
+
+    conn.commit()
+    conn.close()
+
+
+
+
+
+
+
 def remove_programm(id):
     """ Удаление программы сварки """
 
@@ -754,8 +784,13 @@ def remove_programm(id):
 
 def get_welding_programm():
     """ Получение всех программ сварки """
-    
+
     sql = "SELECT id, name, max_diameter, min_diameter FROM programm_programmmodel"
     response = request_db(sql)
 
     return response
+
+
+
+update_programm(programm_id=53)
+# create_programm()

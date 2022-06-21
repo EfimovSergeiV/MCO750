@@ -94,7 +94,7 @@ class CorrectorAdmin(admin.ModelAdmin):
 
 
 class ProgrammAdmin(admin.ModelAdmin):
-    list_display = ('name', 'min_diameter', 'max_diameter', 'created_at', 'updated_at')
+    list_display = ('id', 'name', 'min_diameter', 'max_diameter', 'created_at', 'updated_at')
     list_filter = ('created_at', 'updated_at')
     search_fields = ('name', 'description')
     ordering = ('-created_at',)
