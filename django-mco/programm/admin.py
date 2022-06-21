@@ -79,11 +79,11 @@ admin.site = MyAdminSite()
 
 class InlineReflowAdmin(admin.TabularInline):
     model = ReflowSectionModel
-    extra = 10
+    extra = 0   #10
 
 class InlineCorrectorAdmin(admin.TabularInline):
     model = CorrectorSectionModel
-    extra = 10
+    extra = 0   #10
 
 
 class ReflowAdmin(admin.ModelAdmin):
