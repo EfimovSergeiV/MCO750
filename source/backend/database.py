@@ -669,33 +669,26 @@ class RequestsDB():
         self.conn.close()
 
 
-def create_programm(list_data=None):    # create_or_update_programm()
-    """ Создание программы сварки 
-    
-    sql = "UPDATE programm_programmmodel SET name = 'Программа обновлена 3' WHERE id = 8"
-    """
+def create_programm(list_data=None):
+    """ Создание программы сварки """
 
     db = RequestsDB()
     foreign_keys = {}
     
-
     programm = weldingProgrammData.pop("programm_programmmodel")
     request = f"""INSERT INTO programm_programmmodel{tuple(programm.keys())} VALUES {tuple(programm.values())}"""
     programm = db.create_cursor(request)
     foreign_keys['programm_programmmodel'] = {'programm_id': programm.lastrowid}
-    
 
     corrector = weldingProgrammData.pop("programm_correctorparammodel")
     request = f"""INSERT INTO programm_correctorparammodel('programm_id') VALUES ({programm.lastrowid})"""
     corrector = db.create_cursor(request)
     foreign_keys['programm_correctorsectionmodel'] = {'corrector_id': corrector.lastrowid}
     
-
     reflow = weldingProgrammData.pop("programm_reflowparammodel")
     request = f"""INSERT INTO programm_reflowparammodel('programm_id') VALUES ({programm.lastrowid})"""
     reflow = db.create_cursor(request)
     foreign_keys['programm_reflowsectionmodel'] = { 'reflow_id': reflow.lastrowid }
-
 
     for model in weldingProgrammData:
         if type(weldingProgrammData[model]) == list:
@@ -752,7 +745,6 @@ def update_programm(programm_id=None, list_data=None):
 
 def get_programm(id=None):
     """ Получение программы из БД """
-
     db = RequestsDB()
 
     sql_programm = f"""SELECT * FROM programm_programmmodel WHERE id = { id }"""
@@ -760,11 +752,9 @@ def get_programm(id=None):
     programm = db.cursor.fetchone()
     print(programm)
 
-
     sql_corrector = f"""SELECT * FROM programm_correctorparammodel WHERE programm_id = { programm["id"] }"""
     db.create_cursor(sql_corrector)
     corrector = db.cursor.fetchone()
-    print(corrector['id'])
 
     sql_corrector_section = f"""SELECT * FROM programm_correctorsectionmodel WHERE corrector_id = { corrector["id"] }"""
     db.create_cursor(sql_corrector_section)
@@ -772,29 +762,20 @@ def get_programm(id=None):
     for corrector in correctors:
         print(corrector)
 
-
     sql_reflow = f"""SELECT * FROM programm_reflowparammodel WHERE programm_id = { programm["id"] }"""
     db.create_cursor(sql_reflow)
     reflow = db.cursor.fetchone()
-    print(f"====>>>>{reflow}")
 
-    # sql_reflow_section = f"""SELECT * FROM programm_reflowsectionmodel WHERE reflow_id = { reflow["id"] }"""
-    # print(sql_reflow_section)
-    # db.create_cursor(sql_reflow_section)
-    # reflows = db.cursor.fetchall()
-    # for reflow in reflows:
-    #     print(reflow)
-
+    sql_reflow_section = f"""SELECT * FROM programm_reflowsectionmodel WHERE reflow_id = { reflow["id"] }"""
+    db.create_cursor(sql_reflow_section)
+    reflows = db.cursor.fetchall()
+    for reflow in reflows:
+        print(reflow)
 
     for model in models:
-
         sql = f"""SELECT * FROM { model } WHERE programm_id = { programm['id'] }"""
-
-        print(model)
-
         db.create_cursor(sql)
         data = db.cursor.fetchone()
-
         print(data)
 
     
@@ -811,5 +792,5 @@ def remove_programm(id):
 
 
 
-# get_programm(id=53)
-create_programm()
+get_programm(id=5)
+# create_programm()
