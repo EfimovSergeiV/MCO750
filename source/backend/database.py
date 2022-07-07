@@ -779,7 +779,15 @@ def get_programm(id=None):
         print(data)
 
     
+def list_programm():
+    """ Список программ (АНОНС) """
+    db = RequestsDB()
 
+    sql_programm = f"""SELECT * FROM programm_programmmodel"""
+    db.create_cursor(sql_programm)
+    programms = db.cursor.fetchall()
+    for programm in programms:
+        print(programm)
 
 
 def remove_programm(id):
@@ -791,6 +799,6 @@ def remove_programm(id):
     print(f"Программа { id } удалена")
 
 
-
-get_programm(id=5)
+list_programm()
+# get_programm(id=5)
 # create_programm()
